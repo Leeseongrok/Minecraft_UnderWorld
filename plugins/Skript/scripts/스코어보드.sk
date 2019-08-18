@@ -6,7 +6,7 @@
 #BUT BETTER!
 #You can edit everything yourself. 
 
-every 5 seconds:
+every 3 seconds:
 	loop all players:
 		wipe loop-player's sidebar
 		set name of sidebar of loop-player to "&6&l[Under World] 내정보"
@@ -18,10 +18,10 @@ every 5 seconds:
 		set score "0원" in sidebar of loop-player to 3
 		set score "&6&l-*[원정대]*" in sidebar of loop-player to 2
 		if {Expedition::session::%loop-player%} is 0:
-			set score "가입된 원정대가 없습니다" in sidebar of loop-player to 1
+			set score "가입된 원정대가 없습니다.." in sidebar of loop-player to 1
 		if {Expedition::session::%loop-player%} is 1:
 			set score "원정대 초대권유를 받았습니다" in sidebar of loop-player to 1
 		if {Expedition::session::%loop-player%} is 2:
-			set score "{Expedition::Partymember::%{Expedition::PartyBoss::%loop-player%}%::*}의 원정대 가입중" in sidebar of loop-player to 1
+			set score "{Expedition::Partymember::%{Expedition::PartyBoss::%loop-player%}%::*}의 원정대" in sidebar of loop-player to 1
 		if {Expedition::session::%loop-player%} is 3:
-			set score "원정대장" in sidebar of loop-player to 1
+			set score "원정대장 : %loop-player%" in sidebar of loop-player to 1

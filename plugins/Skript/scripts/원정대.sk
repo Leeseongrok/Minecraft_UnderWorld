@@ -49,7 +49,7 @@ command /원정대 [<text>] [<offline player>]:
 				send "{@Prefix}{@message-color}해당 플레이어는 이미 원정대에 속한 상태입니다."
 				stop
 			if {Expedition::session::%arg 2%} is 3:
-				send "{@Prefix}{@message-color}해당 플레이어는 이미 원정대에 속한 상태입니다."
+				send "{@Prefix}{@message-color}해당 플레이어는 이미 다른 원정대의 대장입니다."
 				stop
 
 			# 자기 자신인지 체크
@@ -86,7 +86,7 @@ command /원정대 [<text>] [<offline player>]:
 				send "{@Prefix}{@message-color}이미 원정대에 속한 상태입니다."
 				stop
 			if {Expedition::session::%player%} is 3:
-				send "{@Prefix}{@message-color}이미 원정대에 속한 상태입니다.."
+				send "{@Prefix}{@message-color}이미 다른 원정대의 대장입니다"
 				stop
 			# 파티 자리 유무 체크
 			set {_check} to 0
@@ -172,13 +172,13 @@ command /원정대 [<text>] [<offline player>]:
 		if arg 1 is "정보":
 			send "+---------------------------------------+"
 			send "{@Prefix}{@message-color}개발자용 정보 출력"
-			send "{@Prefix}{@message-color}세션상태 : %{Expedition::session::%player%}% (0-노멀 1-파티초대 2-원정대원 3-원정대장)"
+			send "{@Prefix}{@message-color}상태 : %{Expedition::session::%player%}% (0-가입안됨 1-파티초대받음 2-원정대원 3-원정대장)"
 			if {Expedition::session::%player%} is 2:
 				send "{@Prefix}{@message-color}원정대장 : %{Expedition::PartyBoss::%player%}%"
 				loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
 					send "원정대멤버 :%loop-index% %loop-value% "
 			if {Expedition::session::%player%} is 3:
-				send "{@Prefix}{@message-color}원정대장 : %{Expedition::PartyBoss::%player%}%"
+				send "{@Prefix}{@message-color}원정대장 : %player%"
 				loop {Expedition::Partymember::%player%::*}:
 					send "당신이 구성한 원정대 멤버 :%loop-index% %loop-value% "
 			send "+---------------------------------------+"

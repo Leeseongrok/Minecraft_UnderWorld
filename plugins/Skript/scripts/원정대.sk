@@ -42,19 +42,20 @@ command /원정대 [<text>] [<offline player>]:
 				stop
 
 			# 초대할 플레이어 상태 체크 (0-초대가능 1-파티초대받은상태 2-원정대에 속한상태 3-다른원정대의 원정대장)
-			if {Expedition::session::%player%} is 1:
+			if {Expedition::session::%arg 2%} is 1:
 				send "{@Prefix}{@message-color}해당 플레이어는 이미 받은 초대가 있습니다."
 				stop
-			if {Expedition::session::%player%} is 2:
+			if {Expedition::session::%arg 2%} is 2:
 				send "{@Prefix}{@message-color}해당 플레이어는 이미 원정대에 속한 상태입니다."
 				stop
-			if {Expedition::session::%player%} is 3:
+			if {Expedition::session::%arg 2%} is 3:
 				send "{@Prefix}{@message-color}해당 플레이어는 이미 원정대에 속한 상태입니다."
 				stop
 
 			# 자기 자신인지 체크
 			if player is arg 2:
 				send "{@Prefix}{@message-color}자기 자신은 초대할 수 없습니다."
+				stop
 			# 초대시작 **********
 			# 초대받은 플레이어의 상태 변경 (0-초대가능 1-파티초대받은상태 2-원정대에 속한상태 3-다른원정대의 원정대장)
 			set {Expedition::session::%arg 2%} to 1
@@ -156,7 +157,17 @@ command /원정대 [<text>] [<offline player>]:
 				set {Expedition::session::%player%} to 0
 				set {Expedition::PartyBoss::%player%} to 0
 			if {Expedition::session::%player%} is 3:
-				send "{@Prefix}{@message-color}파티장 탈퇴 기능 제작중 ㄱㄷ."
+				# 파티에 속한 모든 파티원들 강제 파티 탈퇴진행 안내
+				loop {Expedition::Partymember::%player%::*}:
+					send "{@Prefix}{@message-color}원정대장이 파티를 해산하였습니다." to loop-value
+					set {Expedition::session::%loop-value%} to 0
+					set {Expedition::PartyBoss::%loop-value%} to 0
+				set {Expedition::session::%player%} to 0
+				set {Expedition::PartyBoss::%player%} to 0
+				clear {Expedition::Partymember::%player%::*}
+				send "{@Prefix}{@message-color}파티를 해산하였습니다."
+				# 파티원 파티탈퇴 처리후 상태 초기화
+
 			
 		if arg 1 is "정보":
 			send "+---------------------------------------+"
@@ -170,5 +181,4 @@ command /원정대 [<text>] [<offline player>]:
 				send "{@Prefix}{@message-color}원정대장 : %{Expedition::PartyBoss::%player%}%"
 				loop {Expedition::Partymember::%player%::*}:
 					send "당신이 구성한 원정대 멤버 :%loop-index% %loop-value% "
-
 			send "+---------------------------------------+"

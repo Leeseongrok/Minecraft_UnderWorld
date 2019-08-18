@@ -135,16 +135,30 @@ command /원정대 [<text>] [<offline player>]:
 		if arg 1 is "탈퇴":
 			send "탈퇴기능.."
 			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
-			# 파티장 조회
-			# 해당 파티장의 리스트에서 유저 삭제 
-			# 플레이어 직위 변경
-			# 전체 안내메시지
+			if {Expedition::session::%player%} is 0:
+				send "{@Prefix}{@message-color}가입된 원정대가 없습니다."
+			if {Expedition::session::%player%} is 1:
+				send "{@Prefix}{@message-color}가입된 원정대가 없습니다."
+			if {Expedition::session::%player%} is 2:
+				# 파티장 조회
+				send "{@Prefix}{@message-color}%{Expedition::PartyBoss::%player%}%님의 원정대에서 탈퇴합니다.."
+				# 해당 파티장의 리스트에서 유저 삭제
+				remove "%player%" from {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}
+				# 전체 안내메시지
+				loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
+					send "{@Prefix}{@message-color}%player% 님이 탈퇴하였습니다." to loop-value
+				send "{@Prefix}{@message-color}%player% 님이 탈퇴하였습니다." to {Expedition::PartyBoss::%player%}
+				# 플레이어 직위 변경
+				set {Expedition::session::%arg 2%} to 0
+				set {Expedition::PartyBoss::%arg 2%} to 0
+			if {Expedition::session::%player%} is 3:
+				send "{@Prefix}{@message-color}파티장 기능 제작중 ㄱㄷ."
 			
 		if arg 1 is "정보":
 			send "+---------------------------------------+"
 			send "{@Prefix}{@message-color}개발자용 정보 출력"
 			send "{@Prefix}{@message-color}세션상태 : %{Expedition::session::%player%}% (0-노멀 1-파티초대 2-원정대원 3-원정대장)"
-			send "{@Prefix}{@message-color}파티보스 : %{Expedition::PartyBoss::%player%}%"
+			send "{@Prefix}{@message-color}원정대장 : %{Expedition::PartyBoss::%player%}%"
 			loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
 				send "파티멤버 :%loop-index% %loop-value% "
 			send "+---------------------------------------+"

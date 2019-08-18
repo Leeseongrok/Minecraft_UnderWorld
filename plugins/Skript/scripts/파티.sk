@@ -1,62 +1,111 @@
-on load:
-	set {prefix} to "&6&l[원정대] ->"
-	set {UserNotde} to "%{prefix}%올바른 유저이름이 아닙니다!"
-	set {UsernameEmty} to "%{prefix}%초대할 플레이어의 이름을 입력하세요!"
-	set {Alreadytoparty} to "%{prefix}%이미 원정대에 가입되어 있는 플레이어입니다!"
-	set {partyinvi} to "%{prefix}%플레이어에게 원정대가입을 요청하였습니다!"
-	set {useroffline} to "%{prefix}%유저가 오프라인 상태 입니다!"
-	set {selfinv} to "%{prefix}%자기자신에게 초대할 수 없습니다!"
-	
-	
+variables:
+	# (0-아무상태도 아님 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
+	{Expedition::session::%player%} = 0
+	{Expedition::PartyBoss::%player%} = 0
+options:
+	Prefix:&6&l[원정대]&8&l-
+	message-color:&o&7
+
 command /원정대 [<text>] [<offline player>]:
 	trigger:
 		if arg 1 is not set:
-			send "/원정대 초대 <이름>"
-			send "/원정대 수락"
-			send "/원정대 추방 <이름>"
-			send "/원정대 탈퇴"
-			send "/원정대 정보"
-		if arg 1 is "초대": # 초대 스크립트시작
+			send "+---------------------------------------+"
+			send "{@Prefix}{@message-color}/원정대 초대 <플레이어> -> 플레이어를 원정대에 초대합니다 속한 원정대가 없다면 생성후 초대합니다."
+			send "{@Prefix}{@message-color}/원정대 수락"
+			send "{@Prefix}{@message-color}/원정대 추방 <플레이어>"
+			send "{@Prefix}{@message-color}/원정대 탈퇴"
+			send "{@Prefix}{@message-color}/원정대 정보"
+			send "+---------------------------------------+"
+		if arg 1 is "초대":
+			# 초대전 검증
+			# 파티 생성자 상태 체크 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
+			if {Expedition::session::%player%} is 1:
+				send "{@Prefix}{@message-color}당신은 다른원정대에 초대받은 상태입니다.."
+				stop
+			if {Expedition::session::%player%} is 2:
+				send "{@Prefix}{@message-color}이미 원정대에 속한상태입니다 원정대 초대는 원정대장만 가능합니다."
+				stop
+
+			# 유저명이 입력이 되었는지 체크
 			if arg 2 is not set:
-				send "%{UsernameEmty}%" # 유저명을 입력하지 않았을경우
+				send "{@Prefix}{@message-color}초대할 플레이어명을 입력해 주세요. /원정대 초대 <플레이어>"
 				stop
+
+			# 유저가 온라인인지 체크
+			if arg 2 is not online:
+				send "{@Prefix}{@message-color}해당플레이어가 접속중이 아닙니다.."
+				stop
+
+			# 초대할 유저의 UUID 서버와 동기화유무 체크
 			if {uuid::%arg 2%} is not set:
-				send "%{UserNotde}%" # 유저 uuid가 저장되어 있지 않았을경우
+				send "{@Prefix}{@message-color}UUID 동기화 에러! 해당플레이어는 서버와 계정정보가 연동되지 않은상태입니다. 초대할 수 없습니다."
 				stop
-			else:
-				if player is online: # 유저 접속유무 체크
-					if {party join.%{uuid::arg 2}%.session} is 1: # 유저 파티 가입유무 체크
-						send "%{Alreadytoparty}%"
-					else:
-						if player is arg 2: # 자기 자신인지체크
-							send "%{selfinv}%"
-							send "&6&l[원정대] ->%player%님이 원정대 가입을 요청하였습니다 %nl% 10초안에 응답하지 않으면 자동취소 됩니다." to arg 2
-							send "&6&l[원정대] ->%arg 2%님에게 원정대 가입을 요청하였습니다 %nl% 플레이어가 10초안에 응답하지 않으면 자동취소 됩니다." to player
-							send arg 2 title "%player%의 &6원정대 초대" with subtitle "10초 안에 '/원정대 수락' 을 입력하지 않으면 초대가 거절됩니다'" for 5 seconds
-							set {party.%arg 2%.invite} to 1 #초대받음 유무 변수
-							set {party.%arg 2%.invite.id} to player # 초대한 사용자명
-							wait 10 seconds
-							if {party.arg 2.invite} is 1: # 플레이어가 초대를 수락하지 않을경우
-								send "&6&l[원정대] ->%player%님의 원정대 초대를 거절하였습니다." to arg 2
-								send "&6&l[원정대] ->%arg 2%님이 원정대 초대를 거절하였습니다." to player
-								set {party.arg 2.invite} to 0
-						else:
-							send "%{partyinvi}%" # 합격
-				else:
-					send "%{useroffline}%"
-		if arg 1 is "수락": # 수락 스크립트시작
-			if {party.%player%.invite} is 1:
-				if {party.%player%.invite.id} is set:
-					set {party.%player%.invite} to 3
-					set {party join.%{uuid::player}%.session} to 1
-					send "초대를 정상적으로 받았습니다. 초대한 사용자 %{party.%player%.invite.id}% 파티가입유무%{party join.%{uuid::player}%.session}%"
-			else:
-				send "이미 원정대가 있거나 받은 원정대 초대가 없습니다..."
-		if arg 1 is "탈퇴": # 탈퇴 스크립트시작
-			if {party join.%{uuid::player}%.session} is 1:
-				set {party.%player%.invite} to 0
-				set {party join.%{uuid::player}%.session} to 0
-				send "%{party.%player%.invite.id}%님과 함께한 원정대를 탈퇴하였습니다"
-			else:
-				send "가입된 원정대가 존재하지 않습니다."
-				
+
+			# 초대할 플레이어 상태 체크 (0-초대가능 1-파티초대받은상태 2-원정대에 속한상태 3-다른원정대의 원정대장)
+			if {Expedition::session::%player%} is 1:
+				send "{@Prefix}{@message-color}해당 플레이어는 이미 받은 초대가 있습니다."
+				stop
+			if {Expedition::session::%player%} is 2:
+				send "{@Prefix}{@message-color}해당 플레이어는 이미 원정대에 속한 상태입니다."
+				stop
+			if {Expedition::session::%player%} is 3:
+				send "{@Prefix}{@message-color}해당 플레이어는 이미 원정대에 속한 상태입니다."
+				stop
+
+			# 자기 자신인지 체크
+			if player is arg 2:
+				send "{@Prefix}{@message-color}자기 자신은 초대할 수 없습니다."
+			# 초대시작 **********
+			# 초대받은 플레이어의 상태 변경 (0-초대가능 1-파티초대받은상태 2-원정대에 속한상태 3-다른원정대의 원정대장)
+			set {Expedition::session::%arg 2%} to 1
+			# 초대한 사용자의 정보 전송
+			set {Expedition::PartyBoss::%arg 2%} to ("%player%" parsed as offline player)
+			send "{@Prefix}{@message-color}%player%님이 원정대 가입을 요청하였습니다 10초안에 응답하지 않으면 자동취소 됩니다." to arg 2
+			send "{@Prefix}{@message-color}%arg 2%님에게 원정대 가입을 요청하였습니다 플레이어가 10초안에 응답하지 않으면 자동취소 됩니다." to player
+			send arg 2 title "%player%의 &6원정대 초대" with subtitle "10초 안에 '/원정대 수락' 을 입력하지 않으면 초대가 거절됩니다'" for 5 seconds
+			# 10초간 대기
+			wait 10 seconds
+			# 초대받은 플레이어가 수락하지않고 대기할경우 (0-초대가능 1-파티초대받은상태 2-원정대에 속한상태 3-다른원정대의 원정대장)
+			#초대받은 플레이어의 상태 초기화
+			if {Expedition::session::%arg 2%} is 1:
+				set {Expedition::session::%arg 2%} to 0
+				set {Expedition::PartyBoss::%arg 2%} to 0
+				send "{@Prefix}{@message-color}%arg 2%님이 원정대 초대에 응답하지 않았습니다." to player
+				send "{@Prefix}{@message-color}%player%님의 원정대 초대를 거절하였습니다.." to arg 2
+		# =========================================================================================================
+		# =========================================================================================================
+		# =========================================================================================================
+		# =========================================================================================================
+		if arg 1 is "수락":
+			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
+			if {Expedition::session::%player%} is 0:
+				send "{@Prefix}{@message-color}원정대초대를 받은 상태가 아닙니다.."
+				stop
+			if {Expedition::session::%player%} is 2:
+				send "{@Prefix}{@message-color}이미 원정대에 속한 상태입니다."
+				stop
+			if {Expedition::session::%player%} is 3:
+				send "{@Prefix}{@message-color}이미 원정대에 속한 상태입니다.."
+				stop
+			# 파티인원 조회
+			add ("%player%" parsed as offline player) to {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}
+			# 플레이어 직위 변경
+			send "{@Prefix}{@message-color}%player%님이 원정대 초대에 응답하였습니다." to {Expedition::PartyBoss::%player%}
+		if arg 1 is "추방":
+			send "해당플레이어가 접속중이 아닙니다.."
+			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
+			# 파티인원 조회
+			# 플레이어 직위 변경
+		if arg 1 is "탈퇴":
+			send "해당플레이어가 접속중이 아닙니다.."
+			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
+			# 파티인원 조회
+			# 플레이어 직위 변경
+		if arg 1 is "정보":
+			send "{@Prefix}{@message-color}개발자용 정보 출력"
+			send "{@Prefix}{@message-color}세션상태 : %{Expedition::session::%player%}% (0-아무 상태아님 1-파티초대받음 2-원정대원 3-원정대장)"
+			send "{@Prefix}{@message-color}파티보스상태 : %{Expedition::PartyBoss::%player%}%"
+			loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
+				send "%loop-index% %loop-value% "
+			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
+			# 파티인원 조회

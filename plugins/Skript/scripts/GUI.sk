@@ -1,0 +1,9 @@
+command /underworld:
+	trigger:
+		open chest with 4 rows named "&6&lunderworld" to player
+		format slot 0 of player with dispenser named "&e&lPLAYER" with lore "test" and "test" to close then run [execute command "/time set day"]
+command /dhfkddnxks:
+	trigger:
+		open chest with 4 rows named "&6&lunderworld management" to player
+		format slot 0 of player with dispenser named "&e&l시간설정" with lore "시간을 설정합니다" and "time set day" to close then run [execute command "/time set day"]
+		format slot 1 of player with dispenser named "&e&l날씨맑음" with lore "날씨를 설정합니다" and "weather clear" to close then run [execute command "/weather clear"]

@@ -5,4 +5,5 @@
 
 expedition::partyboss::<player>, long, 0000000000000000
 expedition::session::<player>, long, 0000000000000000
+uuid::moonlight_flower, string, 802465666134633936332D346566302D346333362D623736632D633361613333663263393663
 

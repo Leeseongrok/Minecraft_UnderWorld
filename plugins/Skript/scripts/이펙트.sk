@@ -1,0 +1,45 @@
+command /wing:
+	trigger:
+		drawComplexCircle particle "redstone", RGB 5, 255, 193, center player, id "%player%-forcefield1", randomRotation true, radius .8, density 20, start 0, visibleRange 100, xRotation 23, yRotation 120, zRotation 0
+command /wing1:
+	trigger:
+		drawComplexCircle particle "redstone", RGB 0, 255, 0, center player, id "%player%-forcefield2", randomRotation false, radius .8, density 20, start 0, visibleRange 100, xRotation 70, yRotation 10, zRotation 0
+command /wing2:
+	trigger:
+		drawComplexCircle particle "redstone", RGB 255, 0, 0, center player, id "%player%-forcefield3", randomRotation false, radius .8, density 20, start 0, visibleRange 100, xRotation 0, yRotation 60, zRotation 0
+command /wing3:
+	trigger:
+		drawComplexCircle particle "redstone", RGB 0, 0, 255, center player, id "%player%-forcefield4", randomRotation true, radius .8, density 20, start 0, visibleRange 100, xRotation 25, yRotation 54, zRotation 0
+command /wing4:
+	trigger:
+		#Blue
+		drawWings style 12, particle1 "redstone", RGB 0, 184, 245, particle2 "redstone", RGB2 51, 102, 255, particle3 "redstone", RGB3 0, 0, 204, center player, id "%player%", angle 110, height 0, space 0.2, visibleRange 30, tps 0, second 3
+		wait 5 seconds
+		stopEffect id "%player%"
+		#Green
+		drawWings style 6, particle1 "redstone", RGB 0, 204, 102, particle2 "redstone", RGB2 2, 204, 0, particle3 "redstone", RGB3 51, 255, 0, center player, id "%player%", angle 110, height 0, space 0.2, visibleRange 30, tps 0, second 3
+		wait 5 seconds
+		stopEffect id "%player%"
+		#Orange
+		drawWings style 4, particle1 "redstone", RGB 255, 77, 0, particle2 "redstone", RGB2 255, 119, 61, particle3 "redstone", RGB3 255, 51, 0, center player, id "%player%", angle 110, height 0, space 0.2, visibleRange 30, tps 0, second 3
+		wait 5 seconds
+		stopEffect id "%player%"
+		#Magenta
+		drawWings style 7, particle1 "redstone", RGB 255, 0, 204, particle2 "redstone", RGB2 179, 0, 255, particle3 "redstone", RGB3 204, 102, 255, center player, id "%player%", angle 110, height 0, space 0.2, visibleRange 30, tps 0, second 3 
+
+
+command /wingend:
+	trigger:
+		stopEffect id "%player%-forcefield1"
+command /wingend1:
+	trigger:
+		stopEffect id "%player%-forcefield2"
+command /wingend2:
+	trigger:
+		stopEffect id "%player%-forcefield3"
+command /wingend3:
+	trigger:
+		stopEffect id "%player%-forcefield4"
+command /wingend4:
+	trigger:
+		stopEffect id "%player%"

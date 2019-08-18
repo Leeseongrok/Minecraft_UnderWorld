@@ -1,0 +1,16 @@
+variables:
+	# =======================[어빌리티 이름]
+	{Ability::findcombatexp::name} = "&3&l[파인드 콤뱃 익스피리언스]"
+
+	# =======================[어빌리티 등급]
+	{Ability::findcombatexp::rating} = "&3[레어]"
+
+	# =======================[플레이어별 어빌리티 레벨]
+	{Ability::findcombatexp::level::%player%} = 0
+
+	# =======================[어빌리티 최대레벨]
+	{Ability::findcombatexp::MAXlevel} = 2
+
+	# =======================[어빌리티 설명]
+	{Ability::findcombatexp::explanation::1} = "잃어버린 전투의 감각을 되찾아 허약해진 체력을 원래대로 되돌린다"
+	{Ability::findcombatexp::explanation::2} = "어빌리티 레벨이 올라갈수록 기본 체력에 가까워진다"

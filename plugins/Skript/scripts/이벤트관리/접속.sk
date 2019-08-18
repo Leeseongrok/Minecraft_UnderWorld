@@ -1,0 +1,8 @@
+on join:
+	if {uuid::%player%} is not set:
+		set {uuid::%player%} to player's uuid
+		send "%{uuid::%player%}%"
+	send player title "환영합니다" with subtitle "즐거운시간" for 5 seconds
+	set tab header to "&e&lUnderWorld \n&r&e+&f----------------------------------------------------------------------&e+&f\n%player%님의 정보\n가입된 파티명:없음     가입된 길드:없음\n어빌리티 레벨:1" and footer to "&e&lDeep Dive \ntest DEV plz command /언더월드" for player
+	#=================================================================
+	Ablity_findcombatexp_is_Active(player)

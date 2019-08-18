@@ -1,0 +1,6 @@
+command /sethp [<number>]:
+    permission: set.hp
+    trigger:
+        if arg-1 is set:
+            set {hp} to arg-1
+            set the maximum health of the player to {hp} 

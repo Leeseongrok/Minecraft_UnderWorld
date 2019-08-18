@@ -109,10 +109,12 @@ command /원정대 [<text>] [<offline player>]:
 				send "{@Prefix}{@message-color}%loop-value% 님이 %{Expedition::PartyBoss::%player%}%님의 원정대에 가입하였습니다." to loop-value
 				
 		if arg 1 is "추방":
-			send "추방 기능.."
 			# 플레이어의 상태가 파티장인지 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
 			if arg 2 is not set:
 				send "{@Prefix}{@message-color}추방할 플레이어명을 입력해 주세요. /원정대 추방 <플레이어>"
+				stop
+			if player is arg 2:
+				send "{@Prefix}{@message-color}자기 자신은 추방할 수 없습니다."
 				stop
 			if {Expedition::session::%player%} is 3:
 				# 파티인원 유무 조회
@@ -126,12 +128,12 @@ command /원정대 [<text>] [<offline player>]:
 					send "{@Prefix}{@message-color}가입된 원정대원이 아닙니다."
 					stop
 				if {_found} is 1:
-					send "{@Prefix}{@message-color}%player% 님을 추방하였습니다."
+					send "{@Prefix}{@message-color}%arg 2% 님을 추방하였습니다."
 					# 전체 안내메시지
 					loop {Expedition::Partymember::%player%::*}:
 						send "{@Prefix}{@message-color}%arg 2% 님이 원정대에서 추방되었습니다." to loop-value
 					# 파티리스트에서 삭제
-					remove "%player%" from {Expedition::Partymember::%player%::*}
+					remove "%arg 2%" from {Expedition::Partymember::%player%::*}
 					# 추방된 플레이어 직위 변경
 					set {Expedition::session::%arg 2%} to 0
 					set {Expedition::PartyBoss::%arg 2%} to 0

@@ -22,6 +22,6 @@ every 3 seconds:
 		if {Expedition::session::%loop-player%} is 1:
 			set score "원정대 초대권유를 받았습니다" in sidebar of loop-player to 1
 		if {Expedition::session::%loop-player%} is 2:
-			set score "{Expedition::Partymember::%{Expedition::PartyBoss::%loop-player%}%::*}의 원정대" in sidebar of loop-player to 1
+			set score "%{Expedition::Partymember::%{Expedition::PartyBoss::%loop-player%}%::*}%의 원정대" in sidebar of loop-player to 1
 		if {Expedition::session::%loop-player%} is 3:
 			set score "원정대장 : %loop-player%" in sidebar of loop-player to 1

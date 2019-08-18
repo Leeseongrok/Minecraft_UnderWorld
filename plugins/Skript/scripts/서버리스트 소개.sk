@@ -1,2 +1,2 @@
 on server list ping:
-	set motd to "&e&lUnderWorld \n Deep Dive 1.13.2"
+	set motd to "&e&lUnderWorld 테스트 서버 1.13.2"

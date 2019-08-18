@@ -1,0 +1,62 @@
+on load:
+	set {prefix} to "&6&l[원정대] ->"
+	set {UserNotde} to "%{prefix}%올바른 유저이름이 아닙니다!"
+	set {UsernameEmty} to "%{prefix}%초대할 플레이어의 이름을 입력하세요!"
+	set {Alreadytoparty} to "%{prefix}%이미 원정대에 가입되어 있는 플레이어입니다!"
+	set {partyinvi} to "%{prefix}%플레이어에게 원정대가입을 요청하였습니다!"
+	set {useroffline} to "%{prefix}%유저가 오프라인 상태 입니다!"
+	set {selfinv} to "%{prefix}%자기자신에게 초대할 수 없습니다!"
+	
+	
+command /원정대 [<text>] [<offline player>]:
+	trigger:
+		if arg 1 is not set:
+			send "/원정대 초대 <이름>"
+			send "/원정대 수락"
+			send "/원정대 추방 <이름>"
+			send "/원정대 탈퇴"
+			send "/원정대 정보"
+		if arg 1 is "초대": # 초대 스크립트시작
+			if arg 2 is not set:
+				send "%{UsernameEmty}%" # 유저명을 입력하지 않았을경우
+				stop
+			if {uuid::%arg 2%} is not set:
+				send "%{UserNotde}%" # 유저 uuid가 저장되어 있지 않았을경우
+				stop
+			else:
+				if player is online: # 유저 접속유무 체크
+					if {party join.%{uuid::arg 2}%.session} is 1: # 유저 파티 가입유무 체크
+						send "%{Alreadytoparty}%"
+					else:
+						if player is arg 2: # 자기 자신인지체크
+							send "%{selfinv}%"
+							send "&6&l[원정대] ->%player%님이 원정대 가입을 요청하였습니다 %nl% 10초안에 응답하지 않으면 자동취소 됩니다." to arg 2
+							send "&6&l[원정대] ->%arg 2%님에게 원정대 가입을 요청하였습니다 %nl% 플레이어가 10초안에 응답하지 않으면 자동취소 됩니다." to player
+							send arg 2 title "%player%의 &6원정대 초대" with subtitle "10초 안에 '/원정대 수락' 을 입력하지 않으면 초대가 거절됩니다'" for 5 seconds
+							set {party.%arg 2%.invite} to 1 #초대받음 유무 변수
+							set {party.%arg 2%.invite.id} to player # 초대한 사용자명
+							wait 10 seconds
+							if {party.arg 2.invite} is 1: # 플레이어가 초대를 수락하지 않을경우
+								send "&6&l[원정대] ->%player%님의 원정대 초대를 거절하였습니다." to arg 2
+								send "&6&l[원정대] ->%arg 2%님이 원정대 초대를 거절하였습니다." to player
+								set {party.arg 2.invite} to 0
+						else:
+							send "%{partyinvi}%" # 합격
+				else:
+					send "%{useroffline}%"
+		if arg 1 is "수락": # 수락 스크립트시작
+			if {party.%player%.invite} is 1:
+				if {party.%player%.invite.id} is set:
+					set {party.%player%.invite} to 3
+					set {party join.%{uuid::player}%.session} to 1
+					send "초대를 정상적으로 받았습니다. 초대한 사용자 %{party.%player%.invite.id}% 파티가입유무%{party join.%{uuid::player}%.session}%"
+			else:
+				send "이미 원정대가 있거나 받은 원정대 초대가 없습니다..."
+		if arg 1 is "탈퇴": # 탈퇴 스크립트시작
+			if {party join.%{uuid::player}%.session} is 1:
+				set {party.%player%.invite} to 0
+				set {party join.%{uuid::player}%.session} to 0
+				send "%{party.%player%.invite.id}%님과 함께한 원정대를 탈퇴하였습니다"
+			else:
+				send "가입된 원정대가 존재하지 않습니다."
+				

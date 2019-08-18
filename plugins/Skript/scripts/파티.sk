@@ -87,25 +87,64 @@ command /원정대 [<text>] [<offline player>]:
 			if {Expedition::session::%player%} is 3:
 				send "{@Prefix}{@message-color}이미 원정대에 속한 상태입니다.."
 				stop
-			# 파티인원 조회
+			# 파티 자리 유무 체크
+			set {_check} to 0
+			loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
+				add 1 to {_check}
+			if {_check} > 3:
+				send "{@Prefix}{@message-color}원정대에 자리가 없습니다.."
+				stop
+			# 파티보스 이름으로 된 파티멤버 리스트에 닉네임 등록
 			add ("%player%" parsed as offline player) to {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}
 			# 플레이어 직위 변경
-			send "{@Prefix}{@message-color}%player%님이 원정대 초대에 응답하였습니다." to {Expedition::PartyBoss::%player%}
-		if arg 1 is "추방":
-			send "해당플레이어가 접속중이 아닙니다.."
-			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
-			# 파티인원 조회
-			# 플레이어 직위 변경
-		if arg 1 is "탈퇴":
-			send "해당플레이어가 접속중이 아닙니다.."
-			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
-			# 파티인원 조회
-			# 플레이어 직위 변경
-		if arg 1 is "정보":
-			send "{@Prefix}{@message-color}개발자용 정보 출력"
-			send "{@Prefix}{@message-color}세션상태 : %{Expedition::session::%player%}% (0-아무 상태아님 1-파티초대받음 2-원정대원 3-원정대장)"
-			send "{@Prefix}{@message-color}파티보스상태 : %{Expedition::PartyBoss::%player%}%"
+			set {Expedition::session::%player%} to 2
+			# 초대한 플레이어 직위 변경
+			set {Expedition::session::%{Expedition::PartyBoss::%player%}%} to 3
+			#안내메시지
+			send "{@Prefix}{@message-color}%{Expedition::PartyBoss::%player%}%님의 원정대에 가입하였습니다."
+			#파티에 속한 모든 플레이어에게 안내 메시지
 			loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
-				send "%loop-index% %loop-value% "
+				send "{@Prefix}{@message-color}%loop-value% 님이 %{Expedition::PartyBoss::%player%}%님의 원정대에 가입하였습니다." to loop-value
+				
+		if arg 1 is "추방":
+			send "추방 기능.."
+			# 플레이어의 상태가 파티장인지 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
+			if {Expedition::session::%player%} is 3:
+				# 파티인원 유무 조회
+				loop {Expedition::Partymember::%player%::*}:
+					if loop-value is arg 2:
+						set {_found} to 1
+						exit loop
+					else:
+						set {_found} to 0
+				if {_found} is 0:
+					send "{@Prefix}{@message-color}가입된 원정대원이 아닙니다."
+					stop
+				if {_found} is 1:
+					# 파티인원 조회후 존재할경우 리스트에서 삭제
+					remove "%player%" from {Expedition::Partymember::%player%::*}
+					# 추방된 플레이어 직위 변경
+					set {Expedition::session::%arg 2%} to 0
+					set {Expedition::PartyBoss::%arg 2%} to 0
+					# 전체 안내메시지
+					loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
+						send "{@Prefix}{@message-color}%arg 2% 님이 추방되었습니다." to loop-value
+			else:
+				send "{@Prefix}{@message-color}원정대장이 아닙니다.."
+
+		if arg 1 is "탈퇴":
+			send "탈퇴기능.."
 			# 플레이어의 상태 조회 (0-생성가능 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
-			# 파티인원 조회
+			# 파티장 조회
+			# 해당 파티장의 리스트에서 유저 삭제 
+			# 플레이어 직위 변경
+			# 전체 안내메시지
+			
+		if arg 1 is "정보":
+			send "+---------------------------------------+"
+			send "{@Prefix}{@message-color}개발자용 정보 출력"
+			send "{@Prefix}{@message-color}세션상태 : %{Expedition::session::%player%}% (0-노멀 1-파티초대 2-원정대원 3-원정대장)"
+			send "{@Prefix}{@message-color}파티보스 : %{Expedition::PartyBoss::%player%}%"
+			loop {Expedition::Partymember::%{Expedition::PartyBoss::%player%}%::*}:
+				send "파티멤버 :%loop-index% %loop-value% "
+			send "+---------------------------------------+"

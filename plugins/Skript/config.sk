@@ -141,7 +141,7 @@ case sensitive: false
 # This e.g. applies to the effect 'replace' and the conditions 'contains' and 'is/is not'.
 # Variable names are case-insensitive irrespective of this setting.
 
-disable variable conflict warnings: false
+disable variable conflict warnings: true
 # Disables warnings of potential variable name conflicts if set to true.
 # I recommend to not touch this option, but if you do so you should at least set it back to false
 # whenever you create new scripts with new variables.

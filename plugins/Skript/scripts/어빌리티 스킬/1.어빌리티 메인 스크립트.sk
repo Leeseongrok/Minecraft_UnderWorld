@@ -1,0 +1,14 @@
+on load:
+	set {underworld::Abilityprefix} to "&6[어빌리티]&7"
+	send "%{underworld::prefix}%어빌리티 메인 스크립트 로딩&2 - [성공]" to console
+	delete {Ability::skills::*}
+	send "%{underworld::prefix}%어빌리티 스킬 정보 초기화 완료" to console
+	send "------------------스킬 스크립트 로딩-------------------- " to console
+
+command /어빌리티:
+	trigger:
+		open chest with 4 rows named "%{underworld::Abilityprefix}%" to player
+		set {_loopnum} to 0
+		loop {Ability::skills::*}:
+			format slot {_loopnum} of player with {Ability::%Loop-value%::icon}  named "%{Ability::%Loop-value%::name}%" with lore "&7스킬등급 : %{Ability::%Loop-value%::rating}%" and "%{Ability::%Loop-value%::explanation::1}%" and "%{Ability::%Loop-value%::explanation::2}%" to close then run [execute command "/time set day"]
+			add 1 to {_loopnum}

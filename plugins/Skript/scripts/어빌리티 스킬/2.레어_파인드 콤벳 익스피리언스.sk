@@ -1,0 +1,23 @@
+options:
+	Skillname:findcombatexp
+variables:
+	# =======================[플레이어별 어빌리티 레벨]
+	{Ability::{@Skillname}::level::%player%} = 0
+
+
+on load:
+	add "{@Skillname}" to {Ability::skills::*}
+	send "%{underworld::prefix}%&3[Ability]&7레어_파인드_콤벳_익스피리언스" to console
+
+	# =======================[어빌리티 이름]
+	set {Ability::{@Skillname}::name} to "&3&l[파인드 콤뱃 익스피리언스]"
+	# =======================[어빌리티 등급]
+	set {Ability::{@Skillname}::rating} to "&3[레어]"
+	# =======================[아이콘]
+	set {Ability::{@Skillname}::icon} to Diamond pickaxe
+	# =======================[어빌리티 최대레벨]
+	set {Ability::{@Skillname}::MAXlevel} to 2
+	# =======================[어빌리티 설명]
+	set {Ability::{@Skillname}::explanation::1} to "&7잃어버린 전투의 감각을 되찾아 허약해진 체력을 원래대로 되돌린다"
+	set {Ability::{@Skillname}::explanation::2} to "&7어빌리티 레벨이 올라갈수록 기본 체력에 가까워진다.."
+

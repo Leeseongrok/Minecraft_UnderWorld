@@ -2,7 +2,7 @@
 ConfigVersion: 1.17.1
 
 # 봇 토큰을 여기다 적어 주세요.
-BotToken: "NjA5NTQ4Njc3MzcxMDAyODg2.XV_nyA.hvhB9rMvcQVZhsaaQ-3uRkX_TSQ"
+BotToken: "NjA5NTQ4Njc3MzcxMDAyODg2.XV_q4Q.Ab0hKyanrw4Zo1fx3QTxci_cE1o"
 
 # 디스코드와 연결할 채널 설정 입니다.
 # 사용방법 : {"게임내 채널 명": "디스코드 채널 번호(ID)", "또다른 게임 내 채널 명": "또 다른 디스코드 채널 번호(ID)"}

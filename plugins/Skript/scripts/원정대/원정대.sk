@@ -6,6 +6,23 @@ options:
 	Prefix:&6&l[원정대]&8&l-
 	message-color:&o&7
 
+on load:
+	send "-------------------------------------------------------- " to console
+	send " _    _           _        __          __        _     _ " to console
+	send "| |  | |         | |       \ \        / /       | |   | |" to console
+	send "| |  | |_ __   __| | ___ _ _\ \  /\  / /__  _ __| | __| |" to console
+	send "| |  | | '_ \ / _` |/ _ \ '__\ \/  \/ / _ \| '__| |/ _` |" to console
+	send "| |__| | | | | (_| |  __/ |   \  /\  / (_) | |  | | (_| |" to console
+	send " \____/|_| |_|\__,_|\___|_|    \/  \/ \___/|_|  |_|\__,_|" to console
+	send "@Moonlight_flower	+	@Moonlight_kotean	   " to console
+	send "Copyrightⓒ2019 Moonlight_Flower Moonlight_Kotean All rights reserved." to console
+	send "-------------------------------------------------------- " to console
+	set {world::vur} to "&c&l[UW]&r &6언더월드 프로젝트 - 원정대 ( v1.0 )"
+	send "%{world::vur}% 로드 성공" to console
+
+on unload:
+	delete {world::vur}
+
 command /원정대 [<text>] [<offline player>]:
 	trigger:
 		if arg 1 is not set:

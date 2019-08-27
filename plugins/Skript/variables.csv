@@ -25,20 +25,14 @@ ability::{@skillname}::level::<player>, long, 0000000000000000
 ability::{@skillname}::maxlevel, string, 8000
 ability::{@skillname}::name, string, 8000
 ability::{@skillname}::rating, string, 8000
-expedition::partyboss::<player>, long, 0000000000000000
-expedition::partyboss::moonlight_flower, long, 0000000000000000
-expedition::session::<player>, long, 0000000000000000
-expedition::session::moonlight_flower, long, 0000000000000000
 underworld::abilityprefix, string, 8014C2A7365BEC96B4EBB98CEBA6ACED8BB05DC2A737
 underworld::motd, string, 8028C2A765C2A76C556E646572576F726C6420ED858CEC8AA4ED8AB820EC849CEBB28420312E31332E32
 underworld::prefix, string, 800AC2A7365B55575DC2A737
 underworld::titlename1, string, 8000
-underworld::titlename2, string, 8011C2A73654686520556E646572576F726C64
+underworld::titlename2, string, 8018C2A73657656C636F6D6520746F20556E646572576F726C64
 underworld::titletime, long, 0000000000000005
 underworld::userin, string, 8009C2A7365B2B5DC2A737
 underworld::usermessage::prefix, string, 8003C2A737
 underworld::userout, string, 8009C2A7385B2D5DC2A737
 underworld::vur, string, 8033C2A7365B55575DC2A737C2A77220C2A736EC96B8EB8D94EC9B94EB939C20ED9484EBA19CECA09DED8AB820282076312E302029
-username::efa4c963-4ef0-4c36-b76c-c3aa33f2c96c, offlineplayer, 82046E616D652080104D6F6F6E6C696768745F666C6F7765720475756964800455554944820C6C656173745369674269747304B76CC3AA33F2C96C0B6D6F73745369674269747304EFA4C9634EF04C36
-uuid::moonlight_flower, string, 802465666134633936332D346566302D346333362D623736632D633361613333663263393663
 

@@ -1,0 +1,25 @@
+	# 유저 접속 검증 - UUID와 닉네임 검증부
+#	if {uuid::%player%} is not set:
+#		send "%{underworld::prefix}% 처음 접속을 환영합니다. 해당 닉네임과 UUID가 서버에 저장됩니다"
+#		set {uuid::%player%} to player's uuid
+#		set {username::%player's uuid%} to player
+#		send "%{underworld::prefix}% 유저정보 %{username::%player's uuid%}%(%{uuid::%player%}%)"
+#		send "%{underworld::prefix}%&4[!] 신규 유저정보 %{username::%player's uuid%}%(%{uuid::%player%}%)" to console
+#	if {username::%player's uuid%} is not set:
+#		send "%{underworld::prefix}% 처음 접속을 환영합니다. 해당 닉네임과 UUID가 서버에 저장됩니다"
+#		set {uuid::%player%} to player's uuid
+#		set {username::%player's uuid%} to player
+#		send "%{underworld::prefix}% 유저정보 %{username::%player's uuid%}%(%{uuid::%player%}%)"
+#		send "%{underworld::prefix}%&4[!] 신규 유저정보 %{username::%player's uuid%}%(%{uuid::%player%}%)" to console
+#
+#	if {uuid::%player%} is not player's uuid: #새로운 플레이어가 기존유저의 닉네임을 사용할경우
+#		send "%{underworld::prefix}% %player%닉네임을 사용하고있었던 기존 사용자의 기록이 존재합니다"
+#		send "%{underworld::prefix}% 기존 사용자UUID:%{uuid::%player%}% ->변경후:%player's uuid%"
+#		send "%{underworld::prefix}%&4[!] 중복 닉네임 사용자 탐지(%player%) 기존 사용자UUID:%{uuid::%player%}% ->변경후:%player's uuid%" to console
+#		set {uuid::%player%} to player's uuid
+#
+#	if {username::%player's uuid%} is not player: #기존유저가 닉네임을 변경했을경우
+#		send "%{underworld::prefix}% %player%님 기존닉네임 %{username::%player's uuid%}% 버리고 새로운닉네임으로 오셨군요!"
+#		send "%{underworld::prefix}% 변경전 이름:%{username::%player's uuid%}% -> 변경후:%player%"
+#		send "%{underworld::prefix}%&4[!] 닉네임 변경 이용자 탐지 - 변경전 이름:%{username::%player's uuid%}% -> 변경후:%player% UUID:%player's uuid%" to console
+#		set {username::%player's uuid%} to player

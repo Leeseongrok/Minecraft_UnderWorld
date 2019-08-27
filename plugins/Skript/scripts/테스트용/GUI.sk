@@ -7,3 +7,12 @@ command /dhfkddnxks:
 		open chest with 4 rows named "&6&lunderworld management" to player
 		format slot 0 of player with dispenser named "&e&l시간설정" with lore "시간을 설정합니다" and "time set day" to close then run [execute command "/time set day"]
 		format slot 1 of player with dispenser named "&e&l날씨맑음" with lore "날씨를 설정합니다" and "weather clear" to close then run [execute command "/weather clear"]
+command /정보 [<offline player>]:
+	trigger:
+		if arg 1 is not online:
+			send "%{underworld::prefix}%해당플레이어가 접속중이 아닙니다.."
+			stop
+		open chest with 1 rows named "%arg 1%님의 정보" to player
+		format slot 0 of player with dispenser named "&e&l원정대 초대" with lore "시간을 설정합니다" and "time set day" to close then run [execute command "/정보 %arg 1%"]
+		format slot 1 of player with dispenser named "&e&l시간설정" with lore "시간을 설정합니다" and "time set day" to close then run [execute command "/time set day"]
+		format slot 2 of player with dispenser named "&e&l날씨맑음" with lore "날씨를 설정합니다" and "weather clear" to close then run [execute command "/weather clear"]

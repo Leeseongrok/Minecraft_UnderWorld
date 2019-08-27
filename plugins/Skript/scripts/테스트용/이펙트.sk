@@ -49,3 +49,10 @@ command /holotest:
 command /holodel:
 	trigger:
 		delete holo object "test"
+
+command /jsontest:
+	trigger:
+		json("@a","Test Text||ttp:§6Line 1 §bLine 2")
+		json("%player%","테스트 메시지 입니다 누를경우 날씨 관리자가 호출됩니다 &c[수락]||ttp:이 채팅을 누르시면 수락됩니다.||cmd:/dhfkddnxks")
+		json("@a","언더월드 디스코드 &c&o바로가기 >||ttp:클릭시 링크로 이동합니다||url:www.naver.com")
+		json("@a","언더월드 디스코드 &c&o바로가기 >||ttp:클릭시 링크로 이동합니다||ins:<cmd:/command>")

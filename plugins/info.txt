@@ -1,0 +1,32 @@
+packetlimiter-1.0.1[패킷 전송제한]
+https://www.spigotmc.org/resources/packet-limiter.70217/
+
+NoPlugins[플러그인 숨김]
+https://www.spigotmc.org/resources/noplugins.12965/
+너무 띠껍게 나오는거 수정예정
+
+Vault[경제]
+https://www.spigotmc.org/resources/vault.34315/
+
+CustomEnderChest-v1.11.3[커스텀 엔더상자]
+https://www.spigotmc.org/resources/custom-enderchest.8868/
+
+StackMob-4.0.2[몬스터 합쳐서 표시]
+https://www.spigotmc.org/resources/stackmob-enhance-your-servers-performance.29999/
+
+IllegalStack [바닐라 버그수정]
+https://www.spigotmc.org/resources/dupe-fixes-illegal-stack-remover.44411/
+
+GoldenCrates[랜덤상자]
+https://www.spigotmc.org/resources/goldencrates-1-13-1-14.48732/
+
+CustomHeads[커스텀 헤드]  - 건들꺼없음
+https://www.spigotmc.org/resources/custom-heads-1-8-1-14.29057/
+
+AutoRespawnPlus 3.7[자동리스폰] - 건들꺼없음
+https://www.spigotmc.org/resources/autorespawnplus.14412/
+
+BestViewDistance-12.1[tps기반 거리]
+https://www.spigotmc.org/resources/best-view-distance.61963/
+
+던전남은시간 / 던전보상 / 던전지도 / 원정대시스템 / 각종순위

@@ -15,7 +15,7 @@ on load:
 	#유저 접속시 출력 타이틀 대제목
 	set {underworld::titlename1} to ""
 	#유저 접속시 출력 타이틀 소제목
-	set {underworld::titlename2} to "&6The UnderWorld"
+	set {underworld::titlename2} to "&6Welcome to UnderWorld"
 	#⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
 
 

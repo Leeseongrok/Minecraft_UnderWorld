@@ -1,5 +1,8 @@
 on load:
 	send "%{underworld::prefix}%원정대 메인 스크립트 로딩&2 - [성공]" to console
+	delete {Expedition::session::*}
+	delete {Expedition::PartyBoss::*}
+	delete {Expedition::Partymember::*}
 variables:
 	# (0-아무상태도 아님 1-파티초대받은상태 2-원정대원인상태 3-파티장인상태)
 	{Expedition::session::%player%} = 0
@@ -64,7 +67,7 @@ command /원정대 [<text>] [<offline player>]:
 			# 초대한 사용자의 정보 전송
 			set {Expedition::PartyBoss::%arg 2%} to ("%player%" parsed as offline player)
 			# send "{@Prefix}{@message-color}%player%님이 원정대 가입을 요청하였습니다 10초안에 응답하지 않으면 자동취소 됩니다." to arg 2
-			json("%arg 2%","%player%님이 원정대 가입을 요청하였습니다 10초안에 이채팅을 클릭하여 수락하지 않으면 자동취소 됩니다. &c[수락]||ttp:채팅을 [클릭]하여 원정대 초대를 수락||cmd:/원정대 수락")
+			json("%arg 2%","{@Prefix}{@message-color}%player%님이 원정대 가입을 요청하였습니다 10초안에 이채팅을 클릭하여 수락하지 않으면 자동취소 됩니다. &c[수락]||ttp:채팅을 [클릭]하여 원정대 초대를 수락하십시오||cmd:/원정대 수락")
 			send "{@Prefix}{@message-color}%arg 2%님에게 원정대 가입을 요청하였습니다 플레이어가 10초안에 응답하지 않으면 자동취소 됩니다." to player
 			send arg 2 title "" with subtitle "%player%의 &6원정대 초대 도착" for 5 seconds
 			# 10초간 대기

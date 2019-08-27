@@ -3,12 +3,12 @@ command /정보 [<offline player>]:
 		if arg 1 is not online:
 			send "%{underworld::prefix}%해당플레이어가 접속중이 아닙니다.."
 			stop
-		if arg 1 is player:
-			send "%{underworld::prefix}%오직 상대방의 토글만 열 수 있습니다.."
-			# stop
 		open chest with 4 rows named "&3&l%arg 1%님의 정보" to player
 		format slot 13 of player with skull of (arg 1) named "%arg 1%" with lore "유저목딴 횟수" and "뀨유애애애액" to be unstealable
-		format slot 20 of player with diamond sword named "&e&l원정대 초대" with lore "해당유저를 원정대로 초대합니다." and "time set day" to close then run [make player execute command "원정대 초대 %arg 1%"]
-		format slot 21 of player with dispenser named "&e&l시간설정" with lore "시간을 설정합니다" and "time set day" to close then run [execute command "/time set day"]
-		format slot 22 of player with dispenser named "&e&l날씨맑음" with lore "날씨를 설정합니다" and "weather clear" to close then run [execute command "/weather clear"]
-		
+		format slot 20 of player with diamond sword named "&e&l원정대 초대" with lore "해당유저를 원정대로 초대합니다." to close then run [make player execute command "원정대 초대 %arg 1%"]
+		format slot 22 of player with diamond named "&e&l거래요청" with lore "해당유저에게 거래를 요청합니다" to close then run [execute command "/time set day"]
+		format slot 24 of player with book named "&e&l유저 어빌리티정보" with lore "불러올 수 없습니다.." to close then run [execute command "/time set day"]
+		format slot 27 of player with Barrier named "&e&l시간설정" with lore "시간을 설정합니다" and "time set day" to close then run [execute command "/time set day"]
+		format slot 28 of player with Barrier named "&e&l날씨맑음" with lore "날씨를 설정합니다" and "weather clear" to close then run [execute command "/weather clear"]
+		format slot 29 of player with Barrier named "&e&l추방" with lore "서버에서 추방합니다" to close then run [execute command "/kick %arg 1%"]
+		#현재 속한원정대 있음 이런거 출력되면 좋을듯

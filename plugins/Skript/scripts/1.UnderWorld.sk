@@ -74,7 +74,7 @@ on quit: # ⬛접속종료 이벤트⬛
 
 on chat: # ⬛채팅이벤트⬛
 	cancel event
-	json("@a","&7[%player%] %message%||ttp:%player%와 같은 멋쟁이와함께 모험을 떠나보지 않겠나?        -[유저정보/원정대초대/유저거래]&6&l>클릭하여 보기||cmd:/정보 %player%")
+	json("@a","&7[%player%] %message%||ttp:%player%님과 관련된 정보를 열람합니다.       [유저정보][거래][원정대]&6&l[클릭]||cmd:/정보 %player%")
 	bind hologram "%{underworld::usermessage::prefix}%%message%" to player for 3 seconds offset by 0.0, 3.0, 0.0
 
 on server list ping: # ⬛서버 리스트 소개⬛
@@ -85,15 +85,9 @@ every 3 seconds: # ⬛스코어 보드 관리⬛
 		wait 1 tick
 		wipe loop-player's sidebar
 		set name of sidebar of loop-player to "&6&l[Under World] 내정보"
-		set score "&6&l-*[던전 오픈시간]*" in sidebar of loop-player to 8
-		set score "160초 남음" in sidebar of loop-player to 7
-		set score "&6&l-*[어빌리티]*" in sidebar of loop-player to 6
-		set score "10레벨" in sidebar of loop-player to 5
-		set score "&6&l-*[소지금액]*" in sidebar of loop-player to 4
-		set score "0원" in sidebar of loop-player to 3
 		set score "&6&l-✙[원정대]✙" in sidebar of loop-player to 2
 		if {Expedition::session::%loop-player%} is 0:
-			set score "✾원정대 가입 필요✾" in sidebar of loop-player to 1
+			set score "속한 원정대 없음" in sidebar of loop-player to 1
 		if {Expedition::session::%loop-player%} is 1:
 			set score "&5✚원정대 초대 받음✚" in sidebar of loop-player to 1
 		if {Expedition::session::%loop-player%} is 2:

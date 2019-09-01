@@ -1,3 +1,9 @@
+﻿DivineDrop-2.5.5[드롭홀로관리]
+https://www.spigotmc.org/resources/%E2%98%AF-divinedrop-%E2%98%AF-awesome-drop-management-1-8.51715/
+
+CustomShields[커스텀 쉴드]
+https://www.spigotmc.org/resources/customshields-donator-perk.19803/
+
 packetlimiter-1.0.1[패킷 전송제한]
 https://www.spigotmc.org/resources/packet-limiter.70217/
 
@@ -11,9 +17,6 @@ https://www.spigotmc.org/resources/vault.34315/
 CustomEnderChest-v1.11.3[커스텀 엔더상자]
 https://www.spigotmc.org/resources/custom-enderchest.8868/
 
-StackMob-4.0.2[몬스터 합쳐서 표시]
-https://www.spigotmc.org/resources/stackmob-enhance-your-servers-performance.29999/
-
 IllegalStack [바닐라 버그수정]
 https://www.spigotmc.org/resources/dupe-fixes-illegal-stack-remover.44411/
 
@@ -26,7 +29,165 @@ https://www.spigotmc.org/resources/custom-heads-1-8-1-14.29057/
 AutoRespawnPlus 3.7[자동리스폰] - 건들꺼없음
 https://www.spigotmc.org/resources/autorespawnplus.14412/
 
+좋은 데미지 출력
+https://www.spigotmc.org/resources/advancedindicator-1-9-x-1-13-x.58156/
+
 BestViewDistance-12.1[tps기반 거리]
 https://www.spigotmc.org/resources/best-view-distance.61963/
 
-던전남은시간 / 던전보상 / 던전지도 / 원정대시스템 / 각종순위
+피 화면
+https://www.spigotmc.org/resources/tint-health-1-12.6335/
+
+이미지
+https://www.spigotmc.org/resources/custom-images.53036/
+한블럭 128 128
+/image create <file name> - To create an image then right click the top left of where you want the image to be
+/image delete - To delete an image then just right click the image to delete
+/image options - To see all the file options of images that you can click to create
+
+
+
+직접개발 해야될 사항
+
+메인GUI[유저정보(킬뎃,배신횟수,키지급로그,처벌리포트,탐험박스 루트),원정대관리(가입 미가입 유동적 각 유저 나열),] - 메뉴 하나에 플러그인 고정
+원정대 기능 수정[GUI화(가입유무 속한 파티원유무 각 파티원 누를시 추방 등등)/게임종료시 탈퇴처리/던전전체보상 관리[거리기준 또는 던전입장기준]/서버 실행시 모든 파티사항 초기화/스코어보드 파티원출력/이름위에 속한원정대 출력/다크존에서 배신자 파티일시 가입 , 초대 , 생성불가 / 탈퇴해도 배신자레벨은 내려가지 않음]
+유저 GUI[유저정보 기능추가/속한원정대 있을시 가입원정대출력(배신 권유하기)/제제리포트/거래신청/감사유저등등 회원등급도 출력]
+블럭 이벤트 캔슬(모든아이템)
+특정아이템 조합금지(방어구받침대 포션제작대 무기강화 모루)
+특정아이템 사용금지(엔더눈깔 황금사과 모루 무기강화 등등 모두검토해야함)
+사망시 안내메시지(패널티 안내와 인벤세이브 관리)
+모든명령어 소리추가
+레벨바 제거
+스폰 월드맵 체한 청크 설정에서 수정
+인벤토리 꽉참 알림
+탭리스트 수정(정보수정 OR 공지?
+스코어보드 유동적으로(spawn 원정대 / 미수령보상존재 / 각클래스 숙련도 / 던전오픈시간 | 스블 미수령보상 / 던전오픈시간 )
+
+
+-직업군
+-특정갑옷 입을시 무거워서 쇠약(다른클래스 갑옷 입을시 패널티)
+헤드샷(활)
+각클래스별 파티클 효과
+✥전사(데미지 딜러 / 아이언 아머 / 다이아 검)
+➸아처(원거리 딜러/ 레더 아머 / 활 , 나무검 * 더블점프)
+✱힐러(힐러 / 레더아머 , 체인아머 , 골드아머/ 투척포션,황금사과 / 나무검)
+✦가디언(탱커 / 다이아 아머 / 철검 / 방패)
+
+
+-던전
+던전게이트 관리
+게이트 입장시 클래스 선택
+던전 오픈시간 출력관리(던전오픈 on/off / 배 탑승)
+던전 에 일정 주기로 초기화되는 탐험박스*(다양한 랜덤보상 일일퀘스트 같은것)
+던전 깊이 또는 구역별로 정의되는 에테르 보상
+현상금 사냥꾼(타겟플레이어 빛남1 2 3 흰색 4 5빨간색) 레벨높을수록 보상증가
+귀환석 시스템(활성화에 일정시간 소모 주변 몬스터소환 작동알림 남은시간 홀로그램 출력)
+귀환성공시 에테르 지급 (모든 아이템 에테르거래)
+귀환실패시(종료,죽음) 에테르 지급안함 인벤아이템 드랍 등등 + 레벨
+모든 보상수령가능한 어디에나있고 어디에나 없는 체스트(GUI)
+이동명령어 사용불가
+PVP 지역 모든보상 포기후 나오기가능
+PVP입장전 평화구역 존재(엔더체스트 보상수령체스트 존재)
+pvp시 킬포인트1지급 죽인사람 얻은 에테르얻고 공지+배신자 레벨업 +현상금 등록 원정대원 전체 다 레벨오름
+배신자레벨있는플레이어는 원정대초대 가입불가 탈퇴 추방만가능 
+배신자 처치시 원정대원 전체 보상지급
+배신자 상태에서 사망시  - 일시 원정대 생성불가 또는아이템 구매불가 등등 강력한 패널티 적용
+
+-플러그인
+이미지 ( 던전앞 지도, 튜토리얼(이름 클릭하면 정보뜨는거 등))
+거래추가
+모드차단
+안티치트 + VPN 차단 + 봇
+
+
+-최하위 우선
+확성기 시스템
+월드맵백업
+12주기 스폰맵 초기화
+QNA 브로드 캐스팅
+무역
+
+
+
+---------------------------------
+미친 크리퍼
+https://www.spigotmc.org/resources/mad-creepers.70639/
+
+로비메뉴
+https://www.spigotmc.org/resources/1-13-1-14-%E2%9C%A8lobbymenu%E2%9C%A8-the-easiest-way-to-make-menus.48089/
+
+유료 아이템추가
+https://www.spigotmc.org/resources/additionalthings-new-items-new-hats-deltratorch-spear-dagger-and-more.63548/
+
+둥둥떠다니는 펫 시스템
+https://www.spigotmc.org/resources/epicpets-v1-8-1-12-great-for-eula-pet-plugin.40697/
+
+몬스터또는 시티즌 스킨변경
+https://www.spigotmc.org/resources/skinner.59452/
+
+청크로드 유지
+https://www.spigotmc.org/resources/keepchunks.23307/
+
+커스텀 아이템
+https://www.spigotmc.org/resources/my-ultimate-custom-items-custom-blocks-items-with-textures-recipes-fascraft-uncrafter.5176/
+
+많은 활
+https://www.spigotmc.org/resources/moar-bows.36387/
+
+플레이어 파티클
+https://www.spigotmc.org/resources/playerparticles.40261/
+
+모드 블로커
+https://www.spigotmc.org/resources/forgemodblocker.45220/
+
+카메라 워킹
+https://www.spigotmc.org/resources/cpcamerastudioreborn-smooth-cinematic-movement.31300/
+
+클리어렉
+https://dev.bukkit.org/projects/clearlagg
+
+좀 좋은 홀로채팅
+https://www.spigotmc.org/resources/%E2%9C%AF-lastholo-compatible-1-8-8-1-14-4-customizable.51676/
+
+플레이어당 정해진 몬스터 스폰량
+https://www.spigotmc.org/resources/localmoblimiter.68270/
+
+위험한 물리학
+https://www.spigotmc.org/resources/dangerous-physics.66251/
+
+StackMob-4.0.2[몬스터 합쳐서 표시]
+https://www.spigotmc.org/resources/stackmob-enhance-your-servers-performance.29999/
+
+로그인전 검증
+https://www.spigotmc.org/resources/skript-captcha.66760/
+
+애니메이션 또는 이미지 프레임
+https://www.spigotmc.org/resources/animatedframes.5583/
+
+카메라 워킹
+https://www.spigotmc.org/resources/cpcamerastudioreborn-smooth-cinematic-movement.31300/
+
+익스플로잇 디펜스
+https://www.spigotmc.org/resources/2ls-exploitfixer-advanced-server-anticrash.62842/
+
+포션 이펙트
+https://www.spigotmc.org/resources/potioneffects.70873/
+
+화로 남은시간
+https://www.spigotmc.org/resources/furnace-notify-1-12-1-11-1-10-1-9-1-8-support.21781/
+
+블럭 중력
+https://www.spigotmc.org/resources/gravity.4902/
+
+채팅에 아이템링크
+https://www.spigotmc.org/resources/chatitem-display-items-in-chat.19064/
+빛수정
+https://www.spigotmc.org/resources/light-cleaner.42469/
+이름태그 숨김
+https://www.spigotmc.org/resources/no-name-tag.70128/
+몬스터 제어
+https://www.spigotmc.org/resources/no-name-tag.70128/
+이모지
+https://www.spigotmc.org/resources/minemojis-1-7-1-14.15969/
+홀로그램 메뉴
+https://www.spigotmc.org/resources/holographicmenus.9389/

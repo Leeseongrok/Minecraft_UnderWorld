@@ -110,6 +110,14 @@ QNA 브로드 캐스팅
 
 
 ---------------------------------
+파티클
+https://www.spigotmc.org/resources/particlehats.1007/
+
+월드 저장방식 및 청크로드 변경
+https://www.spigotmc.org/resources/slimeworldmanager.69974/
+
+시티즌 싸움 npc https://www.spigotmc.org/resources/sentinel.22017/
+
 미친 크리퍼
 https://www.spigotmc.org/resources/mad-creepers.70639/
 
@@ -187,6 +195,10 @@ https://www.spigotmc.org/resources/light-cleaner.42469/
 https://www.spigotmc.org/resources/no-name-tag.70128/
 몬스터 제어
 https://www.spigotmc.org/resources/no-name-tag.70128/
+
+빛나는 아이템
+https://www.spigotmc.org/resources/shinyitems-1-8-x-1-12-x.12531/
+
 이모지
 https://www.spigotmc.org/resources/minemojis-1-7-1-14.15969/
 홀로그램 메뉴

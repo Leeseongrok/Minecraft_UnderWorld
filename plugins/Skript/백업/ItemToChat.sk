@@ -1,0 +1,70 @@
+function getJSON(item: item, name: text, message: text) :: text:
+	set {_nbt} to "%nbt of {_item}%"
+	if {_nbt} is "{}":
+		set {_nbt} to ""
+	else:
+		set {_nbt} to ", tag: %{_nbt}%"
+	replace all "'" with "" in {_nbt}
+	replace all """" with "" in {_nbt}
+	replace all "%{_message}%" with "&e»&r %{_name}% &e«&r" in {_message}
+	#set {_message} to convert text {_message} to unicode
+	set {_json} to "{""text"": ""%{_message}%"", ""hoverEvent"": {""action"": ""show_item"", ""value"": ""{id: %minecraft id of {_item}%, Damage: %data of {_item}%%{_nbt}%}""}}"
+	return {_json}
+
+on chat:
+	if message contains "[hand]", "[offhand]", "[helmet]", "[chestplate]", "[leggings]", "[boots]" or "[slot:]":
+		if message contains "[hand]":
+			add player's current hotbar slot to {_items::*}
+			add "[hand]" to {_keywords::*}
+		if message contains "[offhand]":
+			if "%bukkit version%" doesn't contain "1.8":
+				add 40 to {_items::*}
+				add "[offhand]" to {_keywords::*}
+		if message contains "[helmet]":
+			add 39 to {_items::*}
+			add "[helmet]" to {_keywords::*}
+		if message contains "[chestplate]":
+			add 38 to {_items::*}
+			add "[chestplate]" to {_keywords::*}
+		if message contains "[leggings]":
+			add 37 to {_items::*}
+			add "[leggings]" to {_keywords::*}
+		if message contains "[boots]":
+			add 36 to {_items::*}
+			add "[boots]" to {_keywords::*}
+		if size of {_keywords::*} > 0:
+			cancel event
+			loop {_keywords::*}:
+				set {_keyword} to loop-value
+				set {_rawMessages::*} to message split at "%{_keyword}%"
+				set {_temp} to {_rawMessages::1}
+				delete {_rawMessages::1}
+				set {_rawMessage} to "%{_temp}%%{_keyword}%%join {_rawMessages::*} with """"%"
+				set message to {_rawMessage}
+			loop {_keywords::*}:
+				set {_index} to "{I2C}:{%loop-index%}:{I2C}"
+				replace all loop-value with {_index} in message
+			set {_rawMessages::*} to message split at "{I2C}"
+			loop {_rawMessages::*}:
+				if "%loop-value%" doesn't contain ":{1}:", ":{2}:", ":{3}:", ":{4}:", ":{5}:" or ":{6}:":
+					set {_rawMessages::%loop-index%} to "{""text"": ""%loop-value%""}"
+			set {_rawMessage} to join {_rawMessages::*} with ", "
+			loop {_items::*}:
+				delete {_name}
+				set {_slot} to loop-value
+				set {_item} to slot {_slot} of player's inventory
+				if {_item} is not air:
+					set {_name} to name of slot {_slot} of player's inventory
+					if {_name} is not set:
+						set {_name} to "%minecraft id of {_item}%"
+						replace all "minecraft:" with "" in {_name}
+						replace all "_" with " " in {_name}
+						set {_name} to 1st char in each word of {_name} to caps
+					set {_json} to getJSON({_item}, {_name}, {_keywords::%loop-index%})
+					replace all ":{%loop-index%}:" with {_json} in {_rawMessage}
+				else:
+					replace all ":{%loop-index%}:" with "{""text"": ""%{_keywords::%loop-index%}%""}" in {_rawMessage}
+			set {_message::*} to message format split at "%%2$s"
+			replace all "%%1$s" with player's display name in {_message::1}
+			set {_message::1} to convert string {_message::1} to unicode
+			execute console command "tellraw @a [{""text"": ""%{_message::1}%""}, %{_rawMessage}%]"

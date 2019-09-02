@@ -1,0 +1,1658 @@
+#------------------------------------------------------------------------------------------
+#Hey DCP or Faze&watch here.. Probably shouldnt mess around here unless you know what you are doing...
+# So yeah have fun with the skript
+#------------------------------------------------------------------------------------------
+
+command /help PickYourEnchants:
+	trigger:
+		player is op
+		message "<purple>___________F&W<purple> Pick Your Enchants___________" to player
+		message "<gray>COMMANDS"
+		message "<green>/CustomEnchants off <white>-Turns off Custom Enchants"
+		message "<green>/CustomEnchants on <white>-Turns on Custom Enchants"
+		message "<green>/Enchants 1.8 <white>-Turns on Depth Strider"
+		message "<green>/Enchants 1.7 <white>-Turns off Depth Strider"
+		message "<green>/EnchantCrystal on <white>-Turns on Enchant Crystals"
+		message "<green>/EnchantCrystal off <white>-Turns off Enchant Crystals"
+		message "<purple>___________________________________________" to player
+
+command /EnchantCrystal <text>:
+	trigger:
+		player is op
+		if argument 1 is "on":
+			set {EnchantCrystals} to true
+			message "<green>[PickYourEnchants]<white>You have turned on enchantment crystals." to player
+		if argument 1 is "off":
+			set {EnchantCrystals} to false
+			message "<red>[PickYourEnchants]<white>You have turned off enchantment crystals." to player
+
+command /CustomEnchants <text>:
+	trigger:
+		player is op
+		if argument 1 is "on":
+			set {CustomEnchants} to true
+			message "<green>[PickYourEnchants]<white>You have turned on F&W's custom enchants." to player
+		if argument 1 is "off":
+			set {CustomEnchants} to false
+			message "<red>[PickYourEnchants]<white>You have turned off F&W's custom enchants." to player
+
+command /Enchants <text>:
+	trigger:
+		player is op
+		if argument 1 is "1.8":
+			set {eightteen} to true
+		if argument 1 is "1.7":
+			set {eightteen} to false
+
+options:
+	slot 0: slot 0 of player with iron sword named "<red>Sharpness Upgrades" with lore "These are the sharpness upgrades." to close then run ""
+	slot 45: slot 45 of player with book named "<Blue>Sharpness I" with lore "<green>Requires 1 Level" to close then run [make console execute command "eS1 %player%"]
+	slot 36: slot 36 of player with book named "<Blue>Sharpness II" with lore "<green>Requires 12 Levels" to close then run [make console execute command "eS2 %player%"]
+	slot 27: slot 27 of player with book named "<Blue>Sharpness III" with lore "<green>Requires 23 Levels" to close then run [make console execute command "eS3 %player%"]
+	slot 18: slot 18 of player with book named "<Blue>Sharpness IV" with lore "<green>Requires 34 Levels" to close then run [make console execute command "eS4 %player%"]
+	slot 9: slot 9 of player with book named "<Blue>Sharpness V" with lore "<green>Requires 50 Levels" to close then run [make console execute command "eS5 %player%"]
+#BANEOFANTRHO
+	slot 2: slot 2 of player with spider eye named "<orange>Bane of Arthropods Upgrades" with lore "Tired of bugs? Here is your answer." to close then run ""
+	slot 11: slot 11 of player with book named "<Blue>Bane of Arthropods V" with lore "<green>Requires 40  Levels" to close then run [make console execute command "eBOA5 %player%"]
+	slot 20: slot 20 of player with book named "<Blue>Bane of Arthropods IV" with lore "<green>Requires 29 Levels" to close then run [make console execute command "eBOA4 %player%"]
+	slot 29: slot 29 of player with book named "<Blue>Bane of Arthropods III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eBOA3 %player%"]
+	slot 38: slot 38 of player with book named "<Blue>Bane of Arthropods II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eBOA2 %player%"]
+	slot 47: slot 47 of player with book named "<Blue>Bane of Arthropods I" with lore "<green>Requires 5  Levels" to close then run [make console execute command "eBOA1 %player%"]
+#SMITE
+	slot 1: slot 1 of player with rotten flesh named "Smiting Upgrades" with lore "Looking to destroy evil? You'll like this." to close then run ""
+	slot 10: slot 10 of player with book named "<Blue>Smite V" with lore "<green>Requires 40  Levels" to close then run [make console execute command "eSMT5 %player%"]
+	slot 19: slot 19 of player with book named "<Blue>Smite IV" with lore "<green>Requires 29  Levels" to close then run [make console execute command "eSMT4 %player%"]
+	slot 28: slot 28 of player with book named "<Blue>Smite III" with lore "<green>Requires 21  Levels" to close then run [make console execute command "eSMT3 %player%"]
+	slot 37: slot 37 of player with book named "<Blue>Smite II" with lore "<green>Requires 13  Levels" to close then run [make console execute command "eSMT2 %player%"]
+	slot 46: slot 46 of player with book named "<Blue>Smite I" with lore "<green>Requires 5  Levels" to close then run [make console execute command "eSMT1 %player%"]
+#KNOCKBACK
+	slot 15: slot 15 of player with fishing rod named "Knockback Upgrades" with lore "With this you'll be no pushover." to close then run ""
+	slot 16: slot 16 of player with book named "<Blue>Knockback I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eKB1 %player%"]
+	slot 17: slot 17 of player with book named "<Blue>Knockback II" with lore "<green>Requires 25 Levels" to close then run [make console execute command "eKB2 %player%"]
+#FIREASPECT
+	slot 24: slot 24 of player with flint and steel named "<red>Fire Aspect Upgrades" with lore "Some people just want to burn everyone." to close then run ""
+	slot 25: slot 25 of player with book named "<Blue>Fire Aspect I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eFA1 %player%"]
+	slot 26: slot 26 of player with book named "<Blue>Fire Aspect II" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eFA2 %player%"]
+#LOOTING
+	slot 5: slot 5 of player with gold ingot named "<yellow>Looting Upgrades" with lore "Greedy and want more? This is for you." to close then run ""
+	slot 6: slot 6 of player with book named "<Blue>Looting I" with lore "<green>Requires 15 Levels" to close then run [make console execute command "eL1 %player%"]
+	slot 7: slot 7 of player with book named "<Blue>Looting II" with lore "<green>Requires 24 Levels" to close then run [make console execute command "eL2 %player%"]
+	slot 8: slot 8 of player with book named "<Blue>Looting III" with lore "<green>Requires 33 Levels" to close then run [make console execute command "eL3 %player%"]
+#UNBREAKING
+	slot 3: slot 3 of player with iron ingot named "<gray>Unbreaking Upgrades" with lore "Make your stuff tougher and last longer." to close then run ""
+	slot 12: slot 12 of player with book named "<Blue>Unbreaking I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eU1 %player%"]
+	slot 21: slot 21 of player with book named "<Blue>Unbreaking II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eU2 %player%"]
+	slot 30: slot 30 of player with book named "<Blue>Unbreaking III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eU3 %player%"]
+#VAMPIRISM
+	slot 43: slot 43 of player with red dye named "<red>Vampirism I" with lore "<green>Requires 40 Levels|<red>Heal yourself everytime you hit someone." to close then run [make console execute command "eVAMPIRISM %player%"]
+#SWORD
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding sword
+	cancel event
+	open chest with 6 row named "<blue>Pick your enchantment" to player
+	wait 1 ticks
+	format {@slot 0}
+	format {@slot 36}
+	format {@slot 45}
+	format {@slot 27}
+	format {@slot 18}
+	format {@slot 9}
+	format {@slot 2}
+	format {@slot 11}
+	format {@slot 20}
+	format {@slot 29}
+	format {@slot 38}
+	format {@slot 47}
+	format {@slot 1}
+	format {@slot 10}
+	format {@slot 19}
+	format {@slot 28}
+	format {@slot 37}
+	format {@slot 46}
+	format {@slot 15}
+	format {@slot 16}
+	format {@slot 17}
+	format {@slot 24}
+	format {@slot 25}
+	format {@slot 26}
+	format {@slot 5}
+	format {@slot 6}
+	format {@slot 7}
+	format {@slot 8}
+	format {@slot 3}
+	format {@slot 12}
+	format {@slot 21}
+	format {@slot 30}
+	if {customEnchants} is true:
+		format {@slot 43}
+#BOW
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding bow
+	cancel event
+	open chest with 3 row named "<blue>Pick your enchantment" to player
+	wait 3 ticks
+	format slot 0 of player with Bow named "<red>Power Upgrades" with lore "Give your bow that extra power." to close then run ""
+	format slot 1 of player with book named "<Blue>Power I" with lore "<green>Requires 1  Level" to close then run [make console execute command "eP1 %player%"]
+	format slot 2 of player with book named "<Blue>Power II" with lore "<green>Requires 11  Levels" to close then run [make console execute command "eP2 %player%"]
+	format slot 3 of player with book named "<Blue>Power III" with lore "<green>Requires 21  Levels" to close then run [make console execute command "eP3 %player%"]
+	format slot 4 of player with book named "<Blue>Power IV" with lore "<green>Requires 31 Levels" to close then run [make console execute command "eP4 %player%"]
+	format slot 5 of player with book named "<Blue>Power V" with lore "<green>Requires 41  Levels" to close then run [make console execute command "eP5 %player%"]
+	format slot 7 of player with Arrow named "<Yellow>Infinite Upgrade" with lore "1 Arrow is all it takes." to close then run ""
+	format slot 8 of player with book named "<Blue>Infinity I" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eI1 %player%"]
+	format slot 9 of player with Fishing Rod named "<gray>Punch Upgrades" with lore "Want people to stay away? I got your back." to close then run ""
+	format slot 10 of player with book named "<Blue>Punch I" with lore "<green>Requires 12 Levels" to close then run [make console execute command "ePunch1 %player%"]
+	format slot 11 of player with book named "<Blue>Punch II" with lore "<green>Requires 32 Levels" to close then run [make console execute command "ePunch2 %player%"]
+	format slot 16 of player with Flint and Steel named "<orange>Flame Upgrades" with lore "Geez, aren't you the pyro?" to close then run ""
+	format slot 17 of player with book named "<Blue>Flame I" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eFlame1 %player%"]
+	format slot 18 of player with iron ingot named "<gray>Unbreaking Upgrades" with lore "Make your stuff tougher and last longer." to close then run ""
+	format slot 19 of player with book named "<Blue>Unbreaking I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eU1 %player%"]
+	format slot 20 of player with book named "<Blue>Unbreaking II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eU2 %player%"]
+	format slot 21 of player with book named "<Blue>Unbreaking III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eU3 %player%"]
+	if {CustomEnchants} is true:
+		format slot 14 of player with spider eye named "<purple>Venom I" with lore "<green>Requires 40 Levels" to close then run [make console execute command "eVENOM %player%"]
+
+
+#TOOLS
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding pickaxe or axe or shovel
+	cancel event
+	open chest with 3 row named "<blue>Pick your enchantment" to player
+	wait 3 ticks
+	format slot 0 of player with anvil named "<yellow>Efficiency Upgrades" with lore "Makes things more efficient." to close then run ""
+	format slot 1 of player with book named "<Blue>Efficiency I" with lore "<green>Requires 1 Level" to close then run [make console execute command "eE1 %player%"]
+	format slot 2 of player with book named "<Blue>Efficiency II" with lore "<green>Requires 11 Levels" to close then run [make console execute command "eE2 %player%"]
+	format slot 3 of player with book named "<Blue>Efficiency III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eE3 %player%"]
+	format slot 4 of player with book named "<Blue>Efficiency IV" with lore "<green>Requires 31 Levels" to close then run [make console execute command "eE4 %player%"]
+	format slot 5 of player with book named "<Blue>Efficiency V" with lore "<green>Requires 41 Levels" to close then run [make console execute command "eE5 %player%"]
+	format slot 9 of player with iron ingot named "<gray>Unbreaking Upgrades" with lore "Make your stuff tougher and last longer." to close then run ""
+	format slot 10 of player with book named "<Blue>Unbreaking I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eU1 %player%"]
+	format slot 11 of player with book named "<Blue>Unbreaking II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eU2 %player%"]
+	format slot 12 of player with book named "<Blue>Unbreaking III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eU3 %player%"]
+	format slot 18 of player with gold ingot named "<Gold>Fortune Upgrades" with lore "Want to increase your luck?." to close then run ""
+	format slot 19 of player with book named "<Blue>Fortune I" with lore "<green>Requires 15 Levels" to close then run [make console execute command "eF1 %player%"]
+	format slot 20 of player with book named "<Blue>Fortune II" with lore "<green>Requires 24 Levels" to close then run [make console execute command "eF2 %player%"]
+	format slot 21 of player with book named "<Blue>Fortune III" with lore "<green>Requires 33 Levels" to close then run [make console execute command "eF3 %player%"]
+	format slot 7 of player with string named "Silk Touch Upgrades" with lore "Give your tools that gentle touch." to close then run ""
+	format slot 8 of player with book named "<Blue>Silk Touch I" with lore "<green>Requires 15 Levels" to close then run [make console execute command "eST1 %player%"]
+
+#ARMOR This is gonna take a long time :(
+
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding chestplate or leggings
+	cancel event
+	open chest with 5 row named "<blue>Pick your enchantment" to player
+	wait 3 ticks
+	format slot 0 of player with iron chestplate named "<Gray>Protection Upgrades" with lore "Get that extra defense." to close then run ""
+	format slot 1 of player with book named "<Blue>Protection I" with lore "<green>Requires 1 Level" to close then run [make console execute command "ePTN1 %player%"]
+	format slot 2 of player with book named "<Blue>Protection II" with lore "<green>Requires 12 Levels" to close then run [make console execute command "ePTN2 %player%"]
+	format slot 3 of player with book named "<Blue>Protection III" with lore "<green>Requires 23 Levels" to close then run [make console execute command "ePTN3 %player%"]
+	format slot 4 of player with book named "<Blue>Protection IV" with lore "<green>Requires 34 Levels" to close then run [make console execute command "ePTN4 %player%"]
+	format slot 9 of player with arrow named "<red>Projectile Protection Upgrades" with lore "Get protected from those arrows." to close then run ""
+	format slot 10 of player with book named "<Blue>Projectile Protection I" with lore "<green>Requires 3 Levels" to close then run [make console execute command "ePJP1 %player%"]
+	format slot 11 of player with book named "<Blue>Projectile Protection II" with lore "<green>Requires 9 Levels" to close then run [make console execute command "ePJP2 %player%"]
+	format slot 12 of player with book named "<Blue>Projectile Protection III" with lore "<green>Requires 15 Levels" to close then run [make console execute command "ePJP3 %player%"]
+	format slot 13 of player with book named "<Blue>Projectile Protection IV" with lore "<green>Requires 21 Levels" to close then run [make console execute command "ePJP4 %player%"]
+	format slot 18 of player with flint and steel named "<orange>Fire Protection Upgrades" with lore "Get this if you don't fancy burning to death." to close then run ""
+	format slot 19 of player with book named "<Blue>Fire Protection I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eFP1 %player%"]
+	format slot 20 of player with book named "<Blue>Fire Protection II" with lore "<green>Requires 18 Levels" to close then run [make console execute command "eFP2 %player%"]
+	format slot 21 of player with book named "<Blue>Fire Protection III" with lore "<green>Requires 26 Levels" to close then run [make console execute command "eFP3 %player%"]
+	format slot 22 of player with book named "<Blue>Fire Protection IV" with lore "<green>Requires 34 Levels" to close then run [make console execute command "eFP4 %player%"]
+	format slot 27 of player with tnt named "<yellow>Blast Protection Upgrades" with lore "Make your self protected against explosions." to close then run ""
+	format slot 28 of player with book named "<Blue>Blast Protection I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eBP1 %player%"]
+	format slot 29 of player with book named "<Blue>Blast Protection II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eBP2 %player%"]
+	format slot 30 of player with book named "<Blue>Blast Protection III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eBP3 %player%"]
+	format slot 31 of player with book named "<Blue>Blast Protection IV" with lore "<green>Requires 29 Levels" to close then run [make console execute command "eBP4 %player%"]
+	format slot 6 of player with cactus named "<green>Thorns Upgrades" with lore "Hurt people who attack you!" to close then run ""
+	format slot 15 of player with book named "<Blue>Thorns I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eTHORNS1 %player%"]
+	format slot 24 of player with book named "<Blue>Thorns II" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eTHORNS2 %player%"]
+	format slot 33 of player with book named "<Blue>Thorns III" with lore "<green>Requires 50 Levels" to close then run [make console execute command "eTHORNS3 %player%"]
+	format slot 36 of player with iron ingot named "<gray>Unbreaking Upgrades" with lore "Make your stuff tougher and last longer." to close then run ""
+	format slot 37 of player with book named "<Blue>Unbreaking I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eU1 %player%"]
+	format slot 38 of player with book named "<Blue>Unbreaking II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eU2 %player%"]
+	format slot 39 of player with book named "<Blue>Unbreaking III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eU3 %player%"]
+	if player is holding chestplate:
+		if {CustomEnchants} is true:
+			format slot 8 of player with Zombie Head named "<black>Reanimation I" with lore "<green>Requires 40 Levels" to close then run [make console execute command "eREANIMATION %player%"]
+
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding boots
+	cancel event
+	open chest with 6 row named "<blue>Pick your enchantment" to player
+	wait 3 ticks
+	format slot 0 of player with iron chestplate named "<Gray>Protection Upgrades" with lore "Get that extra defense." to close then run ""
+	format slot 1 of player with book named "<Blue>Protection I" with lore "<green>Requires 1 Level" to close then run [make console execute command "ePTN1 %player%"]
+	format slot 2 of player with book named "<Blue>Protection II" with lore "<green>Requires 12 Levels" to close then run [make console execute command "ePTN2 %player%"]
+	format slot 3 of player with book named "<Blue>Protection III" with lore "<green>Requires 23 Levels" to close then run [make console execute command "ePTN3 %player%"]
+	format slot 4 of player with book named "<Blue>Protection IV" with lore "<green>Requires 34 Levels" to close then run [make console execute command "ePTN4 %player%"]
+	format slot 9 of player with arrow named "<red>Projectile Protection Upgrades" with lore "Get protected from those arrows." to close then run ""
+	format slot 10 of player with book named "<Blue>Projectile Protection I" with lore "<green>Requires 3 Levels" to close then run [make console execute command "ePJP1 %player%"]
+	format slot 11 of player with book named "<Blue>Projectile Protection II" with lore "<green>Requires 9 Levels" to close then run [make console execute command "ePJP2 %player%"]
+	format slot 12 of player with book named "<Blue>Projectile Protection III" with lore "<green>Requires 15 Levels" to close then run [make console execute command "ePJP3 %player%"]
+	format slot 13 of player with book named "<Blue>Projectile Protection IV" with lore "<green>Requires 21 Levels" to close then run [make console execute command "ePJP4 %player%"]
+	format slot 18 of player with flint and steel named "<orange>Fire Protection Upgrades" with lore "Get this if you don't fancy burning to death." to close then run ""
+	format slot 19 of player with book named "<Blue>Fire Protection I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eFP1 %player%"]
+	format slot 20 of player with book named "<Blue>Fire Protection II" with lore "<green>Requires 18 Levels" to close then run [make console execute command "eFP2 %player%"]
+	format slot 21 of player with book named "<Blue>Fire Protection III" with lore "<green>Requires 26 Levels" to close then run [make console execute command "eFP3 %player%"]
+	format slot 22 of player with book named "<Blue>Fire Protection IV" with lore "<green>Requires 34 Levels" to close then run [make console execute command "eFP4 %player%"]
+	format slot 27 of player with tnt named "<yellow>Blast Protection Upgrades" with lore "Make your self protected against explosions." to close then run ""
+	format slot 28 of player with book named "<Blue>Blast Protection I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eBP1 %player%"]
+	format slot 29 of player with book named "<Blue>Blast Protection II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eBP2 %player%"]
+	format slot 30 of player with book named "<Blue>Blast Protection III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eBP3 %player%"]
+	format slot 31 of player with book named "<Blue>Blast Protection IV" with lore "<green>Requires 29 Levels" to close then run [make console execute command "eBP4 %player%"]
+	format slot 6 of player with cactus named "<green>Thorns Upgrades" with lore "Hurt people who attack you!" to close then run ""
+	format slot 15 of player with book named "<Blue>Thorns I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eTHORNS1 %player%"]
+	format slot 24 of player with book named "<Blue>Thorns II" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eTHORNS2 %player%"]
+	format slot 33 of player with book named "<Blue>Thorns III" with lore "<green>Requires 50 Levels" to close then run [make console execute command "eTHORNS3 %player%"]
+	format slot 36 of player with feather named "Feather Falling Upgrades" with lore "Always have a safer landing." to close then run ""
+	format slot 37 of player with book named "<Blue>Feather Falling I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eFF1 %player%"]
+	format slot 38 of player with book named "<Blue>Feather Falling II" with lore "<green>Requires 11 Levels" to close then run [make console execute command "eFF2 %player%"]
+	format slot 39 of player with book named "<Blue>Feather Falling III" with lore "<green>Requires 17 Levels" to close then run [make console execute command "eFF3 %player%"]
+	format slot 40 of player with book named "<Blue>Feather Falling IV" with lore "<green>Requires 23 Levels" to close then run [make console execute command "eFF4 %player%"]
+	format slot 45 of player with iron ingot named "<gray>Unbreaking Upgrades" with lore "Make your stuff tougher and last longer." to close then run ""
+	format slot 46 of player with book named "<Blue>Unbreaking I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eU1 %player%"]
+	format slot 47 of player with book named "<Blue>Unbreaking II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eU2 %player%"]
+	format slot 48 of player with book named "<Blue>Unbreaking III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eU3 %player%"]
+	if {eightteen} is true:
+		format slot 7 of player with water bucket named "<light blue>Depth Strider Upgrades" with lore "Be able to sorta walk on water." to close then run ""
+		format slot 16 of player with book named "<Blue>Depth Strider I" with lore "<green>Requires 10 Levels <red>1.8 Servers Only" to close then run [make console execute command "eDPT1 %player%"]
+		format slot 25 of player with book named "<Blue>Depth Strider II" with lore "<green>Requires 20 Levels <red>1.8 Servers Only" to close then run [make console execute command "eDPT2 %player%"]
+		format slot 34 of player with book named "<Blue>Depth Strider III" with lore "<green>Requires 30 Levels <red>1.8 Servers Only" to close then run [make console execute command "eDPT3 %player%"]
+
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding helmet
+	cancel event
+	open chest with 5 row named "<blue>Pick your enchantment" to player
+	wait 3 ticks
+	format slot 0 of player with iron chestplate named "<Gray>Protection Upgrades" with lore "Get that extra defense." to close then run ""
+	format slot 1 of player with book named "<Blue>Protection I" with lore "<green>Requires 1 Level" to close then run [make console execute command "ePTN1 %player%"]
+	format slot 2 of player with book named "<Blue>Protection II" with lore "<green>Requires 12 Levels" to close then run [make console execute command "ePTN2 %player%"]
+	format slot 3 of player with book named "<Blue>Protection III" with lore "<green>Requires 23 Levels" to close then run [make console execute command "ePTN3 %player%"]
+	format slot 4 of player with book named "<Blue>Protection IV" with lore "<green>Requires 34 Levels" to close then run [make console execute command "ePTN4 %player%"]
+	format slot 9 of player with arrow named "<red>Projectile Protection Upgrades" with lore "Get protected from those arrows." to close then run ""
+	format slot 10 of player with book named "<Blue>Projectile Protection I" with lore "<green>Requires 3 Levels" to close then run [make console execute command "ePJP1 %player%"]
+	format slot 11 of player with book named "<Blue>Projectile Protection II" with lore "<green>Requires 9 Levels" to close then run [make console execute command "ePJP2 %player%"]
+	format slot 12 of player with book named "<Blue>Projectile Protection III" with lore "<green>Requires 15 Levels" to close then run [make console execute command "ePJP3 %player%"]
+	format slot 13 of player with book named "<Blue>Projectile Protection IV" with lore "<green>Requires 21 Levels" to close then run [make console execute command "ePJP4 %player%"]
+	format slot 18 of player with flint and steel named "<orange>Fire Protection Upgrades" with lore "Get this if you don't fancy burning to death." to close then run ""
+	format slot 19 of player with book named "<Blue>Fire Protection I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eFP1 %player%"]
+	format slot 20 of player with book named "<Blue>Fire Protection II" with lore "<green>Requires 18 Levels" to close then run [make console execute command "eFP2 %player%"]
+	format slot 21 of player with book named "<Blue>Fire Protection III" with lore "<green>Requires 26 Levels" to close then run [make console execute command "eFP3 %player%"]
+	format slot 22 of player with book named "<Blue>Fire Protection IV" with lore "<green>Requires 34 Levels" to close then run [make console execute command "eFP4 %player%"]
+	format slot 27 of player with tnt named "<yellow>Blast Protection Upgrades" with lore "Make your self protected against explosions." to close then run ""
+	format slot 28 of player with book named "<Blue>Blast Protection I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eBP1 %player%"]
+	format slot 29 of player with book named "<Blue>Blast Protection II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eBP2 %player%"]
+	format slot 30 of player with book named "<Blue>Blast Protection III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eBP3 %player%"]
+	format slot 31 of player with book named "<Blue>Blast Protection IV" with lore "<green>Requires 29 Levels" to close then run [make console execute command "eBP4 %player%"]
+	format slot 6 of player with cactus named "<green>Thorns Upgrades" with lore "Hurt people who attack you!" to close then run ""
+	format slot 15 of player with book named "<Blue>Thorns I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eTHORNS1 %player%"]
+	format slot 24 of player with book named "<Blue>Thorns II" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eTHORNS2 %player%"]
+	format slot 33 of player with book named "<Blue>Thorns III" with lore "<green>Requires 50 Levels" to close then run [make console execute command "eTHORNS3 %player%"]
+	format slot 7 of player with fish named "<light gray>Respiration Upgrades" with lore "Be able to breath longer underwater." to close then run ""
+	format slot 16 of player with book named "<Blue>Respiration I" with lore "<green>Requires 10 Levels" to close then run [make console execute command "eRSP1 %player%"]
+	format slot 25 of player with book named "<Blue>Respiration II" with lore "<green>Requires 20 Levels" to close then run [make console execute command "eRSP2 %player%"]
+	format slot 34 of player with book named "<Blue>Respiration III" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eRSP3 %player%"]
+	format slot 8 of player with water bucket named "<light blue>Aqua Affinity Upgrades" with lore "Be able to mine underwater faster." to close then run ""
+	format slot 17 of player with book named "<Blue>Aqua Affinity I" with lore "<green>Requires 20 Levels" to close then run [make console execute command "eAA1 %player%"]
+	format slot 36 of player with iron ingot named "<gray>Unbreaking Upgrades" with lore "Make your stuff tougher and last longer." to close then run ""
+	format slot 37 of player with book named "<Blue>Unbreaking I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eU1 %player%"]
+	format slot 38 of player with book named "<Blue>Unbreaking II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eU2 %player%"]
+	format slot 39 of player with book named "<Blue>Unbreaking III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eU3 %player%"]
+	if {CustomEnchants} is true:
+		format slot 35 of player with skeleton head named "<red>Cursed I" with lore "<green>Requires 30 Levels" to close then run [make console execute command "eCURSED %player%"]
+
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding fishing rod
+	cancel event
+	open chest with 2 rows named "<blue>Pick your enchantment" to player
+	wait 3 ticks
+	format slot 0 of player with fishing rod named "<blue>Lure Upgrades" with lore "Lure them in!." to close then run ""
+	format slot 1 of player with book named "<Blue>Lure I" with lore "<green>Requires 15 Levels" to close then run [make console execute command "eLURE1 %player%"]
+	format slot 2 of player with book named "<Blue>Lure II" with lore "<green>Requires 24 Levels" to close then run [make console execute command "eLURE2 %player%"]
+	format slot 3 of player with book named "<Blue>Lure III" with lore "<green>Requires 33 Levels" to close then run [make console execute command "eLURE3 %player%"]
+	format slot 5 of player with fishing rod named "<yellow>Luck of the Sea Upgrades" with lore "Be the luckiest of the sea!." to close then run ""
+	format slot 6 of player with book named "<Blue>Luck of the Sea I" with lore "<green>Requires 15 Levels" to close then run [make console execute command "eLUCKOFSEA1 %player%"]
+	format slot 7 of player with book named "<Blue>Luck of the Sea II" with lore "<green>Requires 24 Levels" to close then run [make console execute command "eLUCKOFSEA2 %player%"]
+	format slot 8 of player with book named "<Blue>Luck of the Sea III" with lore "<green>Requires 33 Levels" to close then run [make console execute command "eLUCKOFSEA3 %player%"]
+	format slot 9 of player with iron ingot named "<gray>Unbreaking Upgrades" with lore "Make your stuff tougher and last longer." to close then run ""
+	format slot 10 of player with book named "<Blue>Unbreaking I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eU1 %player%"]
+	format slot 11 of player with book named "<Blue>Unbreaking II" with lore "<green>Requires 13 Levels" to close then run [make console execute command "eU2 %player%"]
+	format slot 12 of player with book named "<Blue>Unbreaking III" with lore "<green>Requires 21 Levels" to close then run [make console execute command "eU3 %player%"]
+
+on rightclick on enchantment table:
+	block under is emerald block
+	player is holding a hoe
+	{CustomEnchants} is true
+	cancel event
+	open chest with 1 row named "<blue>Pick your enchantment" to player
+	wait 3 ticks
+	format slot 4 of player with hoe named "<Green>Planting I" with lore "<green>Requires 5 Levels" to close then run [make console execute command "eAUTOPLANT %player%"]
+
+on rightclick on enchantment table:
+	player is holding an emerald named "<purple>Level Crystal" with lore "<light blue>Right click on enchantment table to get some levels"
+	{EnchantCrystals} is true
+	cancel event
+	remove an emerald named "<purple>Level Crystal" with lore "<light blue>Right click on enchantment table to get some levels" from player
+	increase player's level by 5
+	play raw sound "random.levelup" at player with pitch 1 volume 1
+
+
+#_____ENCHANTMENT COMMANDS_____
+
+command /eS1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 1:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 0
+		reduce the player-argument's level by 1
+		enchant the player-argument's tool with sharpness 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eS2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 12:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 11
+		reduce the player-argument's level by 12
+		enchant the player-argument's tool with sharpness 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eS3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 23:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 22
+		reduce the player-argument's level by 23
+		enchant the player-argument's tool with sharpness 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eS4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 34:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 33
+		reduce the player-argument's level by 34
+		enchant the player-argument's tool with sharpness 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eS5 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 50:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 49
+		reduce the player-argument's level by 50
+		enchant the player-argument's tool with sharpness 5
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#BANEOFANTRHOENCHANTS
+command /eBOA1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 5:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 4
+		reduce the player-argument's level by 5
+		enchant the player-argument's tool with bane of arthropods 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eBOA2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 13:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 12
+		reduce the player-argument's level by 13
+		enchant the player-argument's tool with bane of arthropods 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eBOA3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 21:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 20
+		reduce the player-argument's level by 21
+		enchant the player-argument's tool with bane of arthropods 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eBOA4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 29:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 28
+		reduce the player-argument's level by 29
+		enchant the player-argument's tool with bane of arthropods 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eBOA5 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 40:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 39
+		reduce the player-argument's level by 40
+		enchant the player-argument's tool with bane of arthropods 5
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#SMITES
+
+command /eSMT1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 5:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 4
+		reduce the player-argument's level by 5
+		enchant the player-argument's tool with smite 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eSMT2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 13:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 12
+		reduce the player-argument's level by 13
+		enchant the player-argument's tool with smite 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eSMT3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 21:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 20
+		reduce the player-argument's level by 21
+		enchant the player-argument's tool with smite 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eSMT4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 29:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 28
+		reduce the player-argument's level by 29
+		enchant the player-argument's tool with smite 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eSMT5 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 40:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 39
+		reduce the player-argument's level by 40
+		enchant the player-argument's tool with smite 5
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eKB1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 5:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 4
+		reduce the player-argument's level by 5
+		enchant the player-argument's tool with knockback 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eKB2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 25:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 24
+		reduce the player-argument's level by 25
+		enchant the player-argument's tool with knockback 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#FIREASPECT
+command /eFA1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 10:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 9
+		reduce the player-argument's level by 10
+		enchant the player-argument's tool with fire aspect 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFA2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 30:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 29
+		reduce the player-argument's level by 30
+		enchant the player-argument's tool with fire aspect 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#LOOTING
+command /eL1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 15:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 14
+		reduce the player-argument's level by 15
+		enchant the player-argument's tool with looting 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eL2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 24:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 23
+		reduce the player-argument's level by 24
+		enchant the player-argument's tool with looting 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eL3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 33:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 32
+		reduce the player-argument's level by 33
+		enchant the player-argument's tool with looting 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#POWER (bow time!)
+
+command /eP1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 1:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 0
+		reduce the player-argument's level by 1
+		enchant the player-argument's tool with power 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eP2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 11:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 10
+		reduce the player-argument's level by 11
+		enchant the player-argument's tool with power 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eP3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 21:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 20
+		reduce the player-argument's level by 21
+		enchant the player-argument's tool with power 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eP4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 31:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 30
+		reduce the player-argument's level by 31
+		enchant the player-argument's tool with power 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eP5 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 41:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 40
+		reduce the player-argument's level by 41
+		enchant the player-argument's tool with power 5
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#INFINITY
+
+
+command /eI1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 30:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 29
+		reduce the player-argument's level by 30
+		enchant the player-argument's tool with infinity 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#PUNCH
+
+command /ePunch1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 12:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 11
+		reduce the player-argument's level by 12
+		enchant the player-argument's tool with punch 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /ePunch2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 32:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 31
+		reduce the player-argument's level by 32
+		enchant the player-argument's tool with punch 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#FLAME
+
+
+command /eFlame1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 30:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 29
+		reduce the player-argument's level by 30
+		enchant the player-argument's tool with flame 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#EFFICIENCY TOOL TIME XDDDDDD
+
+command /eE1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 1:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 0
+		reduce the player-argument's level by 1
+		enchant the player-argument's tool with efficiency 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eE2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 11:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 10
+		reduce the player-argument's level by 11
+		enchant the player-argument's tool with efficiency 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eE3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 21:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 20
+		reduce the player-argument's level by 21
+		enchant the player-argument's tool with efficiency 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eE4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 31:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 30
+		reduce the player-argument's level by 31
+		enchant the player-argument's tool with efficiency 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eE5 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 41:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 40
+		reduce the player-argument's level by 41
+		enchant the player-argument's tool with efficiency 5
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#UNBREAKING
+
+command /eU1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 5:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 4
+		reduce the player-argument's level by 5
+		enchant the player-argument's tool with unbreaking 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eU2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 13:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 12
+		reduce the player-argument's level by 13
+		enchant the player-argument's tool with unbreaking 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eU3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 21:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 20
+		reduce the player-argument's level by 21
+		enchant the player-argument's tool with unbreaking 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#FORTUNE
+
+command /eF1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 15:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 14
+		reduce the player-argument's level by 15
+		enchant the player-argument's tool with fortune 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eF2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 24:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 23
+		reduce the player-argument's level by 24
+		enchant the player-argument's tool with fortune 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eF3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 33:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 32
+		reduce the player-argument's level by 33
+		enchant the player-argument's tool with fortune 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#SILK TOUCH
+
+command /eST1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 15:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 14
+		reduce the player-argument's level by 15
+		enchant the player-argument's tool with silk touch 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#PROTECTION (shit time to make all those armor enchants...)
+
+command /ePTN1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 1:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 0
+		reduce the player-argument's level by 1
+		enchant the player-argument's tool with protection 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /ePTN2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 12:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 11
+		reduce the player-argument's level by 12
+		enchant the player-argument's tool with protection 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /ePTN3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 23:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 22
+		reduce the player-argument's level by 23
+		enchant the player-argument's tool with protection 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /ePTN4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 34:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 33
+		reduce the player-argument's level by 34
+		enchant the player-argument's tool with protection 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#PROJECTILE PROTECTION
+
+command /ePJP1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 3:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 2
+		reduce the player-argument's level by 3
+		enchant the player-argument's tool with projectile protection 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /ePJP2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 9:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 8
+		reduce the player-argument's level by 9
+		enchant the player-argument's tool with projectile protection 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /ePJP3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 15:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 14
+		reduce the player-argument's level by 15
+		enchant the player-argument's tool with projectile protection 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /ePJP4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 21:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 20
+		reduce the player-argument's level by 21
+		enchant the player-argument's tool with projectile protection 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#FIRE PROTECTION
+
+command /eFP1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 10:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 9
+		reduce the player-argument's level by 10
+		enchant the player-argument's tool with fire protection 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFP2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 18:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 17
+		reduce the player-argument's level by 18
+		enchant the player-argument's tool with fire protection 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFP3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 26:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 25
+		reduce the player-argument's level by 26
+		enchant the player-argument's tool with fire protection 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFP4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 34:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 33
+		reduce the player-argument's level by 34
+		enchant the player-argument's tool with fire protection 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#BLAST PROTECTION
+
+
+command /eBP1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 5:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 4
+		reduce the player-argument's level by 5
+		enchant the player-argument's tool with blast protection 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eBP2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 13:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 12
+		reduce the player-argument's level by 13
+		enchant the player-argument's tool with blast protection 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eBP3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 21:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 20
+		reduce the player-argument's level by 21
+		enchant the player-argument's tool with blast protection 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eBP4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 29:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 28
+		reduce the player-argument's level by 29
+		enchant the player-argument's tool with blast protection 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#THORNS
+
+
+command /eTHORNS1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 10:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 9
+		reduce the player-argument's level by 10
+		enchant the player-argument's tool with thorns 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+
+command /eTHORNS2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 30:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 29
+		reduce the player-argument's level by 30
+		enchant the player-argument's tool with thorns 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+
+command /eTHORNS3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 50:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 49
+		reduce the player-argument's level by 50
+		enchant the player-argument's tool with thorns 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFF1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 5:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 4
+		reduce the player-argument's level by 5
+		enchant the player-argument's tool with Feather falling 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFF2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 11:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 10
+		reduce the player-argument's level by 11
+		enchant the player-argument's tool with Feather falling 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFF3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 17:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 16
+		reduce the player-argument's level by 17
+		enchant the player-argument's tool with Feather falling 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eFF4 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 23:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 22
+		reduce the player-argument's level by 23
+		enchant the player-argument's tool with Feather falling 4
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#DEPTH STRIDER
+command /eDPT1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 10:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 9
+		reduce the player-argument's level by 10
+		enchant the player-argument's tool with Depth Strider 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eDPT2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 20:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 19
+		reduce the player-argument's level by 20
+		enchant the player-argument's tool with Depth Strider 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eDPT3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 30:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 29
+		reduce the player-argument's level by 30
+		enchant the player-argument's tool with Depth Strider 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eRSP1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 10:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 9
+		reduce the player-argument's level by 10
+		enchant the player-argument's tool with respiration 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eRSP2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 20:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 19
+		reduce the player-argument's level by 20
+		enchant the player-argument's tool with respiration 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eRSP3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 30:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 29
+		reduce the player-argument's level by 30
+		enchant the player-argument's tool with respiration 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+command /eAA1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 20:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 19
+		reduce the player-argument's level by 20
+		enchant the player-argument's tool with aqua affinity 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+		play ender signal at player-argument's targeted block
+		play mobspawner flames at player-argument's targeted block
+
+#luckOF sea AND LURE
+
+command /eLURE1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 15:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 14
+		reduce the player-argument's level by 15
+		enchant the player-argument's tool with lure 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+command /eLURE2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 24:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 23
+		reduce the player-argument's level by 24
+		enchant the player-argument's tool with lure 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+command /eLURE3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 33:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 32
+		reduce the player-argument's level by 33
+		enchant the player-argument's tool with lure 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+command /eLUCKOFSEA1 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 15:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 14
+		reduce the player-argument's level by 15
+		enchant the player-argument's tool with luck of the sea 1
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+command /eLUCKOFSEA2 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 24:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 23
+		reduce the player-argument's level by 24
+		enchant the player-argument's tool with luck of the sea 2
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+command /eLUCKOFSEA3 [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 33:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 32
+		reduce the player-argument's level by 33
+		enchant the player-argument's tool with luck of the sea 3
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+
+
+#CUSTOM ENCHANTS---------------------------
+command /eVAMPIRISM [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 43:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 42
+		reduce the player-argument's level by 43
+		set lore of player-argument's tool to "<gray>Vampirism I"
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+on damage:
+	attacker is holding sword with lore "<gray>Vampirism I"
+	heal attacker by .5 hearts
+
+command /eVENOM [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 40:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 39
+		reduce the player-argument's level by 40
+		set lore of player-argument's tool to "<gray>Venom I"
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+on damage:
+	attacker is holding bow with lore "<gray>Venom I"
+	apply poison 1 to the victim for 5 seconds
+
+command /eREANIMATION [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 40:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 39
+		reduce the player-argument's level by 40
+		set lore of player-argument's tool to "<gray>Reanimation I"
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+on death:
+	victim is wearing chestplate with lore "<gray>Reanimation I"
+	spawn a zombie above attacker
+	message "%victim%'s corpse has reanimated!It wants Revenge." to attacker
+
+command /eCURSED [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 30:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 29
+		reduce the player-argument's level by 30
+		set lore of player-argument's tool to "<gray>Cursed I"
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+on death:
+	victim is wearing helmet with lore "<gray>Cursed I"
+	message "You've been hurt by %victim%'s curse."
+	damage attacker by 2 hearts
+
+command /eAUTOPLANT [<player>]:
+	executable by: console
+	trigger:
+		wait 3 ticks
+		if player-argument's level is less than 5:
+			message "<red>Your level is not high enough!" to player-argument
+		player-argument's level is higher than 4
+		reduce the player-argument's level by 5
+		set lore of player-argument's tool to "<gray>Planting I"
+		message "<green>Upgrade Complete!" to player-argument
+		play raw sound "random.levelup" at player-argument with pitch 1 volume 1
+		wait 1 tick
+
+on rightclick on soil:
+	player is holding hoe with lore "<gray>Planting I"
+	player has seeds
+	block above clicked block is air
+	set block above clicked block to crops
+	remove 1 wheat seeds from player
+
+#Enchant Crystals
+on death of zombie or creeper or skeleton or spider:
+	{EnchantCrystals} is true
+	chance of 5%:
+		add 1 emerald named "<purple>Level Crystal" with lore "<light blue>Right click on enchantment table to get some levels" to drops

@@ -1,0 +1,185 @@
+options:
+
+
+
+
+
+#-----------------------------------------#
+#                                         #
+#              Server MOTD                #
+#    A script that will make you          #
+#      set and manage your motd!          #
+#	Skript is simple, but very usefull.   #
+#          © lule™                        #
+#                    2018                 #
+#-----------------------------------------#
+
+
+
+
+# ------------------------------------------------------------------------------------------------------------ #
+
+#                                             C O N F I G                                                      #
+#                            100% of Server MOTD skript is editable in this config                             #
+
+# ------------------------------------------------------------------------------------------------------------ #
+
+
+#  General configurations for Server MOTD 
+# These configurations includes some general configurations..
+
+
+
+# Lines - This feature will make you
+#           manage the first and second line of the Motd!	              
+#  
+
+	# This is the first line of
+	#   the your Server Motd
+
+	line_1: &f                 &aThe Server MOTD &cv3.1
+
+
+	# This is the second line of
+	#   the your Server Motd
+
+	line_2: &6                    www.spigotmc.org
+
+
+
+
+
+# Player slot - This feature will make you manage the FAKE max
+#                number of your Server Slots!           
+#  
+	max_slots: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------------------------------------------------------------------------------------------------ #
+
+#                                             C O D E S                                                        #
+#                         If u wanna to touch these codes, do it at your own risk                              #
+
+# ------------------------------------------------------------------------------------------------------------ #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+	
+	
+	
+	
+command /motd [<text>]:
+	trigger:
+		if arg-1 is not set:
+			send "" to player
+			send "   &a&lThe Server MOTD" to player
+			send "" to player
+			send " &f         A simple, but very usefull skript." to player
+			send "&f  You can reload config with command &a/motd reload" to player
+			send "" to player
+			send player title "&a&lThe Server MOTD" with subtitle "&fYou can reload config with &a/motd reload" for 4 seconds
+		if arg-1 is "reload":
+			make console execute "sk reload The ServerMOTD | v3"
+			send "&a MOTD: &fYou have successfully &areloaded&f config!" to player
+			send player title "&a&n Reload Completed " with subtitle "&fSuccessfully &areloaded&f config!" for 2 seconds
+		if arg-1 is not "reload":
+			send "" to player
+			send "   &a&lThe Server MOTD" to player
+			send "" to player
+			send " &f         A simple, but very usefull skript." to player
+			send "&f  You can reload config with command &a/motd reload" to player
+			send "" to player
+			send player title "&a&lThe Server MOTD" with subtitle "&fYou can reload config with &a/motd reload" for 4 seconds
+
+
+	
+
+
+on server list ping:        
+	set motd to "{@line_1}%nl%{@line_2}"
+	set max player count to {@max_slots}
+	
+
+	
+# I know, it's very simple..

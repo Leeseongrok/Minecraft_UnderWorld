@@ -1,0 +1,85 @@
+#
+# SwordEffects v2.7
+#
+# By DinPro
+#
+
+options:
+	prefix: &bSwordEffects &a»
+	version: 2.7
+	
+on damage:
+    held item of attacker is a wooden sword
+    apply swiftness 2 to the attacker
+    apply blindness 2 to the victim
+    poison the victim for 5 seconds
+    show mob spawner flames at the victim
+    push the victim upwards
+	
+on damage:
+    held item of attacker is a stone sword	
+    apply swiftness 2 to the attacker
+    apply blindness 2 to the victim
+    poison the victim for 5 seconds
+    show mob spawner flames at the victim
+	
+on damage:
+    held item of attacker is an iron sword	
+    apply swiftness 2 to the attacker
+    apply blindness 2 to the victim
+    show mob spawner flames at the victim
+    poison the victim for 5 seconds
+    ignite the victim
+	
+on damage:
+    held item of attacker is a diamond sword	
+    apply swiftness 5 to the attacker
+    apply blindness 3 to the victim
+    show mob spawner flames at the victim
+    poison the victim for 5 seconds
+    ignite the victim
+    create a fake explosion at the victim
+	
+command /swords <text>:
+    aliases: /sel
+    trigger:
+        if arg 1 = "help":
+            if player has permission "swords.admin":
+				send "&a---------------&bSword Effects v{@version}&a---------------"
+                send "&a/swords reload &7- &6Reloads the skript"
+                send "&a/swords version &7- &6Shows the current version"
+                send "&a/swords cure &7- &6Cures you from poison"
+                send "&a/swords help &7- &6Shows this help menu"
+                send "&a/swords author &7- &6Shows the Author of the plugin"
+				send "&a---------------&bTroll Tools v{@version}&a---------------"
+                exit
+            else:
+                send "{@prefix} &cYou don't have the permission &6swords.help&c!"
+        if arg 1 is "author":
+            if player has permission "swords.admin":
+                send "{@prefix} &aThe Author of this Skript Is &6DinPro&a!"
+                exit
+            else:
+                send "{@prefix} &cYou don't have the permission &6swords.author&c!"
+        if arg 1 is "reload":
+            if player has permission "swords.admin":
+                make console execute command "/sk reload SwordEffects"
+                send "{@prefix} &bSuccessfully reloaded &aSwordEffects"
+                exit
+            else:
+                send "{@prefix} &cYou don't have the permission &6swords.admin&c!"
+        if arg 1 is "cure":
+            if player has permission "swords.cure":
+                send "{@prefix} &6You Have Been Cured!"
+                cure the player from poison
+                exit
+            else:
+                send "{@prefix} &cYou don't have the permission &6swords.cure&c!"
+        if arg 1 is "version":
+            if player has permission "swords.admin":
+                send "{@prefix} &aYou are currently running &6SwordEffects &aon the version &8{@version}"
+                exit
+            else:
+                send "{@prefix} &cYou don't have the permission &6swords.adminc!"   
+        else:
+            make the player execute "/sel help"

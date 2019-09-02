@@ -1,0 +1,2319 @@
+#-=-=-=-=-=-=-=-=-=-=
+#- DIVINE ENCHANTS =
+#-   by Destroid   =
+#-=-=-=-=-=-=-=-=-=-=
+on load:
+	set {L} to "&7Have your Item in first hotbar slot."
+#--Potion Effect Enchantment Settings--
+
+on armor equip:
+	if lore of event-item contains "&6Rush 1":
+		apply speed 1 to player for 1 day
+	if lore of event-item contains "&6Rush 2":
+		apply speed 2 to player for 1 day	
+	if lore of event-item contains "&6Rush 3":
+		apply speed 3 to player for 1 day
+	if lore of event-item contains "&fGills 1":
+		apply water breathing 1 to player for 1 day	
+	if lore of event-item contains "&bRegen 1":
+		apply regeneration 1 to player for 1 day
+	if lore of event-item contains "&bRabbit 1":
+		apply jump boost 1 to player for 1 day	
+	if lore of event-item contains "&bRabbit 2":
+		apply jump boost 2 to player for 1 day	
+	if lore of event-item contains "&bRabbit 3":
+		apply jump boost 3 to player for 1 day
+	if lore of event-item contains "&6Pyromancer 1":
+		apply fire resistance 1 to player for 1 day	
+	if lore of event-item contains "&6Hulk 1":
+		apply strength 1 to player for 1 day
+		apply slowness 1 to player for 1 day
+	if lore of event-item contains "&6Hulk 2":
+		apply strength 2 to player for 1 day
+		apply slowness 2 to player for 1 day	
+	if lore of event-item contains "&6Hulk 3":
+		apply strength 3 to player for 1 day
+		apply slowness 3 to player for 1 day
+	if lore of event-item contains "&6Brute 1":
+		apply health boost 1 to player for 1 day
+	if lore of event-item contains "&6Brute 2":
+		apply health boost 2 to player for 1 day
+	if lore of event-item contains "&6Brute 3":
+		apply health boost 3 to player for 1 day
+	if lore of event-item contains "&fNocturnal 1":
+		apply night vision 1 to player for 1 day
+
+on armor unequip:
+	if lore of event-item contains "&6Rush ":
+		remove speed from player
+	if lore of event-item contains "&fGills ":
+		remove water breathing from player
+	if lore of event-item contains "&bRegen ":
+		remove regeneration from player	
+	if lore of event-item contains "&bRabbit ":
+		remove jump boost from player
+	if lore of event-item contains "&6Pyromancer ":
+		remove fire resistance from player
+	if lore of event-item contains "&6Hulk ":
+		remove strength from player
+		remove slowness from player
+	if lore of event-item contains "&6Brute ":
+		remove health boost from player
+	if lore of event-item contains "&fNocturnal ":
+		remove night vision from player
+
+on join:
+	while player is online:
+		if lore of player's held item contains "&bSpeed Mine 1":
+			apply haste 1 to player for 5 seconds
+			wait 5 seconds
+		if lore of player's held item contains "&bSpeed Mine 2":
+			apply haste 2 to player for 5 seconds
+			wait 5 seconds
+		if lore of player's held item contains "&bSpeed Mine 3":
+			apply haste 3 to player for 5 seconds
+			wait 5 seconds
+	
+#-- Enchanter --
+command /enchanter:
+	trigger:
+		if player has permission "de.enchanter":
+			wait 1 tick
+			open chest with 3 row named "&8&lEnchanter" to player
+			format slot 0 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 1 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 2 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 3 of player with black stained Glass Pane named "&0" to be unstealable 
+			format slot 4 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 5 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 6 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 7 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 8 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 9 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 10 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 11 of player with book named "&f&lBasic Enchantment Book" with lore "&7Examine to recieve a random||&fBasic &7Enchantment Book.||||&b&lCOST &f15 EXP" to run [make player execute command "/buybookbasic"]
+			format slot 12 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 13 of player with book named "&b&lAdvanced Enchantment Book" with lore "&7Examine to recieve a random||&bAdvanced &7Enchantment Book.||||&b&lCOST &f30 EXP" to run [make player execute command "/buybookadvanced"] 
+			format slot 14 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 15 of player with book named "&6&lDivine Enchantment Book" with lore "&7Examine to recieve a random||&6Divine &7Enchantment Book.||||&b&lCOST &f45 EXP" to run [make player execute command "/buybookdivine"]
+			format slot 16 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 17 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 18 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 19 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 20 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 21 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 22 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 23 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 24 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 25 of player with black stained Glass Pane named "&0" to be unstealable
+			format slot 26 of player with black stained Glass Pane named "&0" to be unstealable
+		else:
+			message "&c&l[!] &cYou don't have the permission to use this command!"
+		
+# -- Commands to get books --
+command /buybookbasic:
+	trigger:
+		if player's level is smaller than 15:
+			send "&c&l[!] &cYou need &f15 Lvls &cto purchase a &fBasic Enchantment Book" to player
+			stop
+		if player's level is larger than 14:
+			reduce the player's level by 15
+			send "&c&l- 15 LVLS"
+			give player 1 book named "&fBasic Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&fBasic &7Enchantment Book."			
+command /buybookadvanced:
+	trigger:
+		if player's level is smaller than 30:
+			send "&c&l[!] &cYou need &f30 Lvls &cto purchase a &bAdvanced Enchantment Book" to player
+			stop
+		if player's level is larger than 29:
+			reduce the player's level by 30
+			send "&c&l- 30 LVLS"
+			give player 1 book named "&bAdvanced Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&bAdvanced &7Enchantment Book."			
+command /buybookdivine:
+	trigger:
+		if player's level is smaller than 45:
+			send "&c&l[!] &cYou need &f45 Lvls &cto purchase a &6Divine Enchantment Book" to player
+			stop
+		if player's level is larger than 44:
+			reduce the player's level by 45
+			send "&c&l- 45 LVLS"
+			give player 1 book named "&6Divine Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&6Divine &7Enchantment Book."
+command /givebook [<text>]:
+	trigger:
+		if player has permission "de.givebook":
+			if arg 1 is not set:
+				message "&c&l[!] &cPlease enter the book you would like &fExample: &e/Givebook &6Divine"
+			if arg 1 is set:
+				if arg 1 is "basic":
+					message "&aRecieved &fBasic Enchantment Book &7(Right Click)&a."
+					give player 1 book named "&fBasic Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&fBasic &7Enchantment Book."
+				if arg 1 is "advanced":
+					message "&aRecieved &bAdvanced Enchantment Book &7(Right Click)&a."
+					give player 1 book named "&bAdvanced Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&bAdvanced &7Enchantment Book."
+				if arg 1 is "divine":
+					message "&aRecieved &6Divine Enchantment Book &7(Right Click)&a."
+					give player 1 book named "&6Divine Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&6Divine &7Enchantment Book."
+		else:
+			message "&c&l[!] &cYou do not have the permission to execute this command!"
+
+# -- Unexamined Books --
+on rightclick:
+	player is holding book named "&fBasic Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&fBasic &7Enchantment Book."
+	remove 1 book named "&fBasic Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&fBasic &7Enchantment Book." from player
+	launch flickering trailing burst firework colored white at player timed 1
+	set {B} to a random integer between 1 and 16
+	if {B} is 1:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nThunder %{N}%&7 (Right Click)" with lore "&eChance To Smite The Enemy||&7Sword Enchantment||%{L}%"
+		stop
+	if {B} is 2:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nExecution %{N}%&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Sword Enchantment||%{L}%"
+		stop	
+	if {B} is 3:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nConcussion %{N}%&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Sword Enchantment||%{L}%"
+		stop
+	if {B} is 4:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nConfusion %{N}%&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Axe Enchantment||%{L}%"
+		stop
+	if {B} is 5:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nDecapitation %{N}%&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Axe Enchantment||%{L}%"
+		stop
+	if {B} is 6:
+		set {N} to a random integer between 1 and 2
+		give player 1 book named "&f&l&nSpikes %{N}%&7 (Right Click)" with lore "&eChance To Hurt The Enemy||&7Helmet Enchantment||%{L}%"
+		stop
+	if {B} is 7:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nDurability %{N}%&7 (Right Click)" with lore "&eGives Your Tool More Durability||&7Tool Enchantment||%{L}%"
+		stop
+	if {B} is 8:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nFurnace %{N}%&7 (Right Click)" with lore "&eChance To Smelt Ores||&7Pickaxe Enchantment||%{L}%"
+		stop
+	if {B} is 9:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nExperience %{N}%&7 (Right Click)" with lore "&eGet More XP From Mining Ores||&7Pickaxe Enchantment||%{L}%"
+		stop
+	if {B} is 10:
+		give player 1 book named "&f&l&nGills 1&7 (Right Click)" with lore "&eGives Unlimited Water Breathing Effect||&7Helmet Enchantment||%{L}%"
+		stop
+	if {B} is 11:
+		give player 1 book named "&f&l&nExplode 1&7 (Right Click)" with lore "&eCreates A Fake Explosion Where The Arrow Hits||&7Bow Enchantment||%{L}%"
+		stop
+	if {B} is 12:
+		give player 1 book named "&f&l&nStamina 1&7 (Right Click)" with lore "&eNever Lose Hunger||&7Leggings Enchantment||%{L}%"
+		stop
+	if {B} is 13:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nCurse %{N}%&7 (Right Click)" with lore "&eChance To Give Your Enemy Mining Fatigue||&7Chestplate Enchantment||%{L}%"
+		stop
+	if {B} is 14:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&f&l&nSmashing %{N}%&7 (Right Click)" with lore "&eChance To Push Your Enemy Far Back||&7Weapon Enchantment||%{L}%"
+		stop
+	if {B} is 15:
+		give player 1 book named "&f&l&nReflect 1&7 (Right Click)" with lore "&eChance To Deal Damage To Your Enemy While Blocking||&7Sword Enchantment||%{L}%"
+		stop
+	if {B} is 16:
+		give player 1 book named "&f&l&nNocturnal 1&7 (Right Click)" with lore "&eGives Unlimited Night Vision Effect||&7Helmet Enchantment||%{L}%"
+		stop
+		
+on rightclick:
+	player is holding book named "&bAdvanced Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&bAdvanced &7Enchantment Book."
+	remove 1 book named "&bAdvanced Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&bAdvanced &7Enchantment Book." from player
+	launch flickering trailing burst firework colored aqua at player timed 1
+	set {A} to a random integer between 1 and 17
+	if {A} is 1:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nInner Demon %{N}%&7 (Right Click)" with lore "&eChance To Summon Demons||&7Boot Enchantment||%{L}%"
+		stop
+	if {A} is 2:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nFlame Lord %{N}%&7 (Right Click)" with lore "&eChance To Summon Blazes||&7Axe Enchantment||%{L}%"
+		stop
+	if {A} is 3:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nSpeed Mine %{N}%&7 (Right Click)" with lore "&eGives Haste While Mining||&7Pickaxe Enchantment||%{L}%"
+		stop
+	if {A} is 4:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nPyro %{N}%&7 (Right Click)" with lore "&eChance To Set Your Enemy On Fire||&7Chestplate Enchantment||%{L}%"
+		stop
+	if {A} is 5:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nJoker %{N}%&7 (Right Click)" with lore "&eChance To Blind Your Enemy||&7Sword Enchantment||%{L}%"
+		stop
+	if {A} is 6:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nReinforced %{N}%&7 (Right Click)" with lore "&eChance To Gain Resistance||&7Chestplate Enchantment||%{L}%"
+		stop
+	if {A} is 7:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nPure %{N}%&7 (Right Click)" with lore "&eChance To Remove All Debuffs||&7Axe Enchantment||%{L}%"
+		stop
+	if {A} is 8:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nVenom %{N}%&7 (Right Click)" with lore "&eChance To Poison The Enemy||&7Bow Enchantment||%{L}%"
+		stop
+	if {A} is 9:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nCupid %{N}%&7 (Right Click)" with lore "&eChance To Heal When Shooting The Enemies||&7Bow Enchantment||%{L}%"
+		stop
+	if {A} is 10:
+		give player 1 book named "&b&l&nRegen 1&7 (Right Click)" with lore "&eGives Unlimited Regeneration Effect||&7Chestplate Enchantment||%{L}%"
+		stop
+	if {A} is 11:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nFear %{N}%&7 (Right Click)" with lore "&eChance To Weaken The Enemy||&7Helmet Enchantment||%{L}%"
+		stop
+	if {A} is 12:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nRabbit %{N}%&7 (Right Click)" with lore "&eGives Unlimited Jump Boost Effect||&7Boot Enchantment||%{L}%"
+		stop
+	if {A} is 13:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nGlaciate %{N}%&7 (Right Click)" with lore "&eChance To Freeze Your Enemy||&7Sword Enchantment||%{L}%"
+		stop
+	if {A} is 14:
+		give player 1 book named "&b&l&nSacrifice 1&7 (Right Click)" with lore "&eDamage The Enemy Within A Radius When You Die||&7Leggings Enchantment||%{L}%"
+		stop
+	if {A} is 15:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nSurprise %{N}%&7 (Right Click)" with lore "&eChance To Teleport Behind The Enemy||&7Sword Enchantment||%{L}%"
+		stop
+	if {A} is 16:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nLightweight %{N}%&7 (Right Click)" with lore "&eChance Of A Burst Of Haste||&7Weapon Enchantment||%{L}%"
+		stop
+	if {A} is 17:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&b&l&nPetrify %{N}%&7 (Right Click)" with lore "&eChance To Temporarily Freeze The Enemy||&7Axe Enchantment||%{L}%"
+		stop
+
+		
+		
+on rightclick:
+	player is holding book named "&6Divine Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&6Divine &7Enchantment Book."
+	remove 1 book named "&6Divine Enchantment Book &7(Right Click)" with lore "&7Examine to recieve a random||&6Divine &7Enchantment Book." from player
+	launch flickering trailing burst firework colored gold at player timed 1
+	set {D} to a random integer between 1 and 17
+	if {D} is 1:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nInfected %{N}%&7 (Right Click)" with lore "&eChance To Poison Your Enemy||&7Leggings Enchantment||%{L}%"
+		stop
+	if {D} is 2:
+		set {N} to a random integer between 1 and 2
+		give player 1 book named "&6&l&nPayback %{N}%&7 (Right Click)" with lore "&eChance To Spawn A Creeper On Death||&7Leggings Enchantment||%{L}%"
+		stop
+	if {D} is 3:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nXP Steal %{N}%&7 (Right Click)" with lore "&eChance To Steal XP From Enemy||&7Sword Enchantment||%{L}%"
+		stop
+	if {D} is 4:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nPenetration %{N}%&7 (Right Click)" with lore "&eDeal More Damage To Your Enemies Armor||&7Sword Enchantment||%{L}%"
+		stop
+	if {D} is 5:
+		give player 1 book named "&6&l&nHope 1&7 (Right Click)" with lore "&eChance To Regenerate On Low Hearts||&7Armor Enchantment||%{L}%"
+		stop
+	if {D} is 6:
+		give player 1 book named "&6&l&nGrinder 1&7 (Right Click)" with lore "&eKill Mobs With 1 Hit||&7Sword Enchantment||%{L}%"
+		stop
+	if {D} is 7:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nXP Drain %{N}%&7 (Right Click)" with lore "&eGet More XP from Killing Mobs||&7Sword Enchantment||%{L}%"
+		stop
+	if {D} is 8:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nSoulsteal %{N}%&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Axe Enchantment||%{L}%"
+		stop
+	if {D} is 9:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nDracula %{N}%&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Sword Enchantment||%{L}%"
+		stop
+	if {D} is 10:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nAngel %{N}%&7 (Right Click)" with lore "&eChance To Heal When Fighting||&7Armor Enchantment||%{L}%"
+		stop
+	if {D} is 11:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nRush %{N}%&7 (Right Click)" with lore "&eGives Unlimited Speed Effect||&7Boot Enchantment||%{L}%"
+		stop
+	if {D} is 12:
+		give player 1 book named "&6&l&nPyromancer 1&7 (Right Click)" with lore "&eGives Unlimited Fire Resistance Effect||&7Armor Enchantment||%{L}%"
+		stop
+	if {D} is 13:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nOblivion %{N}%&7 (Right Click)" with lore "&eChance To Strike Lighting And Damage All Enemies Within A Radius||&7Chestplate Enchantment||%{L}%"
+		stop
+	if {D} is 14:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nHulk %{N}%&7 (Right Click)" with lore "&eGives Unlimited Strength And Slowness Effect||&7Helmet Enchantment||%{L}%"
+		stop
+	if {D} is 15:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nBrute %{N}%&7 (Right Click)" with lore "&eGives Unlimited Health Boost Effect||&7Leggings Enchantment||%{L}%"
+		stop
+	if {D} is 16:
+		give player 1 book named "&6&l&nAdrenaline 1&7 (Right Click)" with lore "&eChance Of A Speed Boost At Low HP||&7Boot Enchantment||%{L}%"
+		stop
+	if {D} is 17:
+		set {N} to a random integer between 1 and 3
+		give player 1 book named "&6&l&nDevastate %{N}%&7 (Right Click)" with lore "&eChance To Increase The Damage Inflicted||&7Weapon Enchantment||%{L}%"
+		stop
+		
+#---Spikes--
+
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&f&l&nSpikes 1&7 (Right Click)" with lore "&eChance To Hurt The Enemy||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fSpikes 1"
+	lore of slot 0 of player does not contain "&fSpikes 2"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fSpikes 1"
+	remove 1 book named "&f&l&nSpikes 1&7 (Right Click)" with lore "&eChance To Hurt The Enemy||&7Helmet Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&f&l&nSpikes 2&7 (Right Click)" with lore "&eChance To Hurt The Enemy||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fSpikes 1"
+	lore of slot 0 of player does not contain "&fSpikes 2"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fSpikes 2"
+	remove 1 book named "&f&l&nSpikes 2&7 (Right Click)" with lore "&eChance To Hurt The Enemy||&7Helmet Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of victim's helmet contains "&fSpikes 1":
+		chance of 25%:
+			damage the attacker by 0.5 hearts
+			stop
+	if lore of victim's helmet contains "&fSpikes 2":
+		chance of 50%:
+			damage the attacker by 0.5 hearts
+			stop
+
+#--Thunder--
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nThunder 1&7 (Right Click)" with lore "&eChance To Smite The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fThunder 1"
+	lore of slot 0 of player does not contain "&fThunder 2"
+	lore of slot 0 of player does not contain "&fThunder 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fThunder 1"
+	remove 1 book named "&f&l&nThunder 1&7 (Right Click)" with lore "&eChance To Smite The Enemy||&7Sword Enchantment||%{L}%" from player
+
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nThunder 2&7 (Right Click)" with lore "&eChance To Smite The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fThunder 1"
+	lore of slot 0 of player does not contain "&fThunder 2"
+	lore of slot 0 of player does not contain "&fThunder 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fThunder 2"	
+	remove 1 book named "&f&l&nThunder 2&7 (Right Click)" with lore "&eChance To Smite The Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nThunder 3&7 (Right Click)" with lore "&eChance To Smite The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fThunder 1"
+	lore of slot 0 of player does not contain "&fThunder 2"
+	lore of slot 0 of player does not contain "&fThunder 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fThunder 3"	
+	remove 1 book named "&f&l&nThunder 3&7 (Right Click)" with lore "&eChance To Smite The Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&fThunder 1":
+		chance of 1.5%:
+			strike lightning effect at the victim
+			damage the victim by 1 heart
+			stop
+	if lore of attacker's held item contains "&fThunder 2":
+		chance of 3%:
+			strike lightning effect at the victim
+			damage the victim by 2 hearts
+			stop
+	if lore of attacker's held item contains "&fThunder 3":
+		chance of 4.5%:
+			strike lightning effect at the victim
+			damage the victim by 3 hearts
+			stop
+	
+#--Execution--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nExecution 1&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fExecution 1"
+	lore of slot 0 of player does not contain "&fExecution 2"
+	lore of slot 0 of player does not contain "&fExecution 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fExecution 1"
+	remove 1 book named "&f&l&nExecution 1&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nExecution 2&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fExecution 1"
+	lore of slot 0 of player does not contain "&fExecution 2"
+	lore of slot 0 of player does not contain "&fExecution 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fExecution 2"
+	remove 1 book named "&f&l&nExecution 2&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Sword Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nExecution 3&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fExecution 1"
+	lore of slot 0 of player does not contain "&fExecution 2"
+	lore of slot 0 of player does not contain "&fExecution 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fExecution 3"
+	remove 1 book named "&f&l&nExecution 3&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Sword Enchantment||%{L}%" from player
+
+on death of player:
+	attacker is a player
+	if lore of attacker's held item contains "&fExecution 1":
+		chance of 10%: 
+			drop skull of "%victim%" parsed as offline player at victim's location
+			stop
+	if lore of attacker's held item contains "&fExecution 2":
+		chance of 20%:
+			drop skull of "%victim%" parsed as offline player at victim's location
+			stop
+	if lore of attacker's held item contains "&fExecution 3":
+		chance of 30%:
+			drop skull of "%victim%" parsed as offline player at victim's location
+			stop
+		
+#---Concussion--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nConcussion 1&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fConcussion 1"
+	lore of slot 0 of player does not contain "&fConcussion 2"
+	lore of slot 0 of player does not contain "&fConcussion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fConcussion 1"
+	remove 1 book named "&f&l&nConcussion 1&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nConcussion 2&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fConcussion 1"
+	lore of slot 0 of player does not contain "&fConcussion 2"
+	lore of slot 0 of player does not contain "&fConcussion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fConcussion 2"
+	remove 1 book named "&f&l&nConcussion 2&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nConcussion 3&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fConcussion 1"
+	lore of slot 0 of player does not contain "&fConcussion 2"
+	lore of slot 0 of player does not contain "&fConcussion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fConcussion 3"
+	remove 1 book named "&f&l&nConcussion 3&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of attacker's held item contains "&fConcussion 1":
+		chance of 2%:
+			remove nausea from victim
+			apply nausea 1 to victim for 7 seconds
+			stop			
+	if lore of attacker's held item contains "&fConcussion 2":
+		chance of 4%:
+			remove nausea from victim
+			apply nausea 1 to victim for 7 seconds
+			stop
+	if lore of attacker's held item contains "&fConcussion 3":
+		chance of 6%:
+			remove nausea from victim
+			apply nausea 1 to victim for 7 seconds
+			stop
+		
+#---Confusion--
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&f&l&nConfusion 1&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fConfusion 1"
+	lore of slot 0 of player does not contain "&fConfusion 2"
+	lore of slot 0 of player does not contain "&fConfusion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fConfusion 1"
+	remove 1 book named "&f&l&nConfusion 1&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&f&l&nConfusion 2&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fConfusion 1"
+	lore of slot 0 of player does not contain "&fConfusion 2"
+	lore of slot 0 of player does not contain "&fConfusion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fConfusion 2"
+	remove 1 book named "&f&l&nConfusion 2&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a Axe
+	player is holding book named "&f&l&nConfusion 3&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fConfusion 1"
+	lore of slot 0 of player does not contain "&fConfusion 2"
+	lore of slot 0 of player does not contain "&fConfusion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fConfusion 3"
+	remove 1 book named "&f&l&nConfusion 3&7 (Right Click)" with lore "&eChance To Confuse Your Enemy||&7Axe Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of attacker's held item contains "&fConfusion 1":
+		chance of 2%:
+			remove nausea from victim
+			apply nausea 1 to victim for 7 seconds
+			stop
+	if lore of attacker's held item contains "&fConfusion 2":
+		chance of 4%:
+			remove nausea from victim
+			apply nausea 1 to victim for 7 seconds
+			stop
+	if lore of attacker's held item contains "&fConfusion 3":
+		chance of 6%:
+			remove nausea from victim
+			apply nausea 1 to victim for 7 seconds
+			stop
+		
+#---Decapitation--
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&f&l&nDecapitation 1&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fDecapitation 1"
+	lore of slot 0 of player does not contain "&fDecapitation 2"
+	lore of slot 0 of player does not contain "&fDecapitation 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fDecapitation 1"
+	remove 1 book named "&f&l&nDecapitation 1&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&f&l&nDecapitation 2&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fDecapitation 1"
+	lore of slot 0 of player does not contain "&fDecapitation 2"
+	lore of slot 0 of player does not contain "&fDecapitation 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fDecapitation 2"
+	remove 1 book named "&f&l&nDecapitation 2&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Axe Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&f&l&nDecapitation 3&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fDecapitation 1"
+	lore of slot 0 of player does not contain "&fDecapitation 2"
+	lore of slot 0 of player does not contain "&fDecapitation 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fDecapitation 3"
+	remove 1 book named "&f&l&nDecapitation 3&7 (Right Click)" with lore "&eChance To Get The Enemy's Head||&7Axe Enchantment||%{L}%" from player
+
+on death of player:
+	attacker is a player
+	if lore of attacker's held item contains "&fDecapitation 1":
+		chance of 10%: 
+			drop skull of "%victim%" parsed as offline player at victim's location
+			stop
+	if lore of attacker's held item contains "&fDecapitation 2":
+		chance of 20%:
+			drop skull of "%victim%" parsed as offline player at victim's location
+			stop
+	if lore of attacker's held item contains "&fDecapitation 3":
+		chance of 30%:
+			drop skull of "%victim%" parsed as offline player at victim's location
+			stop
+
+#--Explode--
+
+on rightclick:
+	slot 0 of player is a bow
+	player is holding book named "&f&l&nExplode 1&7 (Right Click)" with lore "&eCreates A Fake Explosion Where The Arrow Hits||&7Bow Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fExplode 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fExplode 1"
+	remove 1 book named "&f&l&nExplode 1&7 (Right Click)" with lore "&eCreates A Fake Explosion Where The Arrow Hits||&7Bow Enchantment||%{L}%" from player
+	
+on projectile hit:
+	projectile is an arrow
+	if lore of shooter's held item contains "&fExplode 1":
+		create a fake explosion at event-location
+		stop
+		
+#--Stamina--
+
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&f&l&nStamina 1&7 (Right Click)" with lore "&eNever Lose Hunger||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fStamina 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fStamina 1"
+	remove 1 book named "&f&l&nStamina 1&7 (Right Click)" with lore "&eNever Lose Hunger||&7Leggings Enchantment||%{L}%" from player
+	
+on hunger meter change:
+	if lore of player's leggings contains "&fStamina 1":
+		cancel event
+		stop
+
+#--Curse--
+
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&f&l&nCurse 1&7 (Right Click)" with lore "&eChance To Give Your Enemy Mining Fatigue||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fCurse 1"
+	lore of slot 0 of player does not contain "&fCurse 2"
+	lore of slot 0 of player does not contain "&fCurse 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fCurse 1"
+	remove 1 book named "&f&l&nCurse 1&7 (Right Click)" with lore "&eChance To Give Your Enemy Mining Fatigue||&7Chestplate Enchantment||%{L}%" from player
+		
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&f&l&nCurse 2&7 (Right Click)" with lore "&eChance To Give Your Enemy Mining Fatigue||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fCurse 1"
+	lore of slot 0 of player does not contain "&fCurse 2"
+	lore of slot 0 of player does not contain "&fCurse 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fCurse 2"
+	remove 1 book named "&f&l&nCurse 2&7 (Right Click)" with lore "&eChance To Give Your Enemy Mining Fatigue||&7Chestplate Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&f&l&nCurse 3&7 (Right Click)" with lore "&eChance To Give Your Enemy Mining Fatigue||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fCurse 1"
+	lore of slot 0 of player does not contain "&fCurse 2"
+	lore of slot 0 of player does not contain "&fCurse 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fCurse 3"
+	remove 1 book named "&f&l&nCurse 3&7 (Right Click)" with lore "&eChance To Give Your Enemy Mining Fatigue||&7Chestplate Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of victim's chestplate contains "&fCurse 1":
+		chance of 2%:
+			remove mining fatigue from attacker
+			apply mining fatigue 1 to attacker for 5 seconds
+			stop
+	if lore of victim's chestplate contains "&fCurse 2":
+		chance of 4%:
+			remove mining fatigue from attacker
+			apply mining fatigue 2 to attacker for 5 seconds
+			stop
+	if lore of victim's chestplate contains "&fCurse 3":
+		chance of 6%:
+			remove mining fatigue from attacker
+			apply mining fatigue 3 to attacker for 5 seconds
+			stop
+
+#--Smashing--
+	
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&f&l&nSmashing 1&7 (Right Click)" with lore "&eChance To Push Your Enemy Far Back||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fSmashing 1"
+	lore of slot 0 of player does not contain "&fSmashing 2"
+	lore of slot 0 of player does not contain "&fSmashing 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fSmashing 1"
+	remove 1 book named "&f&l&nSmashing 1&7 (Right Click)" with lore "&eChance To Push Your Enemy Far Back||&7Weapon Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&f&l&nSmashing 2&7 (Right Click)" with lore "&eChance To Push Your Enemy Far Back||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fSmashing 1"
+	lore of slot 0 of player does not contain "&fSmashing 2"
+	lore of slot 0 of player does not contain "&fSmashing 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fSmashing 2"
+	remove 1 book named "&f&l&nSmashing 2&7 (Right Click)" with lore "&eChance To Push Your Enemy Far Back||&7Weapon Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&f&l&nSmashing 3&7 (Right Click)" with lore "&eChance To Push Your Enemy Far Back||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fSmashing 1"
+	lore of slot 0 of player does not contain "&fSmashing 2"
+	lore of slot 0 of player does not contain "&fSmashing 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fSmashing 3"
+	remove 1 book named "&f&l&nSmashing 3&7 (Right Click)" with lore "&eChance To Push Your Enemy Far Back||&7Weapon Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&fSmashing 1":
+		chance of 2%:
+			push victim 5 blocks backwards
+			stop
+	if lore of attacker's held item contains "&fSmashing 2":
+		chance of 4%:
+			push victim 5 blocks backwards
+			stop
+	if lore of attacker's held item contains "&fSmashing 3": 
+		chance of 6%:
+			push victim 5 blocks backwards
+			stop
+
+#--Reflect--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&f&l&nReflect 1&7 (Right Click)" with lore "&eChance To Deal Damage To Your Enemy While Blocking||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fReflect 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fReflect 1"
+	remove 1 book named "&f&l&nReflect 1&7 (Right Click)" with lore "&eChance To Deal Damage To Your Enemy While Blocking||&7Sword Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	victim is blocking
+	if lore of victim's held item contains "&fReflect 1":
+		chance of 25%:
+			damage the attacker by 1 heart
+			stop
+			
+#---Inner Demon--
+
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&b&l&nInner Demon 1&7 (Right Click)" with lore "&eChance To Summon Demons||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bInner Demon 1"
+	lore of slot 0 of player does not contain "&bInner Demon 2"
+	lore of slot 0 of player does not contain "&bInner Demon 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bInner Demon 1"
+	remove 1 book named "&b&l&nInner Demon 1&7 (Right Click)" with lore "&eChance To Summon Demons||&7Boot Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&b&l&nInner Demon 2&7 (Right Click)" with lore "&eChance To Summon Demons||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bInner Demon 1"
+	lore of slot 0 of player does not contain "&bInner Demon 2"
+	lore of slot 0 of player does not contain "&bInner Demon 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bInner Demon 2"
+	remove 1 book named "&b&l&nInner Demon 2&7 (Right Click)" with lore "&eChance To Summon Demons||&7Boot Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&b&l&nInner Demon 3&7 (Right Click)" with lore "&eChance To Summon Demons||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bInner Demon 1"
+	lore of slot 0 of player does not contain "&bInner Demon 2"
+	lore of slot 0 of player does not contain "&bInner Demon 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bInner Demon 3"
+	remove 1 book named "&b&l&nInner Demon 3&7 (Right Click)" with lore "&eChance To Summon Demons||&7Boot Enchantment||%{L}%" from player
+		
+on damage of a player:
+	attacker is a player
+	if lore of victim's boots contains "&bInner Demon 3":
+		chance of 3%:
+			spawn 1 zombie at victim
+			set target of last spawned zombie to attacker
+			set the name of the spawned zombie to "&d&l%victim%'s Demon"
+			equip the spawned zombie with a diamond chestplate
+			apply resistance 3 to the spawned zombie for 5 minutes
+			apply speed 3 to the spawned zombie for 5 minutes
+			apply strength 3 to the spawned zombie for 5 minutes
+			stop
+	if lore of victim's boots contains "&bInner Demon 2":
+		chance of 2%:
+			spawn 1 zombie at victim
+			set target of last spawned zombie to attacker
+			set the name of the spawned zombie to "&d&l%victim%'s Demon"
+			equip the spawned zombie with a diamond chestplate
+			apply resistance 3 to the spawned zombie for 5 minutes
+			apply speed 3 to the spawned zombie for 5 minutes
+			apply strength 3 to the spawned zombie for 5 minutes
+			stop
+	if lore of victim's boots contains "&bInner Demon 1":
+		chance of 1%:
+			spawn 1 zombie at victim
+			set target of last spawned zombie to attacker
+			set the name of the spawned zombie to "&d&l%victim%'s Demon"
+			equip the spawned zombie with a diamond chestplate
+			apply resistance 3 to the spawned zombie for 5 minutes
+			apply speed 3 to the spawned zombie for 5 minutes
+			apply strength 3 to the spawned zombie for 5 minutes
+			stop
+		
+#---Flame Lord--
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nFlame Lord 1&7 (Right Click)" with lore "&eChance To Summon Blazes||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bFlame Lord 1"
+	lore of slot 0 of player does not contain "&bFlame Lord 2"
+	lore of slot 0 of player does not contain "&bFlame Lord 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bFlame Lord 1"
+	remove 1 book named "&b&l&nFlame Lord 1&7 (Right Click)" with lore "&eChance To Summon Blazes||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nFlame Lord 2&7 (Right Click)" with lore "&eChance To Summon Blazes||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bFlame Lord 1"
+	lore of slot 0 of player does not contain "&bFlame Lord 2"
+	lore of slot 0 of player does not contain "&bFlame Lord 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bFlame Lord 2"
+	remove 1 book named "&b&l&nFlame Lord 2&7 (Right Click)" with lore "&eChance To Summon Blazes||&7Axe Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nFlame Lord 3&7 (Right Click)" with lore "&eChance To Summon Blazes||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bFlame Lord 1"
+	lore of slot 0 of player does not contain "&bFlame Lord 2"
+	lore of slot 0 of player does not contain "&bFlame Lord 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bFlame Lord 3"
+	remove 1 book named "&b&l&nFlame Lord 3&7 (Right Click)" with lore "&eChance To Summon Blazes||&7Axe Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&bFlame Lord 1":
+		chance of 2%:
+			spawn a blaze 3 meters above attacker
+			set target of last spawned blaze to attacker
+			set the name of the spawned blaze to "&e&l%attacker%'s Blaze"
+			apply speed 3 to the spawned blaze for 5 minutes
+			apply resistance 3 to the spawned blaze for 5 minutes
+			stop
+	if lore of attacker's held item contains "&bFlame Lord 2":
+		chance of 4%:
+			spawn a blaze 3 meters above attacker
+			set target of last spawned blaze to attacker
+			set the name of the spawned blaze to "&e&l%attacker%'s Blaze"
+			apply speed 3 to the spawned blaze for 5 minutes
+			apply resistance 3 to the spawned blaze for 5 minutes
+			stop
+	if lore of attacker's held item contains "&bFlame Lord 3":
+		chance of 6%:
+			spawn a blaze 3 meters above attacker
+			set target of last spawned blaze to attacker
+			set the name of the spawned blaze to "&e&l%attacker%'s Blaze"
+			apply speed 3 to the spawned blaze for 5 minutes
+			apply resistance 3 to the spawned blaze for 5 minutes
+			stop
+		
+#---Speed Mine--
+
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&b&l&nSpeed Mine 1&7 (Right Click)" with lore "&eGives Haste While Mining||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bSpeed Mine 1"
+	lore of slot 0 of player does not contain "&bSpeed Mine 2"
+	lore of slot 0 of player does not contain "&bSpeed Mine 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bSpeed Mine 1"
+	remove 1 book named "&b&l&nSpeed Mine 1&7 (Right Click)" with lore "&eGives Haste While Mining||&7Pickaxe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&b&l&nSpeed Mine 2&7 (Right Click)" with lore "&eGives Haste While Mining||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bSpeed Mine 1"
+	lore of slot 0 of player does not contain "&bSpeed Mine 2"
+	lore of slot 0 of player does not contain "&bSpeed Mine 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bSpeed Mine 2"
+	remove 1 book named "&b&l&nSpeed Mine 2&7 (Right Click)" with lore "&eGives Haste While Mining||&7Pickaxe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&b&l&nSpeed Mine 3&7 (Right Click)" with lore "&eGives Haste While Mining||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bSpeed Mine 1"
+	lore of slot 0 of player does not contain "&bSpeed Mine 2"
+	lore of slot 0 of player does not contain "&bSpeed Mine 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bSpeed Mine 3"
+	remove 1 book named "&b&l&nSpeed Mine 3&7 (Right Click)" with lore "&eGives Haste While Mining||&7Pickaxe Enchantment||%{L}%" from player
+	
+
+#---Pyro--
+
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&b&l&nPyro 1&7 (Right Click)" with lore "&eChance To Set Your Enemy On Fire||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPyro 1"
+	lore of slot 0 of player does not contain "&bPyro 2"
+	lore of slot 0 of player does not contain "&bPyro 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPyro 1"
+	remove 1 book named "&b&l&nPyro 1&7 (Right Click)" with lore "&eChance To Set Your Enemy On Fire||&7Chestplate Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&b&l&nPyro 2&7 (Right Click)" with lore "&eChance To Set Your Enemy On Fire||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPyro 1"
+	lore of slot 0 of player does not contain "&bPyro 2"
+	lore of slot 0 of player does not contain "&bPyro 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPyro 2"
+	remove 1 book named "&b&l&nPyro 2&7 (Right Click)" with lore "&eChance To Set Your Enemy On Fire||&7Chestplate Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&b&l&nPyro 3&7 (Right Click)" with lore "&eChance To Set Your Enemy On Fire||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPyro 1"
+	lore of slot 0 of player does not contain "&bPyro 2"
+	lore of slot 0 of player does not contain "&bPyro 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPyro 3"
+	remove 1 book named "&b&l&nPyro 3&7 (Right Click)" with lore "&eChance To Set Your Enemy On Fire||&7Chestplate Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of victim's chestplate contains "&bPyro 1":
+		chance of 5%:
+			ignite the attacker
+			stop
+	if lore of victim's chestplate contains "&bPyro 2":
+		chance of 10%:
+			ignite the attacker
+			stop
+	if lore of victim's chestplate contains "&bPyro 3":
+		chance of 15%:
+			ignite the attacker
+			stop
+
+#--Glaciate--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nGlaciate 1&7 (Right Click)" with lore "&eChance To Freeze Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bGlaciate 1"
+	lore of slot 0 of player does not contain "&bGlaciate 2"
+	lore of slot 0 of player does not contain "&bGlaciate 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bGlaciate 1"
+	remove 1 book named "&b&l&nGlaciate 1&7 (Right Click)" with lore "&eChance To Freeze Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nGlaciate 2&7 (Right Click)" with lore "&eChance To Freeze Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bGlaciate 1"
+	lore of slot 0 of player does not contain "&bGlaciate 2"
+	lore of slot 0 of player does not contain "&bGlaciate 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bGlaciate 2"
+	remove 1 book named "&b&l&nGlaciate 2&7 (Right Click)" with lore "&eChance To Freeze Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nGlaciate 3&7 (Right Click)" with lore "&eChance To Freeze Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bGlaciate 1"
+	lore of slot 0 of player does not contain "&bGlaciate 2"
+	lore of slot 0 of player does not contain "&bGlaciate 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bGlaciate 3"
+	remove 1 book named "&b&l&nGlaciate 3&7 (Right Click)" with lore "&eChance To Freeze Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&bGlaciate 1":
+		chance of 2%:
+			remove slowness from victim
+			apply slowness 5 to victim for 5 seconds
+			stop
+	if lore of attacker's held item contains "&bGlaciate 2":
+		chance of 3.5%:
+			remove slowness from victim
+			apply slowness 5 to victim for 5 seconds
+			stop
+	if lore of attacker's held item contains "&bGlaciate 3":
+		chance of 5%:
+			remove slowness from victim
+			apply slowness 5 to victim for 5 seconds
+			stop
+
+#--Surprise--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nSurprise 1&7 (Right Click)" with lore "&eChance To Teleport Behind The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bSurprise 1"
+	lore of slot 0 of player does not contain "&bSurprise 2"
+	lore of slot 0 of player does not contain "&bSurprise 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bSurprise 1"
+	remove 1 book named "&b&l&nSurprise 1&7 (Right Click)" with lore "&eChance To Teleport Behind The Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nSurprise 2&7 (Right Click)" with lore "&eChance To Teleport Behind The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bSurprise 1"
+	lore of slot 0 of player does not contain "&bSurprise 2"
+	lore of slot 0 of player does not contain "&bSurprise 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bSurprise 2"
+	remove 1 book named "&b&l&nSurprise 2&7 (Right Click)" with lore "&eChance To Teleport Behind The Enemy||&7Sword Enchantment||%{L}%" from player
+
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nSurprise 3&7 (Right Click)" with lore "&eChance To Teleport Behind The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bSurprise 1"
+	lore of slot 0 of player does not contain "&bSurprise 2"
+	lore of slot 0 of player does not contain "&bSurprise 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bSurprise 3"
+	remove 1 book named "&b&l&nSurprise 3&7 (Right Click)" with lore "&eChance To Teleport Behind The Enemy||&7Sword Enchantment||%{L}%" from player
+
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&bSurprise 1":
+		chance of 1.5%:
+			teleport the attacker behind the victim
+			stop
+	if lore of attacker's held item contains "&bSurprise 2":
+		chance of 3%:
+			teleport the attacker behind the victim
+			stop
+	if lore of attacker's held item contains "&bSurprise 3":
+		chance of 4.5%:
+			teleport the attacker behind the victim
+			stop
+			
+#---Infected--
+
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nInfected 1&7 (Right Click)" with lore "&eChance To Poison Your Enemy||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Infected 1"
+	lore of slot 0 of player does not contain "&6Infected 2"
+	lore of slot 0 of player does not contain "&6Infected 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Infected 1"
+	remove 1 book named "&6&l&nInfected 1&7 (Right Click)" with lore "&eChance To Poison Your Enemy||&7Leggings Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nInfected 2&7 (Right Click)" with lore "&eChance To Poison Your Enemy||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Infected 1"
+	lore of slot 0 of player does not contain "&6Infected 2"
+	lore of slot 0 of player does not contain "&6Infected 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Infected 2"
+	remove 1 book named "&6&l&nInfected 2&7 (Right Click)" with lore "&eChance To Poison Your Enemy||&7Leggings Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nInfected 3&7 (Right Click)" with lore "&eChance To Poison Your Enemy||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Infected 1"
+	lore of slot 0 of player does not contain "&6Infected 2"
+	lore of slot 0 of player does not contain "&6Infected 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Infected 3"
+	remove 1 book named "&6&l&nInfected 3&7 (Right Click)" with lore "&eChance To Poison Your Enemy||&7Leggings Enchantment||%{L}%" from player
+
+on damage of a player:
+	attacker is a player
+	if lore of victim's leggings contains "&6Infected 1":
+		chance of 2%:
+			remove poison from attacker
+			apply poison 1 to attacker for 5 seconds
+			stop
+	if lore of victim's leggings contains "&6Infected 2":
+		chance of 4%:
+			remove poison from attacker
+			apply poison 2 to attacker for 5 seconds
+			stop
+	if lore of victim's leggings contains "&6Infected 3":
+		chance of 6%:
+			remove poison from attacker
+			apply poison 3 to attacker for 5 seconds
+			stop
+		
+#---Payback--
+
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nPayback 1&7 (Right Click)" with lore "&eChance To Spawn A Creeper On Death||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Payback 1"
+	lore of slot 0 of player does not contain "&6Payback 2"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Payback 1"
+	remove 1 book named "&6&l&nPayback 1&7 (Right Click)" with lore "&eChance To Spawn A Creeper On Death||&7Leggings Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nPayback 2&7 (Right Click)" with lore "&eChance To Spawn A Creeper On Death||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Payback 1"
+	lore of slot 0 of player does not contain "&6Payback 2"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Payback 2"
+	remove 1 book named "&6&l&nPayback 2&7 (Right Click)" with lore "&eChance To Spawn A Creeper On Death||&7Leggings Enchantment||%{L}%" from player
+	
+on death of a player:
+	attacker is a player
+	if lore of victim's leggings contains "&6Payback 1":
+		spawn 1 creeper at victim
+		apply resistance 10 to the spawned creeper for 1 minute
+		set the name of the spawned creeper to "&6&lPayback"
+		stop
+	if lore of victim's leggings contains "&6Payback 2":
+		spawn 2 creeper at victim
+		apply resistance 10 to the spawned creeper for 1 minute
+		set the name of the spawned creeper to "&6&lPayback"
+		stop
+		
+#---XP Steal--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nXP Steal 1&7 (Right Click)" with lore "&eChance To Steal XP From Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6XP Steal 1"
+	lore of slot 0 of player does not contain "&6XP Steal 2"
+	lore of slot 0 of player does not contain "&6XP Steal 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6XP Steal 1"
+	remove 1 book named "&6&l&nXP Steal 1&7 (Right Click)" with lore "&eChance To Steal XP From Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nXP Steal 2&7 (Right Click)" with lore "&eChance To Steal XP From Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6XP Steal 1"
+	lore of slot 0 of player does not contain "&6XP Steal 2"
+	lore of slot 0 of player does not contain "&6XP Steal 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6XP Steal 2"
+	remove 1 book named "&6&l&nXP Steal 2&7 (Right Click)" with lore "&eChance To Steal XP From Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nXP Steal 3&7 (Right Click)" with lore "&eChance To Steal XP From Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6XP Steal 1"
+	lore of slot 0 of player does not contain "&6XP Steal 2"
+	lore of slot 0 of player does not contain "&6XP Steal 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6XP Steal 3"
+	remove 1 book named "&6&l&nXP Steal 3&7 (Right Click)" with lore "&eChance To Steal XP From Enemy||&7Sword Enchantment||%{L}%" from player
+
+on damage of a player:
+	attacker is a player
+	if lore of attacker's held item contains "&6XP Steal 1":
+		chance of 2.5%:
+			victim's level is larger than 1
+			reduce the victim's level by 1
+			increase the attacker's level by 1
+			stop
+	if lore of attacker's held item contains "&6XP Steal 2":
+		chance of 5%:
+			victim's level is larger than 1
+			reduce the victim's level by 1
+			increase the attacker's level by 1
+			stop
+	if lore of attacker's held item contains "&6XP Steal 3":
+		chance of 7.5%:
+			victim's level is larger than 1
+			reduce the victim's level by 1
+			increase the attacker's level by 1
+			stop
+		
+#---Penetration--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nPenetration 1&7 (Right Click)" with lore "&eDeal More Damage To Your Enemies Armor||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Penetration 1"
+	lore of slot 0 of player does not contain "&6Penetration 2"
+	lore of slot 0 of player does not contain "&6Penetration 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Penetration 1"
+	remove 1 book named "&6&l&nPenetration 1&7 (Right Click)" with lore "&eDeal More Damage To Your Enemies Armor||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nPenetration 2&7 (Right Click)" with lore "&eDeal More Damage To Your Enemies Armor||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Penetration 1"
+	lore of slot 0 of player does not contain "&6Penetration 2"
+	lore of slot 0 of player does not contain "&6Penetration 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Penetration 2"
+	remove 1 book named "&6&l&nPenetration 2&7 (Right Click)" with lore "&eDeal More Damage To Your Enemies Armor||&7Sword Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nPenetration 3&7 (Right Click)" with lore "&eDeal More Damage To Your Enemies Armor||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Penetration 1"
+	lore of slot 0 of player does not contain "&6Penetration 2"
+	lore of slot 0 of player does not contain "&6Penetration 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Penetration 3"
+	remove 1 book named "&6&l&nPenetration 3&7 (Right Click)" with lore "&eDeal More Damage To Your Enemies Armor||&7Sword Enchantment||%{L}%" from player
+
+on damage of a player:
+	attacker is a player
+	if lore of attacker's held item contains "&6Penetration 1":
+		chance of 10%:
+			damage the victim's helmet by 1
+		chance of 10%:
+			damage the victim's chestplate by 1
+		chance of 10%:
+			damage the victim's leggings by 1
+		chance of 10%:
+			damage the victim's boots by 1
+	if lore of attacker's held item contains "&6Penetration 2":
+		chance of 20%:
+			damage the victim's helmet by 2
+		chance of 20%:
+			damage the victim's chestplate by 2
+		chance of 20%:
+			damage the victim's leggings by 2
+		chance of 20%:
+			damage the victim's boots by 2
+	if lore of attacker's held item contains "&6Penetration 3":
+		chance of 30%:
+			damage the victim's helmet by 3
+		chance of 30%:
+			damage the victim's chestplate by 3
+		chance of 30%:
+			damage the victim's leggings by 3
+		chance of 30%:
+			damage the victim's boots by 3
+
+#---Joker--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nJoker 1&7 (Right Click)" with lore "&eChance To Blind Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bJoker 1"
+	lore of slot 0 of player does not contain "&bJoker 2"
+	lore of slot 0 of player does not contain "&bJoker 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bJoker 1"
+	remove 1 book named "&b&l&nJoker 1&7 (Right Click)" with lore "&eChance To Blind Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nJoker 2&7 (Right Click)" with lore "&eChance To Blind Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bJoker 1"
+	lore of slot 0 of player does not contain "&bJoker 2"
+	lore of slot 0 of player does not contain "&bJoker 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bJoker 2"
+	remove 1 book named "&b&l&nJoker 2&7 (Right Click)" with lore "&eChance To Blind Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&b&l&nJoker 3&7 (Right Click)" with lore "&eChance To Blind Your Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bJoker 1"
+	lore of slot 0 of player does not contain "&bJoker 2"
+	lore of slot 0 of player does not contain "&bJoker 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bJoker 3"
+	remove 1 book named "&b&l&nJoker 3&7 (Right Click)" with lore "&eChance To Blind Your Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of attacker's held item contains "&bJoker 1":
+		chance of 2%:
+			remove blindness from victim
+			apply blindness 1 to victim for 5 seconds
+			stop
+	if lore of attacker's held item contains "&bJoker 2":
+		chance of 4%:
+			remove blindness from victim
+			apply blindness 1 to victim for 5 seconds
+			stop
+	if lore of attacker's held item contains "&bJoker 3":
+		chance of 6%:
+			remove blindness from victim
+			apply blindness 1 to victim for 5 seconds
+			stop
+		
+#---Reinforced--
+
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&b&l&nReinforced 1&7 (Right Click)" with lore "&eChance To Gain Resistance||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bReinforced 1"
+	lore of slot 0 of player does not contain "&bReinforced 2"
+	lore of slot 0 of player does not contain "&bReinforced 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bReinforced 1"
+	remove 1 book named "&b&l&nReinforced 1&7 (Right Click)" with lore "&eChance To Gain Resistance||&7Chestplate Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&b&l&nReinforced 2&7 (Right Click)" with lore "&eChance To Gain Resistance||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bReinforced 1"
+	lore of slot 0 of player does not contain "&bReinforced 2"
+	lore of slot 0 of player does not contain "&bReinforced 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bReinforced 2"
+	remove 1 book named "&b&l&nReinforced 2&7 (Right Click)" with lore "&eChance To Gain Resistance||&7Chestplate Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&b&l&nReinforced 3&7 (Right Click)" with lore "&eChance To Gain Resistance||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bReinforced 1"
+	lore of slot 0 of player does not contain "&bReinforced 2"
+	lore of slot 0 of player does not contain "&bReinforced 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bReinforced 3"
+	remove 1 book named "&b&l&nReinforced 3&7 (Right Click)" with lore "&eChance To Gain Resistance||&7Chestplate Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of victim's chestplate contains "&bReinforced 1":
+		chance of 3%:
+			remove resistance from victim
+			apply resistance 1 to victim for 5 seconds
+			stop
+	if lore of victim's chestplate contains "&bReinforced 2":
+		chance of 5%:
+			remove resistance from victim
+			apply resistance 1 to victim for 5 seconds
+			stop
+	if lore of victim's chestplate contains "&bReinforced 3":
+		chance of 7.5%:
+			remove resistance from victim
+			apply resistance 1 to victim for 5 seconds
+			stop
+		
+#---Hope--
+
+on rightclick:
+	slot 0 of player is a helmet or chestplate or leggings or boots
+	player is holding book named "&6&l&nHope 1&7 (Right Click)" with lore "&eChance To Regenerate On Low Hearts||&7Armor Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Hope 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Hope 1"
+	remove 1 book named "&6&l&nHope 1&7 (Right Click)" with lore "&eChance To Regenerate On Low Hearts||&7Armor Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of victim's helmet contains "&6Hope 1":
+		health of victim is less than 10
+		chance of 10%:
+			remove regeneration from victim
+			apply potion of regeneration 3 to victim for 5 seconds
+	if lore of victim's chestplate contains "&6Hope 1":
+		health of victim is less than 10
+		chance of 10%:
+			remove regeneration from victim
+			apply potion of regeneration 3 to victim for 5 seconds
+	if lore of victim's leggings contains "&6Hope 1":
+		health of victim is less than 10
+		chance of 10%:
+			remove regeneration from victim
+			apply potion of regeneration 3 to victim for 5 seconds
+	if lore of victim's boots contains "&6Hope 1":
+		health of victim is less than 5
+		chance of 10%:
+			remove regeneration from victim
+			apply potion of regeneration 3 to victim for 5 seconds
+		
+#--Grinder--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nGrinder 1&7 (Right Click)" with lore "&eKill Mobs With 1 Hit||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Grinder 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Grinder 1"
+	remove 1 book named "&6&l&nGrinder 1&7 (Right Click)" with lore "&eKill Mobs With 1 Hit||&7Sword Enchantment||%{L}%" from player
+	
+on damage:
+	attacker is a player
+	if victim is a player:
+		stop
+	if lore of attacker's held item contains "&6Grinder 1":
+		increase damage by 20
+		stop
+		
+#--XP Drain--
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nXP Drain 1&7 (Right Click)" with lore "&eGet More XP from Killing Mobs||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6XP Drain 1"
+	lore of slot 0 of player does not contain "&6XP Drain 2"
+	lore of slot 0 of player does not contain "&6XP Drain 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6XP Drain 1"
+	remove 1 book named "&6&l&nXP Drain 1&7 (Right Click)" with lore "&eGet More XP from Killing Mobs||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nXP Drain 2&7 (Right Click)" with lore "&eGet More XP from Killing Mobs||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6XP Drain 1"
+	lore of slot 0 of player does not contain "&6XP Drain 2"
+	lore of slot 0 of player does not contain "&6XP Drain 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6XP Drain 2"
+	remove 1 book named "&6&l&nXP Drain 2&7 (Right Click)" with lore "&eGet More XP from Killing Mobs||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nXP Drain 3&7 (Right Click)" with lore "&eGet More XP from Killing Mobs||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6XP Drain 1"
+	lore of slot 0 of player does not contain "&6XP Drain 2"
+	lore of slot 0 of player does not contain "&6XP Drain 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6XP Drain 3"
+	remove 1 book named "&6&l&nXP Drain 3&7 (Right Click)" with lore "&eGet More XP from Killing Mobs||&7Sword Enchantment||%{L}%" from player
+	
+on death:
+	if victim is a player:
+		stop
+	attacker is a player
+	if lore of attacker's held item contains "&6XP Drain 1":
+		give 5 xp to the attacker
+		stop
+	if lore of attacker's held item contains "&6XP Drain 2":
+		give 10 xp to the attacker
+		stop
+	if lore of attacker's held item contains "&6XP Drain 3":
+		give 15 xp to the attacker
+		stop
+		
+#--Pure--
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nPure 1&7 (Right Click)" with lore "&eChance To Remove All Debuffs||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPure 1"
+	lore of slot 0 of player does not contain "&bPure 2"
+	lore of slot 0 of player does not contain "&bPure 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPure 1"
+	remove 1 book named "&b&l&nPure 1&7 (Right Click)" with lore "&eChance To Remove All Debuffs||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nPure 2&7 (Right Click)" with lore "&eChance To Remove All Debuffs||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPure 1"
+	lore of slot 0 of player does not contain "&bPure 2"
+	lore of slot 0 of player does not contain "&bPure 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPure 2"
+	remove 1 book named "&b&l&nPure 2&7 (Right Click)" with lore "&eChance To Remove All Debuffs||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nPure 3&7 (Right Click)" with lore "&eChance To Remove All Debuffs||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPure 1"
+	lore of slot 0 of player does not contain "&bPure 2"
+	lore of slot 0 of player does not contain "&bPure 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPure 3"
+	remove 1 book named "&b&l&nPure 3&7 (Right Click)" with lore "&eChance To Remove All Debuffs||&7Axe Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&bPure 1":
+		chance of 4%:
+			remove poison from the attacker
+			remove wither from the attacker
+			remove weakness from the attacker
+			remove slowness from the attacker
+			remove mining fatigue from the attacker
+			remove nausea from the attacker
+			stop
+	if lore of attacker's held item contains "&bPure 2":
+		chance of 6%:
+			remove poison from the attacker
+			remove wither from the attacker
+			remove weakness from the attacker
+			remove slowness from the attacker
+			remove mining fatigue from the attacker
+			remove nausea from the attacker
+			stop
+	if lore of attacker's held item contains "&bPure 3":
+		chance of 8%:
+			remove poison from the attacker
+			remove wither from the attacker
+			remove weakness from the attacker
+			remove slowness from the attacker
+			remove mining fatigue from the attacker
+			remove nausea from the attacker
+			stop
+		
+#--Soulsteal & Dracula--
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&6&l&nSoulsteal 1&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Soulsteal 1"
+	lore of slot 0 of player does not contain "&6Soulsteal 2"
+	lore of slot 0 of player does not contain "&6Soulsteal 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Soulsteal 1"
+	remove 1 book named "&6&l&nSoulsteal 1&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&6&l&nSoulsteal 2&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Soulsteal 1"
+	lore of slot 0 of player does not contain "&6Soulsteal 2"
+	lore of slot 0 of player does not contain "&6Soulsteal 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Soulsteal 2"
+	remove 1 book named "&6&l&nSoulsteal 2&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&6&l&nSoulsteal 3&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Soulsteal 1"
+	lore of slot 0 of player does not contain "&6Soulsteal 2"
+	lore of slot 0 of player does not contain "&6Soulsteal 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Soulsteal 3"
+	remove 1 book named "&6&l&nSoulsteal 3&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Axe Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nDracula 1&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Dracula 1"
+	lore of slot 0 of player does not contain "&6Dracula 2"
+	lore of slot 0 of player does not contain "&6Dracula 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Dracula 1"
+	remove 1 book named "&6&l&nDracula 1&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nDracula 2&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Dracula 1"
+	lore of slot 0 of player does not contain "&6Dracula 2"
+	lore of slot 0 of player does not contain "&6Dracula 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Dracula 2"
+	remove 1 book named "&6&l&nDracula 2&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword
+	player is holding book named "&6&l&nDracula 3&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Sword Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Dracula 1"
+	lore of slot 0 of player does not contain "&6Dracula 2"
+	lore of slot 0 of player does not contain "&6Dracula 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Dracula 3"
+	remove 1 book named "&6&l&nDracula 3&7 (Right Click)" with lore "&eSteal Hearts From The Enemy||&7Sword Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&6Dracula 1" or "&6Soulsteal 1":
+		chance of 5%:
+			heal attacker by 1 heart
+			damage victim by 1 heart
+			stop
+	if lore of attacker's held item contains "&6Dracula 2" or "&6Soulsteal 2":
+		chance of 5%:
+			heal attacker by 2 hearts
+			damage victim by 2 hearts
+			stop
+	if lore of attacker's held item contains "&6Dracula 3" or "&6Soulsteal 3":
+		chance of 5%:
+			heal attacker by 3 hearts
+			damage victim by 3 hearts
+			stop
+		
+#--Durability--
+
+on rightclick:
+	slot 0 of player is a pickaxe or sword or axe or shovel
+	player is holding book named "&f&l&nDurability 1&7 (Right Click)" with lore "&eGives Your Tool More Durability||&7Tool Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fDurability 1"
+	lore of slot 0 of player does not contain "&fDurability 2"
+	lore of slot 0 of player does not contain "&fDurability 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fDurability 1"
+	remove 1 book named "&f&l&nDurability 1&7 (Right Click)" with lore "&eGives Your Tool More Durability||&7Tool Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe or sword or axe or shovel
+	player is holding book named "&f&l&nDurability 2&7 (Right Click)" with lore "&eGives Your Tool More Durability||&7Tool Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fDurability 1"
+	lore of slot 0 of player does not contain "&fDurability 2"
+	lore of slot 0 of player does not contain "&fDurability 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fDurability 2"
+	remove 1 book named "&f&l&nDurability 2&7 (Right Click)" with lore "&eGives Your Tool More Durability||&7Tool Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe or sword or axe or shovel
+	player is holding book named "&f&l&nDurability 3&7 (Right Click)" with lore "&eGives Your Tool More Durability||&7Tool Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fDurability 1"
+	lore of slot 0 of player does not contain "&fDurability 2"
+	lore of slot 0 of player does not contain "&fDurability 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fDurability 3"
+	remove 1 book named "&f&l&nDurability 3&7 (Right Click)" with lore "&eGives Your Tool More Durability||&7Tool Enchantment||%{L}%" from player
+	
+on mine:
+	if lore of player's held item contains "&fDurability 1":
+		chance of 10%:
+			wait 1 tick
+			repair the player's held item by 1
+			stop
+	if lore of player's held item contains "&fDurability 2":
+		chance of 20%:
+			wait 1 tick
+			repair the player's held item by 2
+			stop
+	if lore of player's held item contains "&fDurability 3":
+		chance of 30%:
+			wait 1 tick
+			repair the player's held item by 3
+			stop
+		
+on damage:
+	attacker is a player
+	if lore of attacker's held item contains "&fDurability 1":
+		chance of 10%:
+			wait 1 tick
+			repair the attacker's held item by 1
+			stop
+	if lore of attacker's held item contains "&fDurability 2":
+		chance of 20%:
+			wait 1 tick
+			repair the attacker's held item by 2
+			stop
+	if lore of attacker's held item contains "&fDurability 3":
+		chance of 30%:
+			wait 1 tick
+			repair the attacker's held item by 3
+			stop
+		
+#--Furnace--
+
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&f&l&nFurnace 1&7 (Right Click)" with lore "&eChance To Smelt Ores||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fFurnace 1"
+	lore of slot 0 of player does not contain "&fFurnace 2"
+	lore of slot 0 of player does not contain "&fFurnace 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fFurnace 1"
+	remove 1 book named "&f&l&nFurnace 1&7 (Right Click)" with lore "&eChance To Smelt Ores||&7Pickaxe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&f&l&nFurnace 2&7 (Right Click)" with lore "&eChance To Smelt Ores||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fFurnace 1"
+	lore of slot 0 of player does not contain "&fFurnace 2"
+	lore of slot 0 of player does not contain "&fFurnace 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fFurnace 2"
+	remove 1 book named "&f&l&nFurnace 2&7 (Right Click)" with lore "&eChance To Smelt Ores||&7Pickaxe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&f&l&nFurnace 3&7 (Right Click)" with lore "&eChance To Smelt Ores||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fFurnace 1"
+	lore of slot 0 of player does not contain "&fFurnace 2"
+	lore of slot 0 of player does not contain "&fFurnace 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fFurnace 3"
+	remove 1 book named "&f&l&nFurnace 3&7 (Right Click)" with lore "&eChance To Smelt Ores||&7Pickaxe Enchantment||%{L}%" from player
+	
+on break of iron ore:
+	if lore of player's held item contains "&fFurnace 1":
+		cancel the event
+		set block to air
+		drop 1 iron ingot
+		stop
+	if lore of player's held item contains "&fFurnace 2":
+		cancel the event
+		set block to air
+		drop 2 iron ingots
+		stop
+	if lore of player's held item contains "&fFurnace 3":
+		cancel the event
+		set block to air
+		drop 3 iron ingots
+		stop
+		
+on break of gold ore:
+	if lore of player's held item contains "&fFurnace 1":
+		cancel the event
+		set block to air
+		drop 1 gold ingot
+		stop
+	if lore of player's held item contains "&fFurnace 2":
+		cancel the event
+		set block to air
+		drop 2 gold ingots
+		stop
+	if lore of player's held item contains "&fFurnace 3":
+		cancel the event
+		set block to air
+		drop 3 gold ingots
+		stop
+		
+#--Experience--
+
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&f&l&nExperience 1&7 (Right Click)" with lore "&eGet More XP From Mining Ores||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fExperience 1"
+	lore of slot 0 of player does not contain "&fExperience 2"
+	lore of slot 0 of player does not contain "&fExperience 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fExperience 1"
+	remove 1 book named "&f&l&nExperience 1&7 (Right Click)" with lore "&eGet More XP From Mining Ores||&7Pickaxe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&f&l&nExperience 2&7 (Right Click)" with lore "&eGet More XP From Mining Ores||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fExperience 1"
+	lore of slot 0 of player does not contain "&fExperience 2"
+	lore of slot 0 of player does not contain "&fExperience 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fExperience 2"
+	remove 1 book named "&f&l&nExperience 2&7 (Right Click)" with lore "&eGet More XP From Mining Ores||&7Pickaxe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a pickaxe
+	player is holding book named "&f&l&nExperience 3&7 (Right Click)" with lore "&eGet More XP From Mining Ores||&7Pickaxe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fExperience 1"
+	lore of slot 0 of player does not contain "&fExperience 2"
+	lore of slot 0 of player does not contain "&fExperience 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fExperience 3"
+	remove 1 book named "&f&l&nExperience 3&7 (Right Click)" with lore "&eGet More XP From Mining Ores||&7Pickaxe Enchantment||%{L}%" from player
+	
+on mine of coal ore or redstone ore or diamond ore or emerald ore or lapis lazuli ore:
+	if player's tool is a pickaxe of silk touch:
+		stop
+	else:
+		wait 5 ticks
+		if block at event-location is air:
+			if lore of player's held item contains "&fExperience 3":
+				give 10 xp to the player
+				stop
+			if lore of player's held item contains "&fExperience 2":
+				give 20 xp to the player
+				stop
+			if lore of player's held item contains "&fExperience 1":
+				give 30 xp to the player
+				stop
+		
+#--Angel--
+
+on rightclick:
+	slot 0 of player is a helmet or chestplate or leggings or boots
+	player is holding book named "&6&l&nAngel 1&7 (Right Click)" with lore "&eChance To Heal When Fighting||&7Armor Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Angel 1"
+	lore of slot 0 of player does not contain "&6Angel 2"
+	lore of slot 0 of player does not contain "&6Angel 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Angel 1"
+	remove 1 book named "&6&l&nAngel 1&7 (Right Click)" with lore "&eChance To Heal When Fighting||&7Armor Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a helmet or chestplate or leggings or boots
+	player is holding book named "&6&l&nAngel 2&7 (Right Click)" with lore "&eChance To Heal When Fighting||&7Armor Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Angel 1"
+	lore of slot 0 of player does not contain "&6Angel 2"
+	lore of slot 0 of player does not contain "&6Angel 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Angel 2"
+	remove 1 book named "&6&l&nAngel 2&7 (Right Click)" with lore "&eChance To Heal When Fighting||&7Armor Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a helmet or chestplate or leggings or boots
+	player is holding book named "&6&l&nAngel 3&7 (Right Click)" with lore "&eChance To Heal When Fighting||&7Armor Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Angel 1"
+	lore of slot 0 of player does not contain "&6Angel 2"
+	lore of slot 0 of player does not contain "&6Angel 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Angel 3"
+	remove 1 book named "&6&l&nAngel 3&7 (Right Click)" with lore "&eChance To Heal When Fighting||&7Armor Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of victim's helmet contains "&6Angel 1":
+		chance of 5%:
+			heal victim by 1 heart
+	if lore of victim's helmet contains "&6Angel 2":
+		chance of 5%:
+			heal victim by 2 hearts
+	if lore of victim's helmet contains "&6Angel 3":
+		chance of 5%:
+			heal victim by 3 hearts
+	if lore of victim's chestplate contains "&6Angel 1":
+		chance of 5%:
+			heal victim by 1 heart
+	if lore of victim's chestplate contains "&6Angel 2":
+		chance of 5%:
+			heal victim by 2 hearts
+	if lore of victim's chestplate contains "&6Angel 3":
+		chance of 5%:
+			heal victim by 3 hearts
+	if lore of victim's leggings contains "&6Angel 1":
+		chance of 5%:
+			heal victim by 1 heart
+	if lore of victim's leggings contains "&6Angel 2":
+		chance of 5%:
+			heal victim by 2 hearts
+	if lore of victim's leggings contains "&6Angel 3":
+		chance of 5%:
+			heal victim by 3 hearts
+	if lore of victim's boots contains "&6Angel 1":
+		chance of 5%:
+			heal victim by 1 heart
+	if lore of victim's boots contains "&6Angel 2":
+		chance of 5%:
+			heal victim by 2 hearts
+	if lore of victim's boots contains "&6Angel 3":
+		chance of 5%:
+			heal victim by 3 hearts
+		
+#--Venom--
+		
+on rightclick:
+	slot 0 of player is a bow
+	player is holding book named "&b&l&nVenom 1&7 (Right Click)" with lore "&eChance To Poison The Enemy||&7Bow Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bVenom 1"
+	lore of slot 0 of player does not contain "&bVenom 2"
+	lore of slot 0 of player does not contain "&bVenom 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bVenom 1"
+	remove 1 book named "&b&l&nVenom 1&7 (Right Click)" with lore "&eChance To Poison The Enemy||&7Bow Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a bow
+	player is holding book named "&b&l&nVenom 2&7 (Right Click)" with lore "&eChance To Poison The Enemy||&7Bow Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bVenom 1"
+	lore of slot 0 of player does not contain "&bVenom 2"
+	lore of slot 0 of player does not contain "&bVenom 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bVenom 2"
+	remove 1 book named "&b&l&nVenom 2&7 (Right Click)" with lore "&eChance To Poison The Enemy||&7Bow Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a bow
+	player is holding book named "&b&l&nVenom 3&7 (Right Click)" with lore "&eChance To Poison The Enemy||&7Bow Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bVenom 1"
+	lore of slot 0 of player does not contain "&bVenom 2"
+	lore of slot 0 of player does not contain "&bVenom 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bVenom 3"
+	remove 1 book named "&b&l&nVenom 3&7 (Right Click)" with lore "&eChance To Poison The Enemy||&7Bow Enchantment||%{L}%" from player
+
+on projectile hit:
+	projectile is an arrow
+	if lore of shooter's held item contains "&bVenom 1":
+		chance of 5%:
+			loop all players in radius 2 of projectile:
+				remove poison from loop-player
+				apply poison 1 to loop-player for 5 seconds
+				stop
+	if lore of shooter's held item contains "&bVenom 2":
+		chance of 10%:
+			loop all players in radius 2 of projectile:
+				remove poison from loop-player
+				apply poison 1 to loop-player for 5 seconds
+				stop
+	if lore of shooter's held item contains "&bVenom 3":
+		chance of 15%:
+			loop all players in radius 2 of projectile:
+				remove poison from loop-player
+				apply poison 1 to loop-player for 5 seconds
+				stop
+			
+#--Cupid--
+
+on rightclick:
+	slot 0 of player is a bow
+	player is holding book named "&b&l&nCupid 1&7 (Right Click)" with lore "&eChance To Heal When Shooting The Enemies||&7Bow Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bCupid 1"
+	lore of slot 0 of player does not contain "&bCupid 2"
+	lore of slot 0 of player does not contain "&bCupid 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bCupid 1"
+	remove 1 book named "&b&l&nCupid 1&7 (Right Click)" with lore "&eChance To Heal When Shooting The Enemies||&7Bow Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a bow
+	player is holding book named "&b&l&nCupid 2&7 (Right Click)" with lore "&eChance To Heal When Shooting The Enemies||&7Bow Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bCupid 1"
+	lore of slot 0 of player does not contain "&bCupid 2"
+	lore of slot 0 of player does not contain "&bCupid 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bCupid 2"
+	remove 1 book named "&b&l&nCupid 2&7 (Right Click)" with lore "&eChance To Heal When Shooting The Enemies||&7Bow Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a bow
+	player is holding book named "&b&l&nCupid 3&7 (Right Click)" with lore "&eChance To Heal When Shooting The Enemies||&7Bow Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bCupid 1"
+	lore of slot 0 of player does not contain "&bCupid 2"
+	lore of slot 0 of player does not contain "&bCupid 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bCupid 3"
+	remove 1 book named "&b&l&nCupid 3&7 (Right Click)" with lore "&eChance To Heal When Shooting The Enemies||&7Bow Enchantment||%{L}%" from player
+
+
+on projectile hit:
+	projectile is an arrow
+	if lore of shooter's held item contains "&bCupid 1":
+		chance of 7.5%:
+			heal shooter by 1 heart
+			stop
+	if lore of shooter's held item contains "&bCupid 2":
+		chance of 7.5%:
+			heal shooter by 2 heart
+			stop
+	if lore of shooter's held item contains "&bCupid 3":
+		chance of 7.5%:
+			heal shooter by 3 hearts
+			stop
+		
+#--Gills--
+
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&f&l&nGills 1&7 (Right Click)" with lore "&eGives Unlimited Water Breathing Effect||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fGills 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fGills 1"
+	remove 1 book named "&f&l&nGills 1&7 (Right Click)" with lore "&eGives Unlimited Water Breathing Effect||&7Helmet Enchantment||%{L}%" from player
+	
+#--Rush--
+
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&6&l&nRush 1&7 (Right Click)" with lore "&eGives Unlimited Speed Effect||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Rush 1"
+	lore of slot 0 of player does not contain "&6Rush 2"
+	lore of slot 0 of player does not contain "&6Rush 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Rush 1"
+	remove 1 book named "&6&l&nRush 1&7 (Right Click)" with lore "&eGives Unlimited Speed Effect||&7Boot Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&6&l&nRush 2&7 (Right Click)" with lore "&eGives Unlimited Speed Effect||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Rush 1"
+	lore of slot 0 of player does not contain "&6Rush 2"
+	lore of slot 0 of player does not contain "&6Rush 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Rush 2"
+	remove 1 book named "&6&l&nRush 2&7 (Right Click)" with lore "&eGives Unlimited Speed Effect||&7Boot Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&6&l&nRush 3&7 (Right Click)" with lore "&eGives Unlimited Speed Effect||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Rush 1"
+	lore of slot 0 of player does not contain "&6Rush 2"
+	lore of slot 0 of player does not contain "&6Rush 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Rush 3"
+	remove 1 book named "&6&l&nRush 3&7 (Right Click)" with lore "&eGives Unlimited Speed Effect||&7Boot Enchantment||%{L}%" from player
+	
+#--Regen--
+
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&b&l&nRegen 1&7 (Right Click)" with lore "&eGives Unlimited Regeneration Effect||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bRegen 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bRegen 1"
+	remove 1 book named "&b&l&nRegen 1&7 (Right Click)" with lore "&eGives Unlimited Regeneration Effect||&7Chestplate Enchantment||%{L}%" from player
+		
+#--Fear--
+
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&b&l&nFear 1&7 (Right Click)" with lore "&eChance To Weaken The Enemy||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bFear 1"
+	lore of slot 0 of player does not contain "&bFear 2"
+	lore of slot 0 of player does not contain "&bFear 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bFear 1"
+	remove 1 book named "&b&l&nFear 1&7 (Right Click)" with lore "&eChance To Weaken The Enemy||&7Helmet Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&b&l&nFear 2&7 (Right Click)" with lore "&eChance To Weaken The Enemy||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bFear 1"
+	lore of slot 0 of player does not contain "&bFear 2"
+	lore of slot 0 of player does not contain "&bFear 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bFear 2"
+	remove 1 book named "&b&l&nFear 2&7 (Right Click)" with lore "&eChance To Weaken The Enemy||&7Helmet Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&b&l&nFear 3&7 (Right Click)" with lore "&eChance To Weaken The Enemy||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bFear 1"
+	lore of slot 0 of player does not contain "&bFear 2"
+	lore of slot 0 of player does not contain "&bFear 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bFear 3"
+	remove 1 book named "&b&l&nFear 3&7 (Right Click)" with lore "&eChance To Weaken The Enemy||&7Helmet Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of victim's helmet contains "&bFear 1":
+		chance of 2%:
+			remove weakness from attacker
+			apply weakness 1 to the attacker for 5 seconds
+			stop
+	if lore of victim's helmet contains "&bFear 2":
+		chance of 4%:
+			remove weakness from attacker
+			apply weakness 1 to the attacker for 5 seconds
+			stop
+	if lore of victim's helmet contains "&bFear 3":
+		chance of 6%:
+			remove weakness from attacker
+			apply weakness 1 to the attacker for 5 seconds
+			stop
+		
+#--Rabbit--
+
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&b&l&nRabbit 1&7 (Right Click)" with lore "&eGives Unlimited Jump Boost Effect||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bRabbit 1"
+	lore of slot 0 of player does not contain "&bRabbit 2"
+	lore of slot 0 of player does not contain "&bRabbit 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bRabbit 1"
+	remove 1 book named "&b&l&nRabbit 1&7 (Right Click)" with lore "&eGives Unlimited Jump Boost Effect||&7Boot Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&b&l&nRabbit 2&7 (Right Click)" with lore "&eGives Unlimited Jump Boost Effect||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bRabbit 1"
+	lore of slot 0 of player does not contain "&bRabbit 2"
+	lore of slot 0 of player does not contain "&bRabbit 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bRabbit 2"
+	remove 1 book named "&b&l&nRabbit 2&7 (Right Click)" with lore "&eGives Unlimited Jump Boost Effect||&7Boot Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&b&l&nRabbit 3&7 (Right Click)" with lore "&eGives Unlimited Jump Boost Effect||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bRabbit 1"
+	lore of slot 0 of player does not contain "&bRabbit 2"
+	lore of slot 0 of player does not contain "&bRabbit 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bRabbit 3"
+	remove 1 book named "&b&l&nRabbit 3&7 (Right Click)" with lore "&eGives Unlimited Jump Boost Effect||&7Boot Enchantment||%{L}%" from player
+	
+#--Pyromancer--
+
+on rightclick:
+	slot 0 of player is a helmet or chestplate or leggings or boots
+	player is holding book named "&6&l&nPyromancer 1&7 (Right Click)" with lore "&eGives Unlimited Fire Resistance Effect||&7Armor Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Pyromancer 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Pyromancer 1"
+	remove 1 book named "&6&l&nPyromancer 1&7 (Right Click)" with lore "&eGives Unlimited Fire Resistance Effect||&7Armor Enchantment||%{L}%" from player
+		
+#--Sacrifice--
+
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&b&l&nSacrifice 1&7 (Right Click)" with lore "&eDamage The Enemy Within A Radius When You Die||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bSacrifice 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bSacrifice 1"
+	remove 1 book named "&b&l&nSacrifice 1&7 (Right Click)" with lore "&eDamage The Enemy Within A Radius When You Die||&7Leggings Enchantment||%{L}%" from player
+
+on death of a player:
+	lore of victim's leggings contains "&bSacrifice 1"
+	loop all players in radius 10 of victim:
+		create a fake explosion at the victim
+		damage loop-player by 5 hearts
+		stop
+			
+#--Oblivion--
+
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&6&l&nOblivion 1&7 (Right Click)" with lore "&eChance To Strike Lighting And Damage All Enemies Within A Radius||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Oblivion 1"
+	lore of slot 0 of player does not contain "&6Oblivion 2"
+	lore of slot 0 of player does not contain "&6Oblivion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Oblivion 1"
+	remove 1 book named "&6&l&nOblivion 1&7 (Right Click)" with lore "&eChance To Strike Lighting And Damage All Enemies Within A Radius||&7Chestplate Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&6&l&nOblivion 2&7 (Right Click)" with lore "&eChance To Strike Lighting And Damage All Enemies Within A Radius||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Oblivion 1"
+	lore of slot 0 of player does not contain "&6Oblivion 2"
+	lore of slot 0 of player does not contain "&6Oblivion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Oblivion 2"
+	remove 1 book named "&6&l&nOblivion 2&7 (Right Click)" with lore "&eChance To Strike Lighting And Damage All Enemies Within A Radius||&7Chestplate Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a chestplate
+	player is holding book named "&6&l&nOblivion 3&7 (Right Click)" with lore "&eChance To Strike Lighting And Damage All Enemies Within A Radius||&7Chestplate Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Oblivion 1"
+	lore of slot 0 of player does not contain "&6Oblivion 2"
+	lore of slot 0 of player does not contain "&6Oblivion 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Oblivion 3"
+	remove 1 book named "&6&l&nOblivion 3&7 (Right Click)" with lore "&eChance To Strike Lighting And Damage All Enemies Within A Radius||&7Chestplate Enchantment||%{L}%" from player
+	
+on damage of a player:
+	attacker is a player
+	if lore of victim's chestplate contains "&6Oblivion 1":
+		chance of 5%:
+			loop all players in radius 10 of victim:
+				strike lightning effect at loop-player
+				damage loop-player by 1 heart
+				stop
+	if lore of victim's chestplate contains "&6Oblivion 2":
+		chance of 5%:
+			loop all players in radius 10 of victim:
+				strike lightning effect at loop-player
+				damage loop-player by 2 hearts
+				stop
+	if lore of victim's chestplate contains "&6Oblivion 3":
+		chance of 5%:
+			loop all players in radius 10 of victim:
+				strike lightning effect at loop-player
+				damage loop-player by 3 hearts
+				stop
+			
+#--Hulk--
+
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&6&l&nHulk 1&7 (Right Click)" with lore "&eGives Unlimited Strength And Slowness Effect||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Hulk 1"
+	lore of slot 0 of player does not contain "&6Hulk 2"
+	lore of slot 0 of player does not contain "&6Hulk 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Hulk 1"
+	remove 1 book named "&6&l&nHulk 1&7 (Right Click)" with lore "&eGives Unlimited Strength And Slowness Effect||&7Helmet Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&6&l&nHulk 2&7 (Right Click)" with lore "&eGives Unlimited Strength And Slowness Effect||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Hulk 1"
+	lore of slot 0 of player does not contain "&6Hulk 2"
+	lore of slot 0 of player does not contain "&6Hulk 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Hulk 2"
+	remove 1 book named "&6&l&nHulk 2&7 (Right Click)" with lore "&eGives Unlimited Strength And Slowness Effect||&7Helmet Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&6&l&nHulk 3&7 (Right Click)" with lore "&eGives Unlimited Strength And Slowness Effect||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Hulk 1"
+	lore of slot 0 of player does not contain "&6Hulk 2"
+	lore of slot 0 of player does not contain "&6Hulk 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Hulk 3"
+	remove 1 book named "&6&l&nHulk 3&7 (Right Click)" with lore "&eGives Unlimited Strength And Slowness Effect||&7Helmet Enchantment||%{L}%" from player
+	
+#--Brute--
+
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nBrute 1&7 (Right Click)" with lore "&eGives Unlimited Health Boost Effect||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Brute 1"
+	lore of slot 0 of player does not contain "&6Brute 2"
+	lore of slot 0 of player does not contain "&6Brute 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Brute 1"
+	remove 1 book named "&6&l&nBrute 1&7 (Right Click)" with lore "&eGives Unlimited Health Boost Effect||&7Leggings Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nBrute 2&7 (Right Click)" with lore "&eGives Unlimited Health Boost Effect||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Brute 1"
+	lore of slot 0 of player does not contain "&6Brute 2"
+	lore of slot 0 of player does not contain "&6Brute 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Brute 2"
+	remove 1 book named "&6&l&nBrute 2&7 (Right Click)" with lore "&eGives Unlimited Health Boost Effect||&7Leggings Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a leggings
+	player is holding book named "&6&l&nBrute 3&7 (Right Click)" with lore "&eGives Unlimited Health Boost Effect||&7Leggings Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Brute 1"
+	lore of slot 0 of player does not contain "&6Brute 2"
+	lore of slot 0 of player does not contain "&6Brute 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Brute 3"
+	remove 1 book named "&6&l&nBrute 3&7 (Right Click)" with lore "&eGives Unlimited Health Boost Effect||&7Leggings Enchantment||%{L}%" from player
+	
+#--Nocturnal--
+
+on rightclick:
+	slot 0 of player is a helmet
+	player is holding book named "&f&l&nNocturnal 1&7 (Right Click)" with lore "&eGives Unlimited Night Vision Effect||&7Helmet Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&fNocturnal 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&fNocturnal 1"
+	remove 1 book named "&f&l&nNocturnal 1&7 (Right Click)" with lore "&eGives Unlimited Night Vision Effect||&7Helmet Enchantment||%{L}%" from player
+	
+#--Lightweight--
+
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&b&l&nLightweight 1&7 (Right Click)" with lore "&eChance Of A Burst Of Haste||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bLightweight 1"
+	lore of slot 0 of player does not contain "&bLightweight 2"
+	lore of slot 0 of player does not contain "&bLightweight 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bLightweight 1"
+	remove 1 book named "&b&l&nLightweight 1&7 (Right Click)" with lore "&eChance Of A Burst Of Haste||&7Weapon Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&b&l&nLightweight 2&7 (Right Click)" with lore "&eChance Of A Burst Of Haste||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bLightweight 1"
+	lore of slot 0 of player does not contain "&bLightweight 2"
+	lore of slot 0 of player does not contain "&bLightweight 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bLightweight 2"
+	remove 1 book named "&b&l&nLightweight 2&7 (Right Click)" with lore "&eChance Of A Burst Of Haste||&7Weapon Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&b&l&nLightweight 3&7 (Right Click)" with lore "&eChance Of A Burst Of Haste||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bLightweight 1"
+	lore of slot 0 of player does not contain "&bLightweight 2"
+	lore of slot 0 of player does not contain "&bLightweight 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bLightweight 3"
+	remove 1 book named "&b&l&nLightweight 3&7 (Right Click)" with lore "&eChance Of A Burst Of Haste||&7Weapon Enchantment||%{L}%" from player
+	
+on damage:
+	attacker is a player
+	if lore of attacker's held item contains "&bLightweight 1":
+		chance of 5%:
+			remove haste from attacker
+			apply haste 1 to attacker for 5 seconds
+			stop
+	if lore of attacker's held item contains "&bLightweight 2":
+		chance of 5%:
+			remove haste from attacker
+			apply haste 2 to attacker for 5 seconds
+			stop
+	if lore of attacker's held item contains "&bLightweight 3":
+		chance of 5%:
+			remove haste from attacker
+			apply haste 3 to attacker for 5 seconds
+			stop
+			
+#--Adrenaline--
+
+on rightclick:
+	slot 0 of player is a boots
+	player is holding book named "&6&l&nAdrenaline 1&7 (Right Click)" with lore "&eChance Of A Speed Boost At Low HP||&7Boot Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Adrenaline 1"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Adrenaline 1"
+	remove 1 book named "&6&l&nAdrenaline 1&7 (Right Click)" with lore "&eChance Of A Speed Boost At Low HP||&7Boot Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of victim's boots contains "&6Adrenaline 1":
+		if victim's health < 12:
+			chance of 5%:
+				remove speed from victim
+				apply speed 10 to victim for 10 seconds
+				wait 10 seconds
+				remove speed from victim
+				if lore of victim's boots contains "&6Rush 1":
+					apply speed 1 to victim for 1 day
+					stop
+				if lore of victim's boots contains "&6Rush 2":
+					apply speed 2 to victim for 1 day
+					stop
+				if lore of victim's boots contains "&6Rush 3":
+					apply speed 3 to victim for 1 day
+					stop
+				else:
+					stop
+					
+#--Devastate--
+
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&6&l&nDevastate 1&7 (Right Click)" with lore "&eChance To Increase The Damage Inflicted||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Devastate 1"
+	lore of slot 0 of player does not contain "&6Devastate 2"
+	lore of slot 0 of player does not contain "&6Devastate 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Devastate 1"
+	remove 1 book named "&6&l&nDevastate 1&7 (Right Click)" with lore "&eChance To Increase The Damage Inflicted||&7Weapon Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&6&l&nDevastate 2&7 (Right Click)" with lore "&eChance To Increase The Damage Inflicted||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Devastate 1"
+	lore of slot 0 of player does not contain "&6Devastate 2"
+	lore of slot 0 of player does not contain "&6Devastate 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Devastate 2"
+	remove 1 book named "&6&l&nDevastate 2&7 (Right Click)" with lore "&eChance To Increase The Damage Inflicted||&7Weapon Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a sword or axe
+	player is holding book named "&6&l&nDevastate 3&7 (Right Click)" with lore "&eChance To Increase The Damage Inflicted||&7Weapon Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&6Devastate 1"
+	lore of slot 0 of player does not contain "&6Devastate 2"
+	lore of slot 0 of player does not contain "&6Devastate 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&6Devastate 3"
+	remove 1 book named "&6&l&nDevastate 3&7 (Right Click)" with lore "&eChance To Increase The Damage Inflicted||&7Weapon Enchantment||%{L}%" from player
+	
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&6Devastate 1":
+		chance of 7.5%:
+			damage the victim by 1 heart
+			stop
+	if lore of attacker's held item contains "&6Devastate 2":
+		chance of 7.5%:
+			damage the victim by 2 hearts
+			stop
+	if lore of attacker's held item contains "&6Devastate 3":
+		chance of 7.5%:
+			damage the victim by 3 hearts
+			stop
+			
+#--Petrify--
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nPetrify 1&7 (Right Click)" with lore "&eChance To Temporarily Freeze The Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPetrify 1"
+	lore of slot 0 of player does not contain "&bPetrify 2"
+	lore of slot 0 of player does not contain "&bPetrify 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPetrify 1"
+	remove 1 book named "&b&l&nPetrify 1&7 (Right Click)" with lore "&eChance To Temporarily Freeze The Enemy||&7Axe Enchantment||%{L}%" from player
+	
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nPetrify 2&7 (Right Click)" with lore "&eChance To Temporarily Freeze The Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPetrify 1"
+	lore of slot 0 of player does not contain "&bPetrify 2"
+	lore of slot 0 of player does not contain "&bPetrify 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPetrify 2"
+	remove 1 book named "&b&l&nPetrify 2&7 (Right Click)" with lore "&eChance To Temporarily Freeze The Enemy||&7Axe Enchantment||%{L}%" from player
+
+on rightclick:
+	slot 0 of player is a axe
+	player is holding book named "&b&l&nPetrify 3&7 (Right Click)" with lore "&eChance To Temporarily Freeze The Enemy||&7Axe Enchantment||%{L}%"
+	lore of slot 0 of player does not contain "&bPetrify 1"
+	lore of slot 0 of player does not contain "&bPetrify 2"
+	lore of slot 0 of player does not contain "&bPetrify 3"
+	set lore of slot 0 of player to "%lore of slot 0 of player%||&bPetrify 3"
+	remove 1 book named "&b&l&nPetrify 3&7 (Right Click)" with lore "&eChance To Temporarily Freeze The Enemy||&7Axe Enchantment||%{L}%" from player	
+
+on damage of player:
+	attacker is a player
+	if lore of attacker's held item contains "&bPetrify 1":
+		chance of 2%:
+			apply slowness 10 to the victim for 3 seconds
+			stop
+	if lore of attacker's held item contains "&bPetrify 2":
+		chance of 4%:
+			apply slowness 10 to the victim for 3 seconds
+			stop
+	if lore of attacker's held item contains "&bPetrify 3":
+		chance of 6%:
+			apply slowness 10 to the victim for 3 seconds
+			stop	
+

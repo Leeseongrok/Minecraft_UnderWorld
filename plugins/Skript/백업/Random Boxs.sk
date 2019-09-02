@@ -1,0 +1,1015 @@
+# Random Boxs beta V0.1
+# By Sebgineer
+options:
+
+	parperm: minecraft.command.particle
+	Prefix: &a&lRandom Boxs &2&l>>&a
+
+on first join:
+	set {rbcoalkey.%player%} to 1
+	set {rbgoldkey.%player%} to 0
+	set {rbdiamondkey.%player%} to 0
+
+command /rb:
+	trigger:
+		if player have permission "rb.admin":
+			message "{@Prefix}&a&l&m---------------------------" to player
+			message "&a          Random boxs beta 0.1" to player
+			message " " to player
+			message "&a/rb" to player
+			message "&a/rb-help" to player
+			message "&a/rb-groupmode" to player
+			message "&a/rb-givekey" to player
+			message "&a/rb-start" to player
+			message "&a/rb-create-(crate) coal, gold and diamond" to player
+			message "&a/rb-delete-(delete) coal, gold and diamond" to player
+			message "&a&l&m----------------------------------------" to player
+
+command /rb-help:
+	trigger:
+		if player have permission "rb.admin":
+			message "{@Prefix}&a&l&m---------------------------" to player
+			message "&a          Random boxs beta 0.1" to player
+			message " " to player
+			message "&a/rb" to player
+			message "&a/rb-help" to player
+			message "&a/rb-groupmode" to player
+			message "&a/rb-givekey" to player
+			message "&a/rb-start" to player
+			message "&a/rb-create-(crate) coal, gold and diamond" to player
+			message "&a/rb-delete-(delete) coal, gold and diamond" to player
+			message "&a&l&m----------------------------------------" to player
+
+command /rb-groupmode [<text>]:
+	trigger:
+		if arg 1 is "pex" or "permissionex":
+			set {rb.gm} to 1
+			send "{@Prefix} du have set it to PermissionEx" to player
+		if arg 1 is "gm" or "groupmanager":
+			set {rb.gm} to 2
+			send "{@Prefix} du have set it to groupmanager" to player
+		if arg 1 is not set:
+			send "{@Prefix} you can only do PEX or PermissionEx or gm and GroupManager" to player
+		if arg 1 is not "gm" or "groupmanager" or "pex" or "permissionex":
+			send "{@Prefix} you can only do PEX or PermissionEx or gm or GroupManager" to player
+
+command /rb-givekey [<text>] [<text>]:
+	trigger:
+		if player have permission "rb.admin":
+			if arg 1 is not set:
+				message "{@Prefix} you have not select a player" to player
+				stop trigger
+			if arg 2 is not set:
+				message "" to player
+			if arg 2 is "coal":
+				add 1 to {rbcoalkey.%arg 1%}
+				message "{@Prefix} you have give a Coal Key to %arg 1%" to player
+				stop trigger
+			if arg 2 is "gold":
+				add 1 to {rbgoldkey.%arg 1%}
+				message "{@Prefix} you have give a Gold Key to %arg 1%" to player
+				stop trigger
+			if arg 2 is "diamond":
+				add 1 to {rbdiamondkey.%arg 1%}
+				message "{@Prefix} you have give a Diamond Key to %arg 1%" to player
+				stop trigger
+
+command /rb-start:
+	trigger:
+		set {rb.coal} to 0
+		set {rb.gold} to 0
+		set {rb.diamond} to 0
+		set {rbopen.coal} to 0
+		set {rbopen.gold} to 0
+		set {rbopen.diamond} to 0
+		set {rb.gm} to 0
+		message "{@Prefix} you have start Random Boxs" to player
+
+command /rb-create-coal:
+	trigger:
+		if player have permission "rb.admin":
+			{rb.coal} is 0:
+				message "&4&lDon't Move" to player
+				make player execute command "setblock ~ ~-1 ~ bedrock"
+				make player execute command "setblock ~ ~ ~ minecraft:beacon"
+				wait 2 ticks
+				make player execute command "tp ~-1 ~0 ~0"
+				make player execute command "setblock ~ ~ ~ minecraft:nether_brick_stairs 0"
+				wait 2 ticks
+				make player execute command "tp ~1 ~0 ~-1"
+				make player execute command "setblock ~ ~ ~ minecraft:nether_brick_stairs 2"
+				wait 2 ticks
+				make player execute command "tp ~1 ~0 ~1"
+				make player execute command "setblock ~ ~ ~ minecraft:nether_brick_stairs 1"
+				wait 2 ticks
+				make player execute command "tp ~-1 ~0 ~1"
+				make player execute command "setblock ~ ~ ~ minecraft:nether_brick_stairs 3"
+				wait 2 ticks
+				make player execute command "tp ~0 ~1 ~-1"
+				make player execute command "setblock ~ ~ ~ minecraft:stone"
+				wait 2 ticks
+				make player execute command "tp ~0 ~1 ~0"
+				make player execute command "setblock ~ ~ ~ minecraft:coal_block"
+				wait 2 ticks
+				make player execute command "setblock ~ ~-1 ~ minecraft:air"
+				make player execute command "tp ~0 ~1 ~0"
+				wait 10 ticks
+				make player execute command "hd create coal_box &b&lCoal Crate"
+				make player execute command "hd addline coal_box &eRight Click for open"
+				set {rbspawn.coal} to location of player
+				set {rb.coal} to 1
+				message "{@Prefix} Finish" to player
+				stop trigger
+			{rb.coal} is 1:
+				message "{@Prefix} you have set a Coal Crate" to player
+				stop trigger
+
+command /rb-create-gold:
+	trigger:
+		if player have permission "rb.admin":
+			{rb.gold} is 0:
+				message "&4&lDon't Move" to player
+				make player execute command "setblock ~ ~-1 ~ bedrock"
+				make player execute command "setblock ~ ~ ~ minecraft:beacon"
+				wait 2 ticks
+				make player execute command "tp ~-1 ~0 ~0"
+				make player execute command "setblock ~ ~ ~ minecraft:sandstone_stairs 0"
+				wait 2 ticks
+				make player execute command "tp ~1 ~0 ~-1"
+				make player execute command "setblock ~ ~ ~ minecraft:sandstone_stairs 2"
+				wait 2 ticks
+				make player execute command "tp ~1 ~0 ~1"
+				make player execute command "setblock ~ ~ ~ minecraft:sandstone_stairs 1"
+				wait 2 ticks
+				make player execute command "tp ~-1 ~0 ~1"
+				make player execute command "setblock ~ ~ ~ minecraft:sandstone_stairs 3"
+				wait 2 ticks
+				make player execute command "tp ~0 ~1 ~-1"
+				make player execute command "setblock ~ ~ ~ minecraft:stone"
+				wait 2 ticks
+				make player execute command "tp ~0 ~1 ~0"
+				make player execute command "setblock ~ ~ ~ minecraft:gold_block"
+				wait 2 ticks
+				make player execute command "setblock ~ ~-1 ~ minecraft:air"
+				make player execute command "tp ~0 ~1 ~0"
+				wait 10 ticks
+				make player execute command "hd create gold_box &b&lGold Crate"
+				make player execute command "hd addline gold_box &eRight Click for open"
+				set {rbspawn.gold} to location of player
+				set {rb.gold} to 1
+				message "{@Prefix} Finish" to player
+				stop trigger
+			{rb.gold} is 1:
+				message "{@Prefix} you have set a Gold Crate" to player
+				stop trigger
+
+command /rb-create-diamond:
+	trigger:
+		if player have permission "rb.admin":
+			{rb.diamond} is 0:
+				message "&4&lDon't Move" to player
+				make player execute command "setblock ~ ~-1 ~ bedrock"
+				make player execute command "setblock ~ ~ ~ minecraft:beacon"
+				wait 2 ticks
+				make player execute command "tp ~-1 ~0 ~0"
+				make player execute command "setblock ~ ~ ~ minecraft:quartz_stairs 0"
+				wait 2 ticks
+				make player execute command "tp ~1 ~0 ~-1"
+				make player execute command "setblock ~ ~ ~ minecraft:quartz_stairs 2"
+				wait 2 ticks
+				make player execute command "tp ~1 ~0 ~1"
+				make player execute command "setblock ~ ~ ~ minecraft:quartz_stairs 1"
+				wait 2 ticks
+				make player execute command "tp ~-1 ~0 ~1"
+				make player execute command "setblock ~ ~ ~ minecraft:quartz_stairs 3"
+				wait 2 ticks
+				make player execute command "tp ~0 ~1 ~-1"
+				make player execute command "setblock ~ ~ ~ minecraft:stone"
+				wait 2 ticks
+				make player execute command "tp ~0 ~1 ~0"
+				make player execute command "setblock ~ ~ ~ minecraft:diamond_block"
+				wait 2 ticks
+				make player execute command "setblock ~ ~-1 ~ minecraft:air"
+				make player execute command "tp ~0 ~1 ~0"
+				wait 10 ticks
+				make player execute command "hd create diamond_box &b&lDiamond Crate"
+				make player execute command "hd addline diamond_box &eRight Click for open"
+				set {rbspawn.diamond} to location of player
+				set {rb.diamond} to 1
+				message "{@Prefix} Finish" to player
+				stop trigger
+			{rb.diamond} is 1:
+				message "{@Prefix} you have set a Diamond Crate" to player
+				stop trigger
+
+command /rb-delete-coal:
+	trigger:
+		if player have permission "rb.admin":
+			{rb.coal} is 0:
+				message "{@Prefix} You have not a coal crate" to player
+				stop trigger
+			{rb.coal} is 1:
+				teleport player to {rbspawn.coal}
+				make player execute command "hd delete coal_box"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~0 ~-2 ~0"
+				make player execute command "setblock ~ ~-1 ~ air"
+				make player execute command "setblock ~ ~-2 ~ grass"
+				wait 2 ticks
+				make player execute command "tp %player% ~1 ~0 ~0"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~-1 ~0 ~1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~-1 ~0 ~-1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~1 ~0 ~-1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				set {rb.coal} to 0
+				message "{@Prefix} Finish" to player
+				stop trigger
+
+command /rb-delete-gold:
+	trigger:
+		if player have permission "rb.admin":
+			{rb.gold} is 0:
+				message "{@Prefix} You have not a gold crate" to player
+				stop trigger
+			{rb.gold} is 1:
+				teleport player to {rbspawn.gold}
+				make player execute command "hd delete gold_box"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~0 ~-2 ~0"
+				make player execute command "setblock ~ ~-1 ~ air"
+				make player execute command "setblock ~ ~-2 ~ grass"
+				wait 2 ticks
+				make player execute command "tp %player% ~1 ~0 ~0"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~-1 ~0 ~1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~-1 ~0 ~-1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~1 ~0 ~-1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				set {rb.gold} to 0
+				message "{@Prefix} Finish" to player
+				stop trigger
+
+command /rb-delete-diamond:
+	trigger:
+		if player have permission "rb.admin":
+			{rb.diamond} is 0:
+				message "{@Prefix} You have not a diamond crate" to player
+				stop trigger
+			{rb.diamond} is 1:
+				teleport player to {rbspawn.diamond}
+				make player execute command "hd delete diamond_box"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~0 ~-2 ~0"
+				make player execute command "setblock ~ ~-1 ~ air"
+				make player execute command "setblock ~ ~-2 ~ grass"
+				wait 2 ticks
+				make player execute command "tp %player% ~1 ~0 ~0"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~-1 ~0 ~1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~-1 ~0 ~-1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				wait 2 ticks
+				make player execute command "tp %player% ~1 ~0 ~-1"
+				make player execute command "setblock ~ ~-1 ~ air"
+				set {rb.diamond} to 0
+				message "{@Prefix} Finish" to player
+				stop trigger
+
+on right click:
+	if event-block is coal block:
+		loop blocks in radius 3 around block at player:
+			loop-block is a bedrock:
+				if player have permission "rb.open":
+					if {rb.gm} is more than 0:
+						if {rbcoalkey.%player%} is more than 0:
+							{rbopen.coal} is 1:
+								message "{@Prefix} you must wait to the author player is done" to player
+							{rbopen.coal} is 0:
+								teleport player to {rbspawn.coal}
+								set {rbopen.coal} to 1
+								execute console command "hd setline coal_box 1 &0."
+								execute console command "hd removeline coal_box 2"
+								apply slowness 10 to player for 5 seconds
+								apply jump boost -10 to player for 5 seconds
+								add golden sword to {_coal::*}
+								add stone sword to {_coal::*}
+								add bow to {_coal::*}
+								add chain helmet to {_coal::*}
+								add chain chestplate to {_coal::*}
+								add chain leggings to {_coal::*}
+								add chain boots to {_coal::*}
+								set {_coal} to random element of {_coal::*}
+								{rb.gm} is 1:
+									execute console command "pex user %player% add minecraft.command.particle"
+									make player execute command "particle happyVillager ~ ~10 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle flame ~ ~1 ~ 0 0 0 0.1 100 10"
+									remove 1 from {rbcoalkey.%player%}
+									execute console command "hd setline coal_box 1 &b&l%player% Found "
+									execute console command "hd addline coal_box &eA %{_coal}%"
+									message "&6You have found: &a%{_coal}%" to player
+									give {_coal} to player
+									execute console command "pex user %player% remove minecraft.command.particle"
+									wait 15 seconds
+									execute console command "hd setline coal_box 1 &b&lCoal Crate"
+									execute console command "hd setline coal_box 2 &eRight Click for open"
+									set {rbopen.coal} to 0
+									stop trigger
+								{rb.gm} is 2:
+									execute console command "/manuaddp %player% minecraft.command.particle"
+									make player execute command "particle happyVillager ~ ~10 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle flame ~ ~1 ~ 0 0 0 0.1 100 10"
+									remove 1 from {rbcoalkey.%player%}
+									execute console command "hd setline coal_box 1 &b&l%player% Found "
+									execute console command "hd addline coal_box &eA %{_coal}%"
+									message "&6You have found: &a%{_coal}%" to player
+									give {_coal} to player
+									execute console command "/manudelp %player% minecraft.command.particle"
+									wait 15 seconds
+									execute console command "hd setline coal_box 1 &b&lCoal Crate"
+									execute console command "hd setline coal_box 2 &eRight Click for open"
+									set {rbopen.coal} to 0
+									stop trigger
+						else:
+							message "&cyou don't have a key to coal crate" to player
+							stop trigger
+					else:
+						message "{@Prefix} the admin/owner do not have set a groupmode" to player
+						stop trigger
+				else:
+					message "{@Prefix} you have not permission" to player
+					stop trigger
+	if event-block is gold block:
+		loop blocks in radius 3 around block at player:
+			loop-block is a bedrock:
+				if player have permission "rb.open":
+					if {rb.gm} is more than 0:
+						if {rbgoldkey.%player%} is more than 0:
+							{rbopen.gold} is 1:
+								message "{@Prefix} you must wait to the author player is done" to player
+							{rbopen.gold} is 0:
+								teleport player to {rbspawn.gold}
+								set {rbopen.gold} to 1
+								execute console command "hd setline gold_box 1 &0."
+								execute console command "hd removeline gold_box 2"
+								apply slowness 10 to player for 5 seconds
+								apply jump boost -10 to player for 5 seconds
+								add golden sword to {_gold::*}
+								add iron sword to {_gold::*}
+								add bow to {_gold::*}
+								add iron helmet to {_gold::*}
+								add iron chestplate to {_gold::*}
+								add iron leggings to {_gold::*}
+								add iron boots to {_gold::*}
+								set {_gold} to random element of {_gold::*}
+								{rb.gm} is 1:
+									execute console command "pex user %player% add minecraft.command.particle"
+									make player execute command "particle happyVillager ~ ~10 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle flame ~ ~1 ~ 0 0 0 0.1 100 10"
+									remove 1 from {rbgoldkey.%player%}
+									execute console command "hd setline gold_box 1 &b&l%player% Found"
+									execute console command "hd addline gold_box &eA %{_gold}%"
+									message "&6You have found: &a%{_gold}%" to player
+									give {_gold} to player
+									execute console command "pex user %player% remove minecraft.command.particle"
+									wait 15 seconds
+									execute console command "hd setline gold_box 1 &b&lGold Crate"
+									execute console command "hd setline gold_box 2 &eRight Click for open"
+									set {rbopen.gold} to 0
+									stop trigger
+								{rb.gm} is 2:
+									execute console command "/manuaddp %player% minecraft.command.particle"
+									make player execute command "particle happyVillager ~ ~10 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle flame ~ ~1 ~ 0 0 0 0.1 100 10"
+									remove 1 from {rbgoldkey.%player%}
+									execute console command "hd setline gold_box 1 &b&l%player% Found"
+									execute console command "hd addline gold_box &eA %{_gold}%"
+									message "&6You have found: &a%{_gold}%" to player
+									give {_gold} to player
+									execute console command "/manudelp %player% minecraft.command.particle"
+									wait 15 seconds
+									execute console command "hd setline gold_box 1 &b&lGold Crate"
+									execute console command "hd setline gold_box 2 &eRight Click for open"
+									set {rbopen.gold} to 0
+									stop trigger
+						else:
+							message "&cyou don't have a key to gold crate" to player
+							stop trigger
+					else:
+						message "{@Prefix} the admin/owner do not have set a groupmode" to player
+						stop trigger
+				else:
+					message "{@Prefix} you have not permission" to player
+					stop trigger
+	if event-block is diamond block:
+		loop blocks in radius 3 around block at player:
+			loop-block is a bedrock:
+				if player have permission "rb.open":
+					if {rb.gm} is more than 0:
+						if {rbdiamondkey.%player%} is more than 0:
+							{rbopen.diamond} is 1:
+								message "{@Prefix} you must wait to the author player is done" to player
+							{rbopen.diamond} is 0:
+								teleport player to {rbspawn.diamond}
+								set {rbopen.diamond} to 1
+								execute console command "hd setline diamond_box 1 &0."
+								execute console command "hd removeline diamond_box 2"
+								apply slowness 10 to player for 5 seconds
+								apply jump boost -10 to player for 5 seconds
+								add diamond sword to {_diamond::*}
+								add iron sword to {_diamond::*}
+								add bow to {_diamond::*}
+								add diamond helmet to {_diamond::*}
+								add diamond chestplate to {_diamond::*}
+								add diamond leggings to {_diamond::*}
+								add diamond boots to {_diamond::*}
+								set {_diamond} to random element of {_diamond::*}
+								{rb.gm} is 1:
+									execute console command "pex user %player% add minecraft.command.particle"
+									make player execute command "particle happyVillager ~ ~10 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle flame ~ ~1 ~ 0 0 0 0.1 100 10"
+									remove 1 from {rbdiamondkey.%player%}
+									execute console command "hd setline diamond_box 1 &b&l%player% Found"
+									execute console command "hd addline diamond_box &eA %{_diamond}%"
+									message "&6You have found: &a%{_diamond}%" to player
+									give {_diamond} to player
+									execute console command "pex user %player% remove minecraft.command.particle"
+									wait 15 seconds
+									execute console command "hd setline diamond_box 1 &b&lDiamond Crate"
+									execute console command "hd setline diamond_box 2 &eRight Click for open"
+									set {rbopen.diamond} to 0
+									stop trigger
+								{rb.gm} is 2:
+									execute console command "/manuaddp %player% minecraft.command.particle"
+									make player execute command "particle happyVillager ~ ~10 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~9 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~7 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~5 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~3 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.8 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.6 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.4 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle happyVillager ~ ~1.2 ~ 0 0 0 0.6 10 10"
+									wait 2 ticks
+									make player execute command "particle flame ~ ~1 ~ 0 0 0 0.1 100 10"
+									remove 1 from {rbdiamondkey.%player%}
+									execute console command "hd setline diamond_box 1 &b&l%player% Found"
+									execute console command "hd addline diamond_box &eA %{_diamond}%"
+									message "&6You have found: &a%{_diamond}%" to player
+									give {_diamond} to player
+									execute console command "/manudelp %player% minecraft.command.particle"
+									wait 15 seconds
+									execute console command "hd setline diamond_box 1 &b&lDiamond Crate"
+									execute console command "hd setline diamond_box 2 &eRight Click for open"
+									set {rbopen.diamond} to 0
+									stop trigger
+						else:
+							message "&cyou don't have a key to diamond crate" to player
+							stop trigger
+					else:
+						message "{@Prefix} the admin/owner do not have set a groupmode" to player
+						stop trigger
+				else:
+					message "{@Prefix} you have not permission" to player
+					stop trigger

@@ -1,0 +1,69 @@
+on rightclick:
+    if player is holding blaze powder named "&6&lWizard Dust":
+        apply swiftness 2 to the player for 30 seconds
+        remove 1 blaze powder named "&6&lWizard Dust" from player's inventory
+    if player is holding blaze powder named "&4&lImmortal Dust":
+        apply swiftness 5 to the player for 1 minute
+        apply strength 5 to the player for 1 minute
+        remove 1 blaze powder named "&4&lImmortal Dust" from player's inventory
+    if player is holding wooden hoe named "&4&l&kii&c&lStaff Abuse&4&l&kii":
+        strike lightning at block
+        damage tool by 1
+
+    if player is holding iron sword named "&aEnder Staff":
+        set {_waited} to difference between {enderstaff.%player%.lastused} and now
+        if {_waited} is less than 3 second:
+            message "&cSpell not charged!"
+            damage player by 1 heart
+            damage tool by 2
+            stop
+        make the player shoot a enderpearl at speed 5
+        message "&aEnder staff activated"
+        set {enderstaff.%player%.lastused} to now
+        damage tool by 1
+        wait 3 seconds
+        message "&aEnder staff recharged"
+
+    if player is holding blaze rod named "&4&lFireball Staff":
+        set {_waited} to difference between {fireballstaff.%player%.lastused} and now
+        if {_waited} is less than 3 second:
+            message "&cSpell not charged!"
+            damage player by 1 heart
+            stop
+        if player has glowstone dust:
+            make the player shoot a fireball at speed 5
+            remove 1 glowstone dust from player's inventory
+            message "&4Fireball staff recharging"
+            set {fireballstaff.%player%.lastused} to now
+            wait 3 seconds
+            message "&4Fireball staff staff recharged"
+            stop
+        message "&4You have no glowstone!"
+
+    if player is holding brick named "&c&lMedkit":
+        set {_waited} to difference between {medkit.%player%.lastused} and now
+        if {_waited} is less than 3 second:
+            message "&cStill applying medkit!"
+            stop
+        message "&aApplying medkit"
+        apply slowness 4 to the player for 3 seconds
+        set {medkit.%player%.lastused} to now
+        remove 1 brick named "&c&lMedkit" from player's inventory
+        wait 3 seconds
+        message "&aMedkit applied"
+        heal the player
+
+    if player is holding iron axe named "&dPig Launcher":
+        set {_waited} to difference between {piglauncher.%player%.lastused} and now
+        if {_waited} is less than 1 second:
+            message "&cStill reloading!"
+            stop
+        if player has porkchop:
+            make the player shoot a pig at speed 5
+            remove 1 porkchop from player's inventory
+            message "&dReloading"
+            set {piglauncher.%player%.lastused} to now
+            wait 1 seconds
+            message "&dReloaded"
+            stop
+        message "&4You have no porkchops!"

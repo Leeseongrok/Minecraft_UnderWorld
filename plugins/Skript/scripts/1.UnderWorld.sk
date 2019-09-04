@@ -5,7 +5,8 @@ on load:
 	#명령어 식별자 설정
 	set {underworld::prefix} to "&6[UW]&7"
 	#서버 리스트 소개란 내용설정
-	set {underworld::motd} to "&e&lUnderWorld 테스트 서버 1.13.2"
+	set {underworld::motd1} to "            &a&l+&6&lMinecraft Under World&a+"
+	set {underworld::motd2} to "               &a1.13 Ver &c개발중 . . . . &6&k111"
 	#유저 접속시 출력문구
 	set {underworld::userin} to "&6[+]&7"
 	#유저 로그아웃시 출력문구
@@ -48,6 +49,11 @@ on load:
 
 
 
+#On Drop:
+#	if player has not enough space for 2 air:
+#		send player title "" with subtitle "인벤토리 거의참" for 2 seconds
+#	if player has not enough space for 1 air:
+#		send player title "" with subtitle "인벤토리 꽉참" for 2 seconds
 
 
 on join: # ⬛접속이벤트⬛
@@ -78,7 +84,7 @@ on chat: # ⬛채팅이벤트⬛
 	bind hologram "%{underworld::usermessage::prefix}%%message%" to player for 3 seconds offset by 0.0, 3.0, 0.0
 
 on server list ping: # ⬛서버 리스트 소개⬛
-	set motd to "%{underworld::motd}%"
+	set motd to "%{underworld::motd1}%%nl%%{underworld::motd2}%"
 
 every 3 seconds: # ⬛스코어 보드 관리⬛
 	loop all players:

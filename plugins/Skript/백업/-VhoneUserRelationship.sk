@@ -1,0 +1,164 @@
+﻿# 제작자 : vhone
+# 블로그 : http://v_hone.blog.me/
+
+# 블로그에서 정식으로 배포하는 스크립트입니다.
+# 수정사항이 있으면 블로그에 덧글 남겨주세요.
+
+# 스크립트를 수정하지 말아주세요.
+# 스크립트를 재배포하지 말아주세요.
+
+# << 테스트 환경 >>
+# Server : Spigot 1.11.2-R0.1-SNAPSHOUT
+# Java : jre1.8.0_111
+# Skript : 2.2-dev23
+# Add-on : X
+
+options:
+	INFO: [&c&lV&rhone&7-&c&lUR&r]&7
+	USER.H: &f<&c
+	USER.T: &f>&7
+	NUM.H: &f[&c
+	NUM.T: &f]&7
+
+on load:
+	set {world::vur} to "&c&lV&rhone &c&lU&rser &c&lR&relationship ( v1.0 )"
+	set {vur::friend} to "list"
+	set {vur::invite} to "value"
+	send "%{world::vur}% 로딩되었습니다. ( http://v_hone.blog.me/ )" to console
+on unload:
+	delete {world::vur}
+	delete {vur::*}
+
+on join:
+	set {uuid::%player's uuid%} to player
+	set {user::%player%} to player's uuid
+
+command /vur [<text="">] [<text>] [<text>]:
+	trigger:
+		if arg-1 is not "help" or "list" or "swap" or "invite" or "accept" or "refuse" or "break":
+			message "{@INFO} 명령이 잘못되었습니다. ( 도움말 : /vur help )"
+			stop
+		if arg-1 is "help":
+			message "========== %{world::vur}% =========="
+			message "&c-&r /vur help : &7도움말을 봅니다."
+			message "&c-&r /vur list : &7유저목록을 봅니다."
+			message "&c-&r /vur invite <USER> : &7유저에게 요청을 보냅니다."
+			message "&c-&r /vur accept <USER> : &7유저의 요청을 승락합니다."
+			message "&c-&r /vur refuse <USER> : &7유저의 요청을 거절합니다."
+			message "&c-&r /vur break <USER> : &7유저와의 관계를 끊습니다."
+			message "&c-&r /vur swap <NUM> <NUM> : &7유저의 번호를 바꿉니다."
+			stop
+		set {_player} to player's uuid
+		if arg-1 is "list":
+			if {vur.%{_player}%.friend::*} is not set:
+				message "{@INFO} 유저목록이 없습니다."
+				stop
+			set {_n} to 1
+			loop {vur.%{_player}%.friend::*}:
+				add 1 to {_c}
+				if {_line::%{_n}%} is not set:
+					set {_line::%{_n}%} to "[%loop-index%] %{uuid::%loop-value%}%"
+				else:
+					set {_line::%{_n}%} to "%{_line::%{_n}%}%   [%loop-index%] %{uuid::%loop-value%}%"
+				if {_c} >= 5:
+					set {_c} to 0
+					add 1 to {_n}
+			loop {_line::*}:
+				message "{@INFO} %loop-value%"
+			stop
+		if arg-1 is "swap":
+			set {_arg2} to arg-2 parsed as integer
+			if {_arg2} is not set:
+				message "{@INFO} 첫번째 번호가 잘못 되었습니다."
+				stop
+			set {_arg3} to arg-3 parsed as integer
+			if {_arg3} is not set:
+				message "{@INFO} 두번째 번호가 잘못 되었습니다."
+				stop
+			if {_arg2} = {_arg3}:
+				message "{@INFO} 두 번호가 서로 같습니다."
+				stop
+			if {vur.%{_player}%.friend::%{_arg2}%} is set:
+				add 1 to {_int}
+			if {vur.%{_player}%.friend::%{_arg3}%} is set:
+				add 2 to {_int}
+			if {_int} is not set:
+				message "{@INFO} 목록에 없는 번호끼리는 바꿀 수 없습니다."
+				stop
+			if {_int} is 1:
+				set {vur.%{_player}%.friend::%{_arg3}%} to {vur.%{_player}%.friend::%{_arg2}%}
+				delete {vur.%{_player}%.friend::%{_arg2}%}
+				message "{@INFO} {@USER.H}%{uuid::%{vur.%{_player}%.friend::%{_arg3}%}%}%{@USER.T}의 목록번호가 바뀌었습니다. {@NUM.H} %{_arg2}% → %{_arg3}% {@NUM.T}"
+			if {_int} is 2:
+				set {vur.%{_player}%.friend::%{_arg2}%} to {vur.%{_player}%.friend::%{_arg3}%}
+				delete {vur.%{_player}%.friend::%{_arg3}%}
+				message "{@INFO} {@USER.H}%{uuid::%{vur.%{_player}%.friend::%{_arg2}%}%}%{@USER.T}의 목록번호가 바뀌었습니다. {@NUM.H} %{_arg3}% → %{_arg2}% {@NUM.T}"
+			if {_int} is 3:
+				set {_1} to {vur.%{_player}%.friend::%{_arg2}%}
+				set {_2} to {vur.%{_player}%.friend::%{_arg3}%}
+				set {vur.%{_player}%.friend::%{_arg2}%} to {_2}
+				set {vur.%{_player}%.friend::%{_arg3}%} to {_1}
+				message "{@INFO} {@USER.H}%{uuid::%{_1}%}%{@USER.T}의 목록번호가 바뀌었습니다. {@NUM.H} %{_arg2}% → %{_arg3}% {@NUM.T}"
+				message "{@INFO} {@USER.H}%{uuid::%{_2}%}%{@USER.T}의 목록번호가 바뀌었습니다. {@NUM.H} %{_arg3}% → %{_arg2}% {@NUM.T}"
+			stop
+		loop {uuid::*}:
+			"%arg-2%" is "%loop-value%"
+			set {_user} to true
+		if {_user} is not set:
+			message "{@INFO} 없는 플레이어입니다."
+			stop
+		set {_arg2} to {user::%arg-2%}
+		if arg-1 is "invite":
+			loop {vur.%{_player}%.friend::*}:
+				{_arg2} is loop-value
+				message "{@INFO} <%arg-2%>는 이미 등록되어 있습니다. ( [%loop-index%] %arg-2%)"
+				stop
+			if {vur.%{_player}%.invite} is set:
+				message "{@INFO} 이미 <%arg-2%>에게 요청를 보냈습니다."
+				stop
+			set {vur.%{_player}%.invite} to {_arg2}
+			message "{@INFO} {@USER.H}%arg-2%{@USER.T}에게 요청를 보냈습니다."
+			message "{@INFO} {@USER.H}%player%{@USER.T}에게서 요청를 받았습니다. ( /vur [accept/refuse] %player% )" to {uuid::%{user::%arg-2%}%}
+			set {_n} to 0
+			while {_n} <= 30:
+				wait 1 second
+				add 1 to {_n}
+				if {vur.%{_player}%.invite} is not set:
+					stop
+				if {_n} >= 30:
+					delete {vur.%{_player}%.invite}
+					message "{@INFO} 시간초과로 요청이 거절되었습니다." to player and {uuid::%{user::%arg-2%}%}
+					stop
+		if arg-1 is "accept":
+			if {vur.%{_arg2}%.invite} is not set:
+				message "{@INFO} <%arg-2%>에게서 요청를 받지 않았습니다."
+				stop
+			if {vur.%{_arg2}%.invite} is not {_player}:
+				message "{@INFO} <%arg-2%>는 다른유저의 요청를 받았습니다."
+				stop
+			delete {vur.%{_arg2}%.invite}
+			add {_arg2} to {vur.%{_player}%.friend::*}
+			add {_player} to {vur.%{_arg2}%.friend::*}
+			message "{@INFO} {@USER.H}%arg-2%{@USER.T}가 등록 되었습니다."
+			message "{@INFO} {@USER.H}%player%{@USER.T}가 등록 되었습니다." to {uuid::%{user::%arg-2%}%}
+			stop
+		if arg-1 is "refuse":
+			if {vur.%{_arg2}%.invite} is not set:
+				message "{@INFO} <%arg-2%>에게서 요청을 받지 않았습니다."
+				stop
+			if {vur.%{_arg2}%.invite} is not {_player}:
+				message "{@INFO} <%arg-2%>는 다른유저의 요청를 받았습니다."
+				stop
+			delete {vur.%{_arg2}%.invite}
+			message "{@INFO} 친구요청을 거절했습니다." to player and {uuid::%{user::%arg-2%}%}
+			stop
+		if arg-1 is "break":
+			loop {vur.%{_player}%.friend::*}:
+				{_arg2} is loop-value
+				remove {_arg2} from {vur.%{_player}%.friend::*}
+				remove {_player} from {vur.%{_arg2}%.friend::*}
+				message "{@INFO} <%arg-2%>와 관계를 끊었습니다."
+				message "{@INFO} <%player%>와 관계가 끊어졌습니다." to {uuid::%{user::%arg-2%}%}
+				stop
+			message "{@INFO} <%arg-2%>는 목록에 없습니다."
+			stop

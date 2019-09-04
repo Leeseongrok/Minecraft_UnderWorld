@@ -1,0 +1,38 @@
+on load:
+	#⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
+	# 설정
+	#⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
+	#던전월드 오픈 주기 +초
+	set {underworld::Dungeon::opentime} to 100
+	#던전월드 오픈주기 현재 남은시간
+	set {underworld::Dungeon::now_opentime} to 0
+	#던전월드 문 열림상태 0닫음 1열음
+	set {underworld::Dungeon::door_open} to 0
+	set {_bla} to location at (-10.499, 146, -85.601) in world "world"
+	#⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
+
+every 1 second:
+	if {underworld::Dungeon::door_open} is 0: # 던전문이 닫힌상태일때만 실행
+		if {underworld::Dungeon::now_opentime} is 0: # 던전 오픈남은시간이 0초일경우
+			broadcast "&c[!]&6&o수천년된 세계수 안에서 커다란 울림이 들리며 지하로 통하는 길이 열렸습니다."
+			set {underworld::Dungeon::door_open} to 1
+			delete holo object "Dungeon_timer"
+			create holo object "&3┌━━━━━━━━━━━━━━━━━━┐;&c✺&6던전 입구 봉인 해제됨&c✺;&c+-----&a입장가능&c-----+;&3└━━━━━━━━━━━━━━━━━━┘" with id "Dungeon_timer" at location at (-14.489, 144.68786, -111.501) in world "world"
+			loop all players:
+				play raw sound "ENTITY_ENDER_DRAGON_DEATH" at loop-player with pitch 1 volume 10
+			wait 10 second
+			broadcast "&c[!]&6&o수천년된 세계수 안에서 커다란 울림이 들리며 지하로 통하는 길이 닫혔습니다.."
+			set {underworld::Dungeon::now_opentime} to {underworld::Dungeon::opentime}
+			set {underworld::Dungeon::door_open} to 0
+		if {underworld::Dungeon::now_opentime} is not 0: # 던전오픈남은 시간이 존재할경우
+			subtract 1 from {underworld::Dungeon::now_opentime}
+			delete holo object "Dungeon_timer"
+			create holo object "&3┌━━━━━━━━━━━━━━━━━━┐;&c✺&6던전 입구 봉인 남은시간&c✺;&c&n봉인해제&6까지 &a%{underworld::Dungeon::now_opentime}%&6초;&3└━━━━━━━━━━━━━━━━━━┘" with id "Dungeon_timer" at location at (-14.489, 144.68786, -111.501) in world "world"
+			
+command /holotest:
+	trigger:
+		set {_bla} to location at (-10.499, 146, -85.601) in world "world"
+		create holo object "ItemStack:nether_star;&c✺&6&l던전 탐험&r&c✺;&6&o딥다이브 언더월드&r;&6깊이를 알 수 없는 이곳에는 다양한 &c위험&6과 &c보상&6이 기다리고 있습니다.;&c혼자서 &6또는 &a원정대&6와 함께 위대한 &c탐험&6에 도전하세요" with id "Dungeon_intro" at location at (-10.499, 146, -85.601) in world "world"
+command /delholotest:
+	trigger:
+		delete holo object "Dungeon_intro"

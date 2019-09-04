@@ -1,0 +1,478 @@
+options:
+	@: &f[&b스텟&f]
+
+every 1 seconds:
+	loop all players:
+		if loop-player's helmet is not air:
+			set {_lore::*} to uncolored lore of loop-player's helmet split by "||"
+			if {_lore::2} contains "생명력":
+				wait a tick
+				set {armor.health.%loop-player%} to uncolored {_lore::2}				
+				replace all "생명력" and "▣" and ":" and " " with "" in {armor.health.%loop-player%}
+				replace all "없음" with "0" in {armor.health.%loop-player%}
+				set {armor.health.%loop-player%} to {armor.health.%loop-player%} parsed as number
+			if {_lore::3} contains "재생력":
+				wait a tick
+				set {armor.healing.%loop-player%} to uncolored {_lore::3}
+				replace all "재생력" and "▣" and ":" and " " with "" in {armor.healing.%loop-player%}
+				replace all "없음" with "0" in {armor.healing.%loop-player%}
+				set {armor.healing.%loop-player%} to {armor.healing.%loop-player%} parsed as number
+			if {_lore::4} contains "방어력":
+				wait a tick
+				set {armor.guard.%loop-player%} to uncolored {_lore::4}
+				replace all "방어력" and "▣" and ":" and " " with "" in {armor.guard.%loop-player%}
+				replace all "없음" with "0" in {armor.guard.%loop-player%}
+				set {armor.guard.%loop-player%} to {armor.guard.%loop-player%} parsed as number
+			if {_lore::5} contains "공격력":
+				wait a tick
+				set {armor.attack.%loop-player%} to uncolored {_lore::5}
+				replace all "공격력" and "▣" and ":" and " " with "" in {armor.attack.%loop-player%}
+				replace all "없음" with "0" in {armor.attack.%loop-player%}
+				set {armor.attack.%loop-player%} to {armor.attack.%loop-player%} parsed as number
+			if {_lore::6} contains "이동속도":
+				wait a tick
+				set {armor.speed.%loop-player%} to uncolored {_lore::6}
+				replace all "이동속도" and "▣" and "+" and "%%" and " " with "" in {armor.speed.%loop-player%}
+				replace all "없음" with "0" in {armor.speed.%loop-player%}
+				set {armor.speed.%loop-player%} to {armor.speed.%loop-player%} parsed as number
+			if {_lore::8} contains "크리티컬 확률":
+				wait a tick
+				set {armor.crit.%loop-player%} to uncolored {_lore::8}
+				replace all "크리티컬" and "확률" and "▣" and "+" and "%%" and " " with "" in {armor.crit.%loop-player%}
+				replace all "없음" with "0" in {armor.crit.%loop-player%}
+				set {armor.crit.%loop-player%} to {armor.crit.%loop-player%} parsed as number
+			if {_lore::9} contains "크리티컬 데미지":
+				wait a tick
+				set {armor.critdmg.%loop-player%} to uncolored {_lore::9}
+				replace all "크리티컬" and "데미지" and "▣" and ":" and " " with "" in {armor.critdmg.%loop-player%}
+				replace all "없음" with "0" in {armor.critdmg.%loop-player%}
+				set {armor.critdmg.%loop-player%} to {armor.critdmg.%loop-player%} parsed as number
+			if {_lore::10} contains "회피율":
+				wait a tick
+				set {armor.attsp.%loop-player%} to uncolored {_lore::10}
+				replace all "회피율" and "▣" and "+" and "%%" and " " with "" in {armor.attsp.%loop-player%}
+				replace all "없음" with "0" in {armor.attsp.%loop-player%}
+				set {armor.attsp.%loop-player%} to {armor.attsp.%loop-player%} parsed as number
+			if {_lore::11} contains "흡혈력":
+				wait a tick
+				set {armor.blood.%loop-player%} to uncolored {_lore::11}
+				replace all "흡혈력" and "▣" and "+" and "%%" and " " with "" in {armor.blood.%loop-player%}
+				replace all "없음" with "0" in {armor.blood.%loop-player%}
+				set {armor.blood.%loop-player%} to {armor.blood.%loop-player%} parsed as number
+		else:
+			set {armor.health.%loop-player%} to 0
+			set {armor.healing.%loop-player%} to 0
+			set {armor.guard.%loop-player%} to 0
+			set {armor.attack.%loop-player%} to 0
+			set {armor.speed.%loop-player%} to 0
+			set {armor.crit.%loop-player%} to 0
+			set {armor.critdmg.%loop-player%} to 0
+			set {armor.attsp.%loop-player%} to 0
+			set {armor.blood.%loop-player%} to 0
+			
+		if loop-player's leggings is not air:
+			set {_lore02::*} to uncolored lore of loop-player's leggings split by "||"
+			if {_lore02::3} contains "재생력":
+				wait a tick
+				set {armor02.healing.%loop-player%} to uncolored {_lore02::3}
+				replace all "재생력" and "▣" and ":" and " " with "" in {armor02.healing.%loop-player%}
+				replace all "없음" with "0" in {armor02.healing.%loop-player%}
+				set {armor02.healing.%loop-player%} to {armor02.healing.%loop-player%} parsed as number
+			if {_lore02::2} contains "생명력":
+				wait a tick
+				set {armor02.health.%loop-player%} to uncolored {_lore02::2}				
+				replace all "생명력" and "▣" and ":" and " " with "" in {armor02.health.%loop-player%}
+				replace all "없음" with "0" in {armor02.health.%loop-player%}
+				set {armor02.health.%loop-player%} to {armor02.health.%loop-player%} parsed as number
+			if {_lore02::4} contains "방어력":
+				wait a tick
+				set {armor02.guard.%loop-player%} to uncolored {_lore02::4}
+				replace all "방어력" and "▣" and ":" and " " with "" in {armor02.guard.%loop-player%}
+				replace all "없음" with "0" in {armor02.guard.%loop-player%}
+				set {armor02.guard.%loop-player%} to {armor02.guard.%loop-player%} parsed as number
+			if {_lore02::5} contains "공격력":
+				wait a tick
+				set {armor02.attack.%loop-player%} to uncolored {_lore02::5}
+				replace all "공격력" and "▣" and ":" and " " with "" in {armor02.attack.%loop-player%}
+				replace all "없음" with "0" in {armor02.attack.%loop-player%}
+				set {armor02.attack.%loop-player%} to {armor02.attack.%loop-player%} parsed as number
+			if {_lore02::6} contains "이동속도":
+				wait a tick
+				set {armor02.speed.%loop-player%} to uncolored {_lore02::6}
+				replace all "이동속도" and "▣" and "+" and "%%" and " " with "" in {armor02.speed.%loop-player%}
+				replace all "없음" with "0" in {armor02.speed.%loop-player%}
+				set {armor02.speed.%loop-player%} to {armor02.speed.%loop-player%} parsed as number
+			if {_lore02::8} contains "크리티컬 확률":
+				wait a tick
+				set {armor02.crit.%loop-player%} to uncolored {_lore02::8}
+				replace all "크리티컬" and "확률" and "▣" and "+" and "%%" and " " with "" in {armor02.crit.%loop-player%}
+				replace all "없음" with "0" in {armor02.crit.%loop-player%}
+				set {armor02.crit.%loop-player%} to {armor02.crit.%loop-player%} parsed as number
+			if {_lore02::9} contains "크리티컬 데미지":
+				wait a tick
+				set {armor02.critdmg.%loop-player%} to uncolored {_lore02::9}
+				replace all "크리티컬" and "데미지" and "▣" and ":" and " " with "" in {armor02.critdmg.%loop-player%}
+				replace all "없음" with "0" in {armor02.critdmg.%loop-player%}
+				set {armor02.critdmg.%loop-player%} to {armor02.critdmg.%loop-player%} parsed as number
+			if {_lore02::10} contains "회피율":
+				wait a tick
+				set {armor02.attsp.%loop-player%} to uncolored {_lore02::10}
+				replace all "회피율" and "▣" and "+" and "%%" and " " with "" in {armor02.attsp.%loop-player%}
+				replace all "없음" with "0" in {armor02.attsp.%loop-player%}
+				set {armor02.attsp.%loop-player%} to {armor02.attsp.%loop-player%} parsed as number
+			if {_lore02::11} contains "흡혈력":
+				wait a tick
+				set {armor02.blood.%loop-player%} to uncolored {_lore02::11}
+				replace all "흡혈력" and "▣" and "+" and "%%" and " " with "" in {armor02.blood.%loop-player%}
+				replace all "없음" with "0" in {armor02.blood.%loop-player%}
+				set {armor02.blood.%loop-player%} to {armor02.blood.%loop-player%} parsed as number
+		else:
+			set {armor02.health.%loop-player%} to 0
+			set {armor02.guard.%loop-player%} to 0
+			set {armor02.attack.%loop-player%} to 0
+			set {armor02.healing.%loop-player%} to 0
+			set {armor02.speed.%loop-player%} to 0
+			set {armor02.crit.%loop-player%} to 0
+			set {armor02.critdmg.%loop-player%} to 0
+			set {armor02.attsp.%loop-player%} to 0
+			set {armor02.blood.%loop-player%} to 0
+			
+		if loop-player's chestplate is not air:
+			set {_lore03::*} to uncolored lore of loop-player's chestplate split by "||"
+			if {_lore03::2} contains "생명력":
+				wait a tick
+				set {armor03.health.%loop-player%} to uncolored {_lore03::2}				
+				replace all "생명력" and "▣" and ":" and " " with "" in {armor03.health.%loop-player%}
+				replace all "없음" with "0" in {armor03.health.%loop-player%}
+				set {armor03.health.%loop-player%} to {armor03.health.%loop-player%} parsed as number
+			if {_lore03::3} contains "재생력":
+				wait a tick
+				set {armor03.healing.%loop-player%} to uncolored {_lore03::3}
+				replace all "재생력" and "▣" and ":" and " " with "" in {armor03.healing.%loop-player%}
+				replace all "없음" with "0" in {armor03.healing.%loop-player%}
+				set {armor03.healing.%loop-player%} to {armor03.healing.%loop-player%} parsed as number
+			if {_lore03::4} contains "방어력":
+				wait a tick
+				set {armor03.guard.%loop-player%} to uncolored {_lore03::4}
+				replace all "방어력" and "▣" and ":" and " " with "" in {armor03.guard.%loop-player%}
+				replace all "없음" with "0" in {armor03.guard.%loop-player%} 
+				set {armor03.guard.%loop-player%} to {armor03.guard.%loop-player%} parsed as number
+			if {_lore03::5} contains "공격력":
+				wait a tick
+				set {armor03.attack.%loop-player%} to uncolored {_lore03::5}
+				replace all "공격력" and "▣" and ":" and " " with "" in {armor03.attack.%loop-player%}
+				replace all "없음" with "0" in {armor03.attack.%loop-player%}
+				set {armor03.attack.%loop-player%} to {armor03.attack.%loop-player%} parsed as number
+			if {_lore03::6} contains "이동속도":
+				wait a tick
+				set {armor03.speed.%loop-player%} to uncolored {_lore03::6}
+				replace all "이동속도" and "▣" and "+" and "%%" and " " with "" in {armor03.speed.%loop-player%}
+				replace all "없음" with "0" in {armor03.speed.%loop-player%}
+				set {armor03.speed.%loop-player%} to {armor03.speed.%loop-player%} parsed as number
+			if {_lore03::8} contains "크리티컬 확률":
+				wait a tick
+				set {armor03.crit.%loop-player%} to uncolored {_lore03::8}
+				replace all "크리티컬" and "확률" and "▣" and "+" and "%%" and " " with "" in {armor03.crit.%loop-player%}
+				replace all "없음" with "0" in {armor03.crit.%loop-player%}
+				set {armor03.crit.%loop-player%} to {armor03.crit.%loop-player%} parsed as number
+			if {_lore03::9} contains "크리티컬 데미지":
+				wait a tick
+				set {armor03.critdmg.%loop-player%} to uncolored {_lore03::9}
+				replace all "크리티컬" and "데미지" and "▣" and ":" and " " with "" in {armor03.critdmg.%loop-player%}
+				replace all "없음" with "0" in {armor03.critdmg.%loop-player%}
+				set {armor03.critdmg.%loop-player%} to {armor03.critdmg.%loop-player%} parsed as number
+			if {_lore03::10} contains "회피율":
+				wait a tick
+				set {armor03.attsp.%loop-player%} to uncolored {_lore03::10}
+				replace all "회피율" and "▣" and "+" and "%%" and " " with "" in {armor03.attsp.%loop-player%}
+				replace all "없음" with "0" in {armor03.attsp.%loop-player%}
+				set {armor03.attsp.%loop-player%} to {armor03.attsp.%loop-player%} parsed as number
+			if {_lore03::11} contains "흡혈력":
+				wait a tick
+				set {armor03.blood.%loop-player%} to uncolored {_lore03::11}
+				replace all "흡혈력" and "▣" and "+" and "%%" and " " with "" in {armor03.blood.%loop-player%}
+				replace all "없음" with "0" in {armor03.blood.%loop-player%}
+				set {armor03.blood.%loop-player%} to {armor03.blood.%loop-player%} parsed as number
+			
+		else:
+			set {armor03.attack.%loop-player%} to 0
+			set {armor03.healing.%loop-player%} to 0
+			set {armor03.guard.%loop-player%} to 0
+			set {armor03.health.%loop-player%} to 0
+			set {armor03.speed.%loop-player%} to 0
+			set {armor03.crit.%loop-player%} to 0
+			set {armor03.critdmg.%loop-player%} to 0
+			set {armor03.attsp.%loop-player%} to 0
+			set {armor03.blood.%loop-player%} to 0
+			
+		if loop-player's boots is not air:
+			set {_lore04::*} to uncolored lore of loop-player's boots split by "||"
+			if {_lore04::2} contains "생명력":
+				wait a tick
+				set {armor04.health.%loop-player%} to uncolored {_lore04::2}				
+				replace all "생명력" and "▣" and ":" and " " with "" in {armor04.health.%loop-player%}
+				replace all "없음" with "0" in {armor04.health.%loop-player%}
+				set {armor04.health.%loop-player%} to {armor04.health.%loop-player%} parsed as number
+			if {_lore04::3} contains "재생력":
+				wait a tick
+				set {armor04.healing.%loop-player%} to uncolored {_lore04::3}
+				replace all "재생력" and "▣" and ":" and " " with "" in {armor04.healing.%loop-player%}
+				replace all "없음" with "0" in {armor04.healing.%loop-player%}
+				set {armor04.healing.%loop-player%} to {armor04.healing.%loop-player%} parsed as number
+			if {_lore04::4} contains "방어력":
+				wait a tick
+				set {armor04.guard.%loop-player%} to uncolored {_lore04::4}
+				replace all "방어력" and "▣" and ":" and " " with "" in {armor04.guard.%loop-player%}
+				replace all "없음" with "0" in {armor04.guard.%loop-player%}
+				set {armor04.guard.%loop-player%} to {armor04.guard.%loop-player%} parsed as number
+			if {_lore04::5} contains "공격력":
+				wait a tick
+				set {armor04.attack.%loop-player%} to uncolored {_lore04::5}
+				replace all "공격력" and "▣" and ":" and " " with "" in {armor04.attack.%loop-player%}
+				replace all "없음" with "0" in {armor04.attack.%loop-player%}
+				set {armor04.attack.%loop-player%} to {armor04.attack.%loop-player%} parsed as number
+			if {_lore04::6} contains "이동속도":
+				wait a tick
+				set {armor04.speed.%loop-player%} to uncolored {_lore04::6}
+				replace all "이동속도" and "▣" and "+" and "%%" and " " with "" in {armor04.speed.%loop-player%}
+				replace all "없음" with "0" in {armor04.speed.%loop-player%}
+				set {armor04.speed.%loop-player%} to {armor04.speed.%loop-player%} parsed as number
+			if {_lore04::8} contains "크리티컬 확률":
+				wait a tick
+				set {armor04.crit.%loop-player%} to uncolored {_lore04::8}
+				replace all "크리티컬" and "확률" and "▣" and "+" and "%%" and " " with "" in {armor04.crit.%loop-player%}
+				replace all "없음" with "0" in {armor04.crit.%loop-player%}
+				set {armor04.crit.%loop-player%} to {armor04.crit.%loop-player%} parsed as number
+			if {_lore04::9} contains "크리티컬 데미지":
+				wait a tick
+				set {armor04.critdmg.%loop-player%} to uncolored {_lore04::9}
+				replace all "크리티컬" and "데미지" and "▣" and ":" and " " with "" in {armor04.critdmg.%loop-player%}
+				replace all "없음" with "0" in {armor04.critdmg.%loop-player%}
+				set {armor04.critdmg.%loop-player%} to {armor04.critdmg.%loop-player%} parsed as number
+			if {_lore04::10} contains "회피율":
+				wait a tick
+				set {armor04.attsp.%loop-player%} to uncolored {_lore04::10}
+				replace all "회피율" and "▣" and "+" and "%%" and " " with "" in {armor04.attsp.%loop-player%}
+				replace all "없음" with "0" in {armor04.attsp.%loop-player%}
+				set {armor04.attsp.%loop-player%} to {armor04.attsp.%loop-player%} parsed as number
+			if {_lore04::11} contains "흡혈력":
+				wait a tick
+				set {armor04.blood.%loop-player%} to uncolored {_lore04::11}
+				replace all "흡혈력" and "▣" and "+" and "%%" and " " with "" in {armor04.blood.%loop-player%}
+				replace all "없음" with "0" in {armor04.blood.%loop-player%}
+				set {armor04.blood.%loop-player%} to {armor04.blood.%loop-player%} parsed as number
+				
+		else:
+			set {armor04.health.%loop-player%} to 0
+			set {armor04.guard.%loop-player%} to 0
+			set {armor04.attack.%loop-player%} to 0
+			set {armor04.healing.%loop-player%} to 0
+			set {armor04.speed.%loop-player%} to 0
+			set {armor04.crit.%loop-player%} to 0
+			set {armor04.critdmg.%loop-player%} to 0
+			set {armor04.attsp.%loop-player%} to 0
+			set {armor04.blood.%loop-player%} to 0
+		
+		if loop-player's tool is not air:
+			set {_lore05::*} to uncolored lore of loop-player's tool split by "||"
+			if {_lore05::2} contains "생명력":
+				wait a tick
+				set {armor05.health.%loop-player%} to uncolored {_lore05::2}				
+				replace all "생명력" and "▣" and ":" and " " with "" in {armor05.health.%loop-player%}
+				replace all "없음" with "0" in {armor05.health.%loop-player%}
+				set {armor05.health.%loop-player%} to {armor05.health.%loop-player%} parsed as number
+			if {_lore05::3} contains "재생력":
+				wait a tick
+				set {armor05.healing.%loop-player%} to uncolored {_lore05::3}
+				replace all "재생력" and "▣" and ":" and " " with "" in {armor05.healing.%loop-player%}
+				replace all "없음" with "0" in {armor05.healing.%loop-player%}
+				set {armor05.healing.%loop-player%} to {armor05.healing.%loop-player%} parsed as number
+			if {_lore05::4} contains "방어력":
+				wait a tick
+				set {armor05.guard.%loop-player%} to uncolored {_lore05::4}
+				replace all "방어력" and "▣" and ":" and " " with "" in {armor05.guard.%loop-player%}
+				replace all "없음" with "0" in {armor05.guard.%loop-player%}
+				set {armor05.guard.%loop-player%} to {armor05.guard.%loop-player%} parsed as number
+			if {_lore05::5} contains "공격력":
+				wait a tick
+				set {armor05.attack.%loop-player%} to uncolored {_lore05::5}
+				replace all "공격력" and "▣" and ":" and " " with "" in {armor05.attack.%loop-player%}
+				replace all "없음" with "0" in {armor05.attack.%loop-player%}
+				set {armor05.attack.%loop-player%} to {armor05.attack.%loop-player%} parsed as number
+			if {_lore05::6} contains "이동속도":
+				wait a tick
+				set {armor05.speed.%loop-player%} to uncolored {_lore05::6}
+				replace all "이동속도" and "▣" and "+" and "%%" and " " with "" in {armor05.speed.%loop-player%}
+				replace all "없음" with "0" in {armor05.speed.%loop-player%}
+				set {armor05.speed.%loop-player%} to {armor05.speed.%loop-player%} parsed as number
+			if {_lore05::8} contains "크리티컬 확률":
+				wait a tick
+				set {armor05.crit.%loop-player%} to uncolored {_lore05::8}
+				replace all "크리티컬" and "확률" and "▣" and "+" and "%%" and " " with "" in {armor05.crit.%loop-player%}
+				replace all "없음" with "0" in {armor05.crit.%loop-player%}
+				set {armor05.crit.%loop-player%} to {armor05.crit.%loop-player%} parsed as number
+			if {_lore05::9} contains "크리티컬 데미지":
+				wait a tick
+				set {armor05.critdmg.%loop-player%} to uncolored {_lore05::9}
+				replace all "크리티컬" and "데미지" and "▣" and ":" and " " with "" in {armor05.critdmg.%loop-player%}
+				replace all "없음" with "0" in {armor05.critdmg.%loop-player%}
+				set {armor05.critdmg.%loop-player%} to {armor05.critdmg.%loop-player%} parsed as number
+			if {_lore05::10} contains "회피율":
+				wait a tick
+				set {armor05.attsp.%loop-player%} to uncolored {_lore05::10}
+				replace all "회피율" and "▣" and "+" and "%%" and " " with "" in {armor05.attsp.%loop-player%}
+				replace all "없음" with "0" in {armor05.attsp.%loop-player%}
+				set {armor05.attsp.%loop-player%} to {armor05.attsp.%loop-player%} parsed as number
+			if {_lore05::11} contains "흡혈력":
+				wait a tick
+				set {armor05.blood.%loop-player%} to uncolored {_lore05::11}
+				replace all "흡혈력" and "▣" and "+" and "%%" and " " with "" in {armor05.blood.%loop-player%}
+				replace all "없음" with "0" in {armor05.blood.%loop-player%}
+				set {armor05.blood.%loop-player%} to {armor05.blood.%loop-player%} parsed as number
+				
+		else:
+			set {armor05.health.%loop-player%} to 0
+			set {armor05.guard.%loop-player%} to 0
+			set {armor05.attack.%loop-player%} to 0
+			set {armor05.healing.%loop-player%} to 0
+			set {armor05.speed.%loop-player%} to 0
+			set {armor05.crit.%loop-player%} to 0
+			set {armor05.critdmg.%loop-player%} to 0
+			set {armor05.attsp.%loop-player%} to 0
+			set {armor05.blood.%loop-player%} to 0
+			
+command /재설정 [<integer>]:
+	trigger:
+		set player's mh to 5+ arg 1/2
+		
+every 10 seconds:
+	loop all players:
+		heal loop-player by ({armor.healing.%loop-player%}+{armor03.healing.%loop-player%}+{armor02.healing.%loop-player%}+{armor04.healing.%loop-player%}+{armor04.healing.%loop-player%})/2 hearts
+		
+command /hp:
+	trigger:
+		send "     &a[체력정보] &f현재 당신의 체력은 %player's health*2% &e/ &f%player's max health*2%"
+		send "     &c[공격력정보] &f당신의 공격력은 %{armor.attack.%player%}+{armor02.attack.%player%}+{armor03.attack.%player%}+{armor04.attack.%player%}+{armor05.attack.%player%}% 입니다." 
+		send "     &7[방어력정보] &f당신의 방어력은 %{armor.guard.%player%}+{armor02.guard.%player%}+{armor03.guard.%player%}+{armor04.guard.%player%}.{armor05.guard.%player%}% 입니다."
+		send "     &d[재생력정보] &f당신의 재생력은 %{armor.healing.%player%}+{armor03.healing.%player%}+{armor02.healing.%player%}+{armor04.healing.%player%}+{armor05.healing.%player%}% 입니다." 
+		send "     &b[이동속도정보] &f당신의 이동속도는 +%{armor.speed.%player%}+{armor02.speed.%player%}+{armor03.speed.%player%}+{armor04.speed.%player%}+{armor05.speed.%player%}%%% 입니다."
+		send "     &7[크리티컬확률정보] &f당신의 크리티컬 확률은 +%{armor04.crit.%player%}+{armor03.crit.%player%}+{armor02.crit.%player%}+{armor.crit.%player%}%%% 입니다."
+		send "     &8[크리티컬데미지정보] &f당신의 크리티컬 데미지는 %{armor04.critdmg.%player%}+{armor03.critdmg.%player%}+{armor02.critdmg.%player%}+{armor.critdmg.%player%}+{armor05.critdmg.%player%}% 입니다."
+		send "     &e[회피율정보] &f당신의 회피율 정보는 +%{armor04.attsp.%player%}+{armor03.attsp.%player%}+{armor02.attsp.%player%}+{armor.attsp.%player%}+{armor05.attsp.%player%}%%% 입니다."
+		send "     &4[흡혈력정보] &f당신의 흡혈력 정보는 +%{armor04.blood.%player%}+{armor03.blood.%player%}+{armor02.blood.%player%}+{armor.blood.%player%}+{armor05.blood.%player%}%%% 입니다."
+		
+		
+on damage:
+	if attacker is player:
+		add ({armor.attack.%attacker%}+{armor02.attack.%attacker%}+{armor03.attack.%attacker%}+{armor04.attack.%attacker%}+{armor05.attack.%attacker%}) / 2 to damage
+		remove ({armor.guard.%victim%}+{armor02.guard.%victim%}+{armor03.guard.%victim%}+{armor04.guard.%victim%}+{armor05.guard.%victim%}) / 2 from damage
+	chance of ({armor04.crit.%attacker%}+{armor03.crit.%attacker%}+{armor02.crit.%attacker%}+{armor.crit.%attacker%}+{armor.crit.%attacker%})%:
+		set damage  to damage*2
+		send "&7[크리티컬] &f크리티컬 적중!" to attacker
+	if "%type of victim%" is "%victim%":
+		if no damage time of victim is 0 second:
+			heal attacker by damage*({armor04.blood.%attacker%}+{armor03.blood.%attacker%}+{armor02.blood.%attacker%}+{armor.blood.%attacker%}+{armor05.blood.%attacker%})/100
+		
+on damage:
+	if "%type of victim%" is "%victim%":
+		if no damage time of victim is 0 second:
+			chance of ({armor04.attsp.%victim%}+{armor03.attsp.%victim%}+{armor02.attsp.%victim%}+{armor.attsp.%victim%}+{armor05.attsp.%victim%})%:
+				set damage to damage * 0
+				send "&e[회피율] &f%{armor04.attsp.%victim%}+{armor03.attsp.%victim%}+{armor02.attsp.%victim%}+{armor.attsp.%victim%}+{armor05.attsp.%victim%}% 확률로 공격 회피!" to victim
+	
+
+on every 3 seconds:
+	loop all players:
+		wait a tick
+		run loop-player cmd "/재설정 %10 +{armor.health.%loop-player%}+{armor02.health.%loop-player%}+{armor03.health.%loop-player%}+{armor04.health.%loop-player%}+{armor05.health.%loop-player%}%" as op
+		
+command /갑옷제작 [<text>] [<text>] [<text>] [<text>] [<text>] [<text>] [<text>] [<text>] [<text>] [<text>] [<text>]:
+	trigger:
+		if player is op:
+			if arg 1 is not set:
+				send "&f-----------< &a갑옷 능력치 도움말 &f>------------"
+				send "&f"
+				send "&c /&f갑옷제작 <생명력> <재생력> <방어력> <공격력> <이동속도> <크리티컬 확률> <크리티컬 데미지> <회피율> <흡혈력>"
+				send "&c+ &f들고 있는 아이템에 갑옷 기능을 부여합니다."
+				send "&c+ &f0 표시 할시 해당 기능은 없는걸로 표시됨"
+				stop			
+			
+			if arg 1 is set:
+				if arg 9 is set:
+					if player's tool is not air:
+						if arg 1 parsed as number is set:
+							if arg 1 is "0":
+								set line 1 of lore of tool to "&2┌───────────┐"
+								set line 2 of lore of tool to "     &6▣ &a&l생명력&f : &70"
+							else: 
+								set line 1 of lore of tool to "&2┌───────────┐"
+								set line 2 of lore of tool to "     &6▣ &a&l생명력&f : &e%arg 1%"
+						else:
+							send "{@@} 생명력 증가 수치를 숫자로 입력해주세요."
+							stop
+
+						if arg 2 parsed as number is set:
+							if arg 2 is "0":
+								set line 3 of lore of tool to "     &6▣ &d&l재생력&f : &70"
+							else:
+								set line 3 of lore of tool to "     &6▣ &d&l재생력&f : &e%arg 2%"
+						else:
+							send "{@@} 생명력 증가 수치를 숫자로 입력해주세요."
+							stop			
+							
+						if arg 3 parsed as number is set:
+							if arg 3 is "0":
+								set line 4 of lore of tool to "     &6▣ &7&l방어력&f : &70"
+							else:
+								set line 4 of lore of tool to "     &6▣ &7&l방어력&f : &e%arg 3%"
+						else:
+							send "{@@} 방어력 증가 수치를 숫자로 입력해주세요."
+							stop
+							
+						if arg 4 is "0":
+							set line 5 of lore of tool to "     &6▣ &c&l공격력&f : &70"
+						else:
+							set line 5 of lore of tool to "     &6▣ &c&l공격력&f : &e%arg 4%"
+							
+						if arg 5 is "0":
+							set line 6 of lore of tool to "     &6▣ &b&l이동속도&f +&70%%"
+							set line 7 of lore of tool to "&2─────────────"
+						else:
+							set line 6 of lore of tool to "     &6▣ &b&l이동속도&f &e+%arg 5%%%"
+							set line 7 of lore of tool to "&2─────────────"
+							
+						if arg 6 is "0":
+							set line 8 of lore of tool to "     &6▣ &7&l크리티컬 확률&f &7+0%%"
+						else:
+							set line 8 of lore of tool to "     &6▣ &7&l크리티컬 확률&f &e+%arg 6%%%"
+							
+						if arg 7 is "0":
+							set line 9 of lore of tool to "     &6▣ &8&l크리티컬 데미지&f : &70"
+						else:
+							set line 9 of lore of tool to "     &6▣ &8&l크리티컬 데미지&f : &7%arg 7%"
+							
+						if arg 8 is "0":
+							set line 10 of lore of tool to "     &6▣ &e&회피율&f &7+0%%"
+						else:
+							set line 10 of lore of tool to "     &6▣ &e&l회피율&f &e+%arg 8%%%"
+							
+						if arg 9 is "0":
+							set line 11 of lore of tool to "     &6▣ &4&l흡혈력&f &7+0%%"
+							set line 12 of lore of tool to "&2└───────────┘"
+						else:
+							set line 11 of lore of tool to "     &6▣ &4&l흡혈력&f &e+%arg 9%%%"
+							set line 12 of lore of tool to "&2└───────────┘"
+							
+						
+						send "{@@} 손에든 아이템을 설정했습니다."
+						stop
+					send "{@@} 손에 아이템을 들어주세요."
+					stop
+				
+				send "{@@} 모든 기능을 입력해주세요."
+				stop
+			stop
+			
+	
+on any move:
+	set the player's walk speed to 0.2 + ({armor.speed.%player%}+{armor02.speed.%player%}+{armor03.speed.%player%}+{armor04.speed.%player%}+{armor05.speed.%player%})/2000

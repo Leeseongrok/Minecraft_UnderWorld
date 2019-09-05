@@ -1,4 +1,7 @@
-﻿DivineDrop-2.5.5[드롭홀로관리]
+﻿거래
+https://www.spigotmc.org/resources/trade-system-custom-layouts.58434/
+
+DivineDrop-2.5.5[드롭홀로관리]
 https://www.spigotmc.org/resources/%E2%98%AF-divinedrop-%E2%98%AF-awesome-drop-management-1-8.51715/
 
 CustomShields[커스텀 쉴드]
@@ -40,7 +43,7 @@ https://www.spigotmc.org/resources/tint-health-1-12.6335/
 
 이미지
 https://www.spigotmc.org/resources/custom-images.53036/
-한블럭 128 128
+한블럭 128 128  768 * 512
 /image create <file name> - To create an image then right click the top left of where you want the image to be
 /image delete - To delete an image then just right click the image to delete
 /image options - To see all the file options of images that you can click to create
@@ -63,6 +66,7 @@ https://www.spigotmc.org/resources/custom-images.53036/
 탭리스트 수정(정보수정 OR 공지?
 스코어보드 유동적으로(spawn 원정대 / 미수령보상존재 / 각클래스 숙련도 / 던전오픈시간 | 스블 미수령보상 / 던전오픈시간 )
 GUI 아이템 쉬프트 클릭으로 먹을수있는거 수정(아이템 획득 이벤트로 금지아이템 처리)
+보스바 체력표시 삭제
 
 -직업군
 -특정갑옷 입을시 무거워서 쇠약(다른클래스 갑옷 입을시 패널티)

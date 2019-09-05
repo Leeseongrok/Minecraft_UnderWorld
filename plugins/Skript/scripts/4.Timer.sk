@@ -3,12 +3,11 @@ on load:
 	# 설정
 	#⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
 	#던전월드 오픈 주기 +초
-	set {underworld::Dungeon::opentime} to 100
+	set {underworld::Dungeon::opentime} to 600
 	#던전월드 오픈주기 현재 남은시간
 	set {underworld::Dungeon::now_opentime} to 0
 	#던전월드 문 열림상태 0닫음 1열음
 	set {underworld::Dungeon::door_open} to 0
-	set {_bla} to location at (-10.499, 146, -85.601) in world "world"
 	#⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
 
 every 1 second:
@@ -19,8 +18,8 @@ every 1 second:
 			delete holo object "Dungeon_timer"
 			create holo object "&3┌━━━━━━━━━━━━━━━━━━┐;&c✺&6던전 입구 봉인 해제됨&c✺;&c+-----&a입장가능&c-----+;&3└━━━━━━━━━━━━━━━━━━┘" with id "Dungeon_timer" at location at (-14.489, 144.68786, -111.501) in world "world"
 			loop all players:
-				play raw sound "ENTITY_ENDER_DRAGON_DEATH" at loop-player with pitch 1 volume 10
-			wait 10 second
+				play raw sound "ENTITY_ENDER_DRAGON_DEATH" at loop-player with pitch 1 volume 5
+			wait 300 second
 			broadcast "&c[!]&6&o수천년된 세계수 안에서 커다란 울림이 들리며 지하로 통하는 길이 닫혔습니다.."
 			set {underworld::Dungeon::now_opentime} to {underworld::Dungeon::opentime}
 			set {underworld::Dungeon::door_open} to 0

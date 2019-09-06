@@ -68,16 +68,16 @@ Configuration:
     Enable_Hologram_Damage: true
     #Enable damage indicator hologram
     
-    Enable_BossBar_Check: true
+    Enable_BossBar_Check: false
     #Enable check indicator bossbar
     
     Enable_BossBar_Exp: false
     #Enable exp indicator bossbar
     
-    Enable_BossBar_Heal: true
+    Enable_BossBar_Heal: false
     #Enable heal indicator bossbar
     
-    Enable_BossBar_Damage: true
+    Enable_BossBar_Damage: false
     #Enable damage indicator bossbar
     
     Enable_Actionbar_Check: false
